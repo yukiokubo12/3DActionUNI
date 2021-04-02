@@ -353,12 +353,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8c0066d465bd433ba9055082beb0bb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 5
+  distance: 3
   horizontalAngle: 0
   rotAngle: 180
   verticalAngle: 20
   lookTarget: {fileID: 2126577791}
-  offset: {x: 0, y: 0.5, z: 0}
+  offset: {x: 0, y: 1, z: 0}
 --- !u!1 &1274731777
 GameObject:
   m_ObjectHideFlags: 0
@@ -628,13 +628,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 3
+  m_Height: 3.01
   m_Radius: 0.5
   m_SlopeLimit: 20
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1.5, z: 0}
+  m_Center: {x: 0, y: 1.74, z: 0}
 --- !u!114 &2126577789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -649,7 +649,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrived: 1
   destination: {x: 0, y: 0, z: 0}
-  walkSpeed: 3
+  walkSpeed: 6
   rotationSpeed: 360
 --- !u!114 &2126577790
 MonoBehaviour:

@@ -22,16 +22,15 @@ public class CharacterMove : MonoBehaviour
 	// 目的地
 	public Vector3 destination; 
 	// 移動速度
-	public float walkSpeed = 6.0f;
+	public float walkSpeed = 3.0f;
 	// 回転速度
 	public float rotationSpeed = 360.0f;
-	// Use this for initialization
-	private Rigidbody myRigidbody;
-	private float velocityX = 6f;
-	private float velocityY = 6f;
-	private float velocityZ = 6f;
 
-	void Start () {
+	private Rigidbody myRigidbody;
+	public float speed = 3.0f;
+
+	void Start () 
+	{
 		characterController = GetComponent<CharacterController>();
 		destination = transform.position;
 		this.myRigidbody = GetComponent<Rigidbody>();
@@ -107,23 +106,23 @@ public class CharacterMove : MonoBehaviour
 		//ボタン移動
 		if(Input.GetKey(KeyCode.LeftArrow))
 		{
-			// this.transform.Translate(-0.1f, 0.0f, 0.0f);
-			characterController.Move(velocity * Time.deltaTime+snapGround);
+			transform.position += transform.forward * speed * Time.deltaTime;
+			transform.rotation = Quaternion.LookRotation(new Vector3(-1, 0, 0));
 		}
 		if(Input.GetKey(KeyCode.RightArrow))
 		{
-			// this.transform.Translate(0.1f, 0.0f, 0.0f);
-			characterController.Move(velocity * Time.deltaTime+snapGround);
+			transform.position += transform.forward * speed * Time.deltaTime;
+			transform.rotation = Quaternion.LookRotation(new Vector3(1, 0, 0));
 		}
 		if(Input.GetKey(KeyCode.UpArrow))
 		{
-			// this.transform.Translate(0.0f, 0.0f, 0.1f);
-			characterController.Move(velocity * Time.deltaTime+snapGround);
+			transform.position += transform.forward * speed * Time.deltaTime;
+			transform.rotation = Quaternion.LookRotation(new Vector3(0, 0, 1));
 		}
 		if(Input.GetKey(KeyCode.DownArrow))
 		{
-			// this.transform.Translate(0.0f, 0.0f, -0.1f);
-			characterController.Move(velocity * Time.deltaTime+snapGround);
+			transform.position += transform.forward * speed * Time.deltaTime;
+			transform.rotation = Quaternion.LookRotation(new Vector3(0, 0, -1));
 		}
 		
 	}
@@ -155,4 +154,10 @@ public class CharacterMove : MonoBehaviour
 	{
 		return arrived;
 	}	
+
+  // void FixedUpdate()
+	// {
+	// 	float x = Input.GetAxis("Horizontal");
+	// 	float z = Input.GetAxis("Vertical");
+	// }
 }
