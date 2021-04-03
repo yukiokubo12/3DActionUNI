@@ -27,18 +27,21 @@ public class CharacterMove : MonoBehaviour
 	public float rotationSpeed = 360.0f;
 
 	private Rigidbody myRigidbody;
-	public float speed = 3.0f;
+	//キーパッド移動スピード
+	public float speed = 20.0f;
+	Transform target;
+
 
 	void Start () 
 	{
 		characterController = GetComponent<CharacterController>();
 		destination = transform.position;
 		this.myRigidbody = GetComponent<Rigidbody>();
+		target = GameObject.Find("Player").transform;
 	}
 	
 	void Update () 
 	{
-		
 		// 移動速度velocityを更新する
 		if (characterController.isGrounded) {
 			//水平面での移動
@@ -81,7 +84,6 @@ public class CharacterMove : MonoBehaviour
 				Quaternion characterTargetRotation = Quaternion.LookRotation(forceRotateDirection);
 				transform.rotation = Quaternion.RotateTowards(transform.rotation,characterTargetRotation,rotationSpeed * Time.deltaTime);
 			}
-			
 		}
 		
 		// 重力.
@@ -104,27 +106,58 @@ public class CharacterMove : MonoBehaviour
 			forceRotate = false;
 		
 		//ボタン移動
+		Vector3 targetPosition = target.position;
+		if(transform.position.y != target.position.y)
+		{
+			targetPosition = new Vector3(target.position.x, transform.position.y, target.position.z);
+		}
 		if(Input.GetKey(KeyCode.LeftArrow))
 		{
+			//プレイヤーの左の座標
+			targetPosition += new Vector3(-1, 0, 0);
 			transform.position += transform.forward * speed * Time.deltaTime;
-			transform.rotation = Quaternion.LookRotation(new Vector3(-1, 0, 0));
+			Quaternion targetRotation = Quaternion.LookRotation(targetPosition - transform.position);
+			transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime);
 		}
 		if(Input.GetKey(KeyCode.RightArrow))
 		{
+			//プレイヤーの右の座標
+			targetPosition += new Vector3(1, 0, 0);
 			transform.position += transform.forward * speed * Time.deltaTime;
-			transform.rotation = Quaternion.LookRotation(new Vector3(1, 0, 0));
+			Quaternion targetRotation = Quaternion.LookRotation(targetPosition - transform.position);
+			transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime);
 		}
 		if(Input.GetKey(KeyCode.UpArrow))
 		{
 			transform.position += transform.forward * speed * Time.deltaTime;
-			transform.rotation = Quaternion.LookRotation(new Vector3(0, 0, 1));
+			//プレイヤーの奥の座標
+			targetPosition += new Vector3(0, 0, 1);
+			transform.position += transform.forward * speed * Time.deltaTime;
+			Quaternion targetRotation = Quaternion.LookRotation(targetPosition - transform.position);
+			transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime);
 		}
 		if(Input.GetKey(KeyCode.DownArrow))
 		{
 			transform.position += transform.forward * speed * Time.deltaTime;
-			transform.rotation = Quaternion.LookRotation(new Vector3(0, 0, -1));
+			//プレイヤーの手前の座標
+			targetPosition += new Vector3(0, 0, -1);
+			transform.position += transform.forward * speed * Time.deltaTime;
+			Quaternion targetRotation = Quaternion.LookRotation(targetPosition - transform.position);
+			transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime);
 		}
-		
+
+		//コントローラ操作で移動
+		float x = Input.GetAxis("Horizontal");
+		float y = Input.GetAxis("Vertical");
+		Debug.Log(x+","+y);
+		if(Input.GetButtonDown("Horizontal"))
+		{
+			targetPosition += new Vector3(-1, 0, 0);
+			transform.position += transform.forward * speed * Time.deltaTime;
+			Quaternion targetRotation = Quaternion.LookRotation(targetPosition - transform.position);
+			transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime);
+		}
+
 	}
 	
 	// 目的地を設定する.引数destinationは目的地.
@@ -154,10 +187,5 @@ public class CharacterMove : MonoBehaviour
 	{
 		return arrived;
 	}	
-
-  // void FixedUpdate()
-	// {
-	// 	float x = Input.GetAxis("Horizontal");
-	// 	float z = Input.GetAxis("Vertical");
-	// }
+	
 }

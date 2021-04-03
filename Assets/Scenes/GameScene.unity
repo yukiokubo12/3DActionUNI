@@ -651,6 +651,7 @@ MonoBehaviour:
   destination: {x: 0, y: 0, z: 0}
   walkSpeed: 6
   rotationSpeed: 360
+  speed: 6
 --- !u!114 &2126577790
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6,13 +6,13 @@ public class InputManager : MonoBehaviour {
 	Vector2 prevPosition;
 	Vector2 delta = Vector2.zero;
 	bool moved = false;
-	
+		
 	void Update()
-	{
+	{		
 		// スライド開始地点.
 		if (Input.GetButtonDown("Fire1"))
 			slideStartPosition = GetCursorPosition();
-		
+
 		// 画面の１割以上移動させたらスライド開始と判断する.
 		if (Input.GetButton("Fire1")) {
 			if (Vector2.Distance(slideStartPosition,GetCursorPosition()) >= (Screen.width * 0.1f))
@@ -31,6 +31,9 @@ public class InputManager : MonoBehaviour {
 		
 		// カーソル位置を更新.
 		prevPosition = GetCursorPosition();
+
+
+
 	}
 	
 	// クリックされたか.
