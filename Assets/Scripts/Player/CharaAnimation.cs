@@ -41,7 +41,9 @@ public class CharaAnimation : MonoBehaviour
 	void Update ()
 	{
 		Vector3 delta_position = transform.position - prePosition;
-		animator.SetFloat("Speed", delta_position.magnitude / Time.deltaTime);
+		float speedAnimeValue = delta_position.magnitude * 5000.0f;
+		// animator.SetFloat("Speed", delta_position.magnitude / Time.deltaTime);
+		animator.SetFloat("Speed", speedAnimeValue);
 		
 		if(attacked && !status.attacking)
 		{
@@ -57,10 +59,10 @@ public class CharaAnimation : MonoBehaviour
 		
 		prePosition = transform.position;
 
-		if(characterController.isGrounded)
-		{
-			animator.SetFloat("Speed", Input.GetAxis("Vertical"));
-			animator.SetFloat("Speed", Input.GetAxis("Horizontal"));
-		}
+		// if(characterController.isGrounded)
+		// {
+		// 	animator.SetFloat("Speed", Input.GetAxis("Vertical"));
+		// 	animator.SetFloat("Speed", Input.GetAxis("Horizontal"));			
+		// }
 	}
 }

@@ -43,7 +43,8 @@ public class CharacterMove : MonoBehaviour
 	void Update () 
 	{
 		// 移動速度velocityを更新する
-		if (characterController.isGrounded) {
+		if (characterController.isGrounded) 
+		{
 			//水平面での移動
 			Vector3 destinationXZ = destination; 
 			destinationXZ.y = transform.position.y;// 高さを目的地と現在地を同じにしておく.
@@ -149,8 +150,8 @@ public class CharacterMove : MonoBehaviour
 		//コントローラ操作で移動
 		float x = Input.GetAxis("Horizontal");
 		float y = Input.GetAxis("Vertical");
-		Debug.Log(x+","+y);
-		if(Input.GetButtonDown("Horizontal"))
+		// Debug.Log(x+","+y);
+		if(Mathf.Abs(x) >= 0.1f || Mathf.Abs(y) >= 0.1f)
 		{
 			targetPosition += new Vector3(-1, 0, 0);
 			transform.position += transform.forward * speed * Time.deltaTime;
@@ -158,6 +159,36 @@ public class CharacterMove : MonoBehaviour
 			transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime);
 		}
 
+		// if(Mathf.Abs(x) >= 0.1f)
+		// {
+		// 	targetPosition += new Vector3(-1, 0, 0);
+		// 	transform.position += transform.forward * speed * Time.deltaTime;
+		// 	Quaternion targetRotation = Quaternion.LookRotation(targetPosition - transform.position);
+		// 	transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime);
+		// }
+		// if(Mathf.Abs(x) >= 0.1f)
+		// {
+		// 	targetPosition += new Vector3(1, 0, 0);
+		// 	transform.position += transform.forward * speed * Time.deltaTime;
+		// 	Quaternion targetRotation = Quaternion.LookRotation(targetPosition - transform.position);
+		// 	transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime);
+		// }
+
+		// if(Mathf.Abs(y) >= 0.1f)
+		// {
+		// 	targetPosition += new Vector3(0, 0, 1);
+		// 	transform.position += transform.forward * speed * Time.deltaTime;
+		// 	Quaternion targetRotation = Quaternion.LookRotation(targetPosition - transform.position);
+		// 	transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime);
+		// }
+		// if(Mathf.Abs(y) >= 0.1f)
+		// {
+		// 	targetPosition += new Vector3(0, 0, -1);
+		// 	transform.position += transform.forward * speed * Time.deltaTime;
+		// 	Quaternion targetRotation = Quaternion.LookRotation(targetPosition - transform.position);
+		// 	transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime);
+		// }
+		
 	}
 	
 	// 目的地を設定する.引数destinationは目的地.
