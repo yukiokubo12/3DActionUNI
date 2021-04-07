@@ -36,6 +36,7 @@ public class MoveEnemy : MonoBehaviour
     private EnemyState state;
     //　プレイヤーTransform
     private Transform playerTransform;
+    private float runSpeed = 3.0f;
 
     private SearchCharacter searchCharacter;
     [SerializeField] private float freezeTime = 0.5f;
@@ -63,7 +64,6 @@ public class MoveEnemy : MonoBehaviour
 		if (state == EnemyState.Chase) 
         {
 			setPosition.SetDestination (playerTransform.position);
-            animator.SetFloat("Run", 3.0f);
 		}
 		if (enemyController.isGrounded) 
         {
@@ -129,6 +129,8 @@ public class MoveEnemy : MonoBehaviour
         arrived = false;
         //　追いかける対象をセット
         playerTransform = targetObj;
+        animator.SetFloat("Run", 3.0f);
+        velocity = direction * runSpeed;
     } else if (tempState == EnemyState.Wait) {
         elapsedTime = 0f;
         arrived = true;
