@@ -2,7 +2,8 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class SkillButton : MonoBehaviour {
+public class SkillButton : MonoBehaviour 
+{
 
 	public Texture2D normalTex;
 	public Texture2D hoverTex;
@@ -20,12 +21,12 @@ public class SkillButton : MonoBehaviour {
 	private void OnMouseEnter ()
 	{
 		
-		GetComponent<Texture>().texture = hoverTex;
+		// GetComponent<Texture>().texture = hoverTex;
 	}
 	
 	private void OnMouseExit ()
 	{
-		GetComponent<Texture>().texture = normalTex;
+		// GetComponent<Texture>().texture = normalTex;
 	}
 	
 	

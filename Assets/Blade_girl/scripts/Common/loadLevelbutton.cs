@@ -15,13 +15,13 @@ public class loadLevelbutton : MonoBehaviour {
 
 	private void OnMouseEnter ()
 	{
-		GetComponent<Texture>().texture = hoverTex;
+		// GetComponent<Texture>().texture = hoverTex;
 	}
 
 	private void OnMouseExit ()
 	{
 
-		GetComponent<Texture>().texture = normalTex;
+		// GetComponent<Texture>().texture = normalTex;
 	}
 
 
