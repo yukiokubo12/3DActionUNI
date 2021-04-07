@@ -132,7 +132,7 @@ public class MoveEnemy : MonoBehaviour
         playerTransform = targetObj;
         // animator.SetFloat("Run", 3.0f);
         velocity = direction * runSpeed;
-        animator.SetFloat("Speed", 2.5f);
+        animator.SetFloat("Speed", 2.0f);
     } else if (tempState == EnemyState.Wait) {
         elapsedTime = 0f;
         arrived = true;
