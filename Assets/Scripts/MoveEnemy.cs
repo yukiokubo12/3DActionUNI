@@ -68,7 +68,7 @@ public class MoveEnemy : MonoBehaviour
 		if (enemyController.isGrounded) 
         {
 			velocity = Vector3.zero;
-			animator.SetFloat ("Speed", 2.0f);
+			//animator.SetFloat ("Speed", 2.0f);
 			direction = (setPosition.GetDestination () - transform.position).normalized;
 			transform.LookAt (new Vector3 (setPosition.GetDestination ().x, transform.position.y, setPosition.GetDestination ().z));
 			velocity = direction * walkSpeed;
@@ -80,7 +80,7 @@ public class MoveEnemy : MonoBehaviour
 			if (Vector3.Distance (transform.position, setPosition.GetDestination ()) < 0.7f) 
             {
 				SetState(EnemyState.Wait);
-				animator.SetFloat ("Speed", 0.0f);
+				//animator.SetFloat ("Speed", 0.0f);
 			}
 		} 
         else if (state == EnemyState.Chase) 
@@ -124,6 +124,7 @@ public class MoveEnemy : MonoBehaviour
         arrived = false;
         elapsedTime = 0f;
         setPosition.CreateRandomPosition();
+        animator.SetFloat("Speed", 1.0f);
     } else if (tempState == EnemyState.Chase) {
         //　待機状態から追いかける場合もあるのでOff
         arrived = false;
@@ -131,6 +132,7 @@ public class MoveEnemy : MonoBehaviour
         playerTransform = targetObj;
         // animator.SetFloat("Run", 3.0f);
         velocity = direction * runSpeed;
+        animator.SetFloat("Speed", 2.5f);
     } else if (tempState == EnemyState.Wait) {
         elapsedTime = 0f;
         arrived = true;
