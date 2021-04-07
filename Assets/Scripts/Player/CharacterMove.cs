@@ -31,7 +31,6 @@ public class CharacterMove : MonoBehaviour
 	public float speed = 20.0f;
 	Transform target;
 
-
 	void Start () 
 	{
 		characterController = GetComponent<CharacterController>();
