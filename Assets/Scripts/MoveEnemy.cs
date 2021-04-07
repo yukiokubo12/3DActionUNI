@@ -128,6 +128,7 @@ public class MoveEnemy : MonoBehaviour
         arrived = false;
         //　追いかける対象をセット
         playerTransform = targetObj;
+        animator.SetFloat("Run", 3.0f);
     } else if (tempState == EnemyState.Wait) {
         elapsedTime = 0f;
         arrived = true;

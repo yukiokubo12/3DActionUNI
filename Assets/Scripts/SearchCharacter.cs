@@ -22,8 +22,8 @@ public class SearchCharacter : MonoBehaviour
             if (state != MoveEnemy.EnemyState.Chase) {
                 Debug.Log("プレイヤー発見");
                 moveEnemy.SetState(MoveEnemy.EnemyState.Chase, col.transform);
-                animator.SetFloat("Run", 3.0f);
-                Debug.Log("プレイヤーへ向かって走る");
+                // animator.SetFloat("Run", 3.0f);
+                // Debug.Log("プレイヤーへ向かって走る");
             }
         }
     }

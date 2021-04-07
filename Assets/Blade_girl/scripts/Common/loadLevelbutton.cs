@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class loadLevelbutton : MonoBehaviour {
@@ -12,17 +13,15 @@ public class loadLevelbutton : MonoBehaviour {
 
 
 
-
 	private void OnMouseEnter ()
 	{
-
-		GetComponent<GUITexture>().texture = hoverTex;
+		GetComponent<Texture>().texture = hoverTex;
 	}
 
 	private void OnMouseExit ()
 	{
 
-		GetComponent<GUITexture>().texture = normalTex;
+		GetComponent<Texture>().texture = normalTex;
 	}
 
 
