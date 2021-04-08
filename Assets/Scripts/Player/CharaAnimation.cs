@@ -41,7 +41,7 @@ public class CharaAnimation : MonoBehaviour
 	void Update ()
 	{
 		Vector3 delta_position = transform.position - prePosition;
-		float speedAnimeValue = delta_position.magnitude * 5000.0f;
+		float speedAnimeValue = delta_position.magnitude * 10000.0f;
 		// animator.SetFloat("Speed", delta_position.magnitude / Time.deltaTime);
 		animator.SetFloat("Speed", speedAnimeValue);
 		
@@ -49,12 +49,12 @@ public class CharaAnimation : MonoBehaviour
 		{
 			attacked = false;
 		}
-		animator.SetBool("Attacking", (!attacked && status.attacking));
+		animator.SetBool("Attack", (!attacked && status.attacking));
 		
 		if(!isDown && status.died)
 		{
 			isDown = true;
-			animator.SetTrigger("Down");
+			animator.SetTrigger("Damage");
 		}
 		
 		prePosition = transform.position;

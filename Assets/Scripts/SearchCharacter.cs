@@ -19,7 +19,8 @@ public class SearchCharacter : MonoBehaviour
             //　敵キャラクターの状態を取得
             MoveEnemy.EnemyState state = moveEnemy.GetState();
             //　敵キャラクターが追いかける状態でなければ追いかける設定に変更
-            if (state != MoveEnemy.EnemyState.Chase) {
+            if (state == MoveEnemy.EnemyState.Wait || state == MoveEnemy.EnemyState.Walk) 
+            {
                 Debug.Log("プレイヤー発見");
                 moveEnemy.SetState(MoveEnemy.EnemyState.Chase, col.transform);
                 // animator.SetFloat("Run", 3.0f);

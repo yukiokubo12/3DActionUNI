@@ -3,6 +3,16 @@ using System.Collections;
 
 public class PlayerCtrl : MonoBehaviour
 {
+    public enum MyState 
+    {
+	Normal,
+	Damage
+    };
+
+    private MyState state;
+    private Vector3 velocity;
+    private Animator animator;
+
     const float RayCastMaxDistance = 100.0f;
     InputManager inputManager;
     [SerializeField] float m_walkSpeed = 3f;
@@ -15,6 +25,7 @@ public class PlayerCtrl : MonoBehaviour
     {
         inputManager = FindObjectOfType<InputManager>();
         m_cc = GetComponent<CharacterController>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -67,5 +78,13 @@ public class PlayerCtrl : MonoBehaviour
                 SendMessage("SetDestination", hitInfo.point);
             }
         }
+    }
+
+    public void TakeDamage(Transform enemyTransform) 
+    {
+    state = MyState.Damage;
+    velocity = Vector3.zero;
+    animator.SetTrigger ("Damage");
+    //	characterController.Move (enemyTransform.forward * 0.5f);
     }
 }

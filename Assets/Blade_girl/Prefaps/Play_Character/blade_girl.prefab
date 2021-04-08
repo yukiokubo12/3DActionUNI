@@ -527,8 +527,6 @@ GameObject:
   - component: {fileID: 9500000}
   - component: {fileID: 5400000}
   - component: {fileID: 13600000}
-  - component: {fileID: 11400000}
-  - component: {fileID: 11400002}
   m_Layer: 8
   m_Name: blade_girl
   m_TagString: Player
@@ -603,36 +601,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0.9, z: 0}
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 100020}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27b1b9d09b9198e41b8d6e649e18cb1b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotateSpeed: 2
-  speed: 4
-  DirectionDampTime: 0.25
-  useCurves: 0
---- !u!114 &11400002
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 100020}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25af48118d2e6de49856ed7e224ec8aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SkillPrefab: {fileID: 5400000, guid: bdb0d839c8b02ae4faa07a0cfc7c5e0a, type: 3}
-  pos: {fileID: 400136}
 --- !u!1 &100022
 GameObject:
   m_ObjectHideFlags: 0

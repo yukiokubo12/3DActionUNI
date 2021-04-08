@@ -19,6 +19,8 @@ public class MoveEnemy : MonoBehaviour
     //　歩くスピード
     [SerializeField]
     private float walkSpeed = 1.0f;
+    [SerializeField]
+    private float runSpeed = 3.0f;
     //　速度
     private Vector3 velocity;
     //　移動方向
@@ -36,13 +38,13 @@ public class MoveEnemy : MonoBehaviour
     private EnemyState state;
     //　プレイヤーTransform
     private Transform playerTransform;
-    private float runSpeed = 3.0f;
 
     private SearchCharacter searchCharacter;
     [SerializeField] private float freezeTime = 0.5f;
  
     // Use this for initialization
-    void Start() {
+    void Start() 
+    {
         enemyController = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         setPosition = GetComponent<SetPosition>();
@@ -57,83 +59,87 @@ public class MoveEnemy : MonoBehaviour
     // Update is called once per frame
     void Update () 
     {
-	//　見回りまたはキャラクターを追いかける状態
-	if (state == EnemyState.Walk || state == EnemyState.Chase) 
-    {
-		//　キャラクターを追いかける状態であればキャラクターの目的地を再設定
-		if (state == EnemyState.Chase) 
+        //　見回りまたはキャラクターを追いかける状態
+        if (state == EnemyState.Walk || state == EnemyState.Chase) 
         {
-			setPosition.SetDestination (playerTransform.position);
-		}
-		if (enemyController.isGrounded) 
-        {
-			velocity = Vector3.zero;
-			//animator.SetFloat ("Speed", 2.0f);
-			direction = (setPosition.GetDestination () - transform.position).normalized;
-			transform.LookAt (new Vector3 (setPosition.GetDestination ().x, transform.position.y, setPosition.GetDestination ().z));
-			velocity = direction * walkSpeed;
-		}
- 
-		if (state == EnemyState.Walk) 
-        {
-			//　目的地に到着したかどうかの判定
-			if (Vector3.Distance (transform.position, setPosition.GetDestination ()) < 0.7f) 
+            //　キャラクターを追いかける状態であればキャラクターの目的地を再設定
+            if (state == EnemyState.Chase) 
             {
-				SetState(EnemyState.Wait);
-				//animator.SetFloat ("Speed", 0.0f);
-			}
-		} 
-        else if (state == EnemyState.Chase) 
-        {
-			//　攻撃する距離だったら攻撃
-			if (Vector3.Distance (transform.position, setPosition.GetDestination ()) < 1f) 
+                setPosition.SetDestination (playerTransform.position);
+            }
+            if (enemyController.isGrounded) 
             {
-				SetState(EnemyState.Attack);
-			}
-		}
-	//　到着していたら一定時間待つ
-	} 
-    else if (state == EnemyState.Wait) 
-    {
-		elapsedTime += Time.deltaTime;
- 
-		//　待ち時間を越えたら次の目的地を設定
-		if (elapsedTime > waitTime) 
+                velocity = Vector3.zero;
+                //animator.SetFloat ("Speed", 2.0f);
+                direction = (setPosition.GetDestination () - transform.position).normalized;
+                transform.LookAt (new Vector3 (setPosition.GetDestination ().x, transform.position.y, setPosition.GetDestination ().z));
+                velocity = direction * walkSpeed;
+            }
+    
+            if (state == EnemyState.Walk) 
+            {
+                //　目的地に到着したかどうかの判定
+                if (Vector3.Distance (transform.position, setPosition.GetDestination ()) < 0.7f) 
+                {
+                    SetState(EnemyState.Wait);
+                    //animator.SetFloat ("Speed", 0.0f);
+                }
+            } 
+            else if (state == EnemyState.Chase) 
+            {
+                //　攻撃する距離だったら攻撃
+                if (Vector3.Distance (transform.position, setPosition.GetDestination ()) < 1f) 
+                {
+                    SetState(EnemyState.Attack);
+                }
+		    }
+	    } 
+        //到着で一定時間待つ
+        else if (state == EnemyState.Wait) 
         {
-			SetState(EnemyState.Walk);
-		}		
-	//　攻撃後のフリーズ状態
-	} 
-    else if(state == EnemyState.Freeze) 
-    {
-		elapsedTime += Time.deltaTime;
- 
-		if (elapsedTime > freezeTime) 
+            elapsedTime += Time.deltaTime;
+    
+            //　待ち時間を越えたら次の目的地を設定
+            if (elapsedTime > waitTime) 
+            {
+                SetState(EnemyState.Walk);
+            }		
+        } 
+        //　攻撃後のフリーズ状態
+        else if(state == EnemyState.Freeze) 
         {
-			SetState(EnemyState.Walk);
-		}
-	}
-	velocity.y += Physics.gravity.y * Time.deltaTime;
-	enemyController.Move (velocity * Time.deltaTime);
-}
+            elapsedTime += Time.deltaTime;
+    
+            if (elapsedTime > freezeTime) 
+            {
+                SetState(EnemyState.Walk);
+            }
+        }
+        velocity.y += Physics.gravity.y * Time.deltaTime;
+        enemyController.Move (velocity * Time.deltaTime);
+    }
  
     //　敵キャラクターの状態変更メソッド
-    public void SetState(EnemyState tempState, Transform targetObj = null) {
+    public void SetState(EnemyState tempState, Transform targetObj = null) 
+    {
     state = tempState;
-    if (tempState == EnemyState.Walk) {
+    if (tempState == EnemyState.Walk) 
+    {
         arrived = false;
         elapsedTime = 0f;
         setPosition.CreateRandomPosition();
         animator.SetFloat("Speed", 1.0f);
-    } else if (tempState == EnemyState.Chase) {
+    } else if (tempState == EnemyState.Chase) 
+    {
         //　待機状態から追いかける場合もあるのでOff
         arrived = false;
         //　追いかける対象をセット
         playerTransform = targetObj;
-        // animator.SetFloat("Run", 3.0f);
+        animator.SetFloat("Speed", 3.0f);
         velocity = direction * runSpeed;
-        animator.SetFloat("Speed", 2.0f);
-    } else if (tempState == EnemyState.Wait) {
+    } 
+    else if (tempState == EnemyState.Wait) 
+    {
         elapsedTime = 0f;
         arrived = true;
         velocity = Vector3.zero;
