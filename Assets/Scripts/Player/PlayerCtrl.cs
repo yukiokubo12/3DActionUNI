@@ -36,7 +36,6 @@ public class PlayerCtrl : MonoBehaviour
     void Update()
     {
         Walking();
-        Jumping();
 
         float v = Input.GetAxisRaw("Vertical");
         float h = Input.GetAxisRaw("Horizontal");
@@ -58,7 +57,6 @@ public class PlayerCtrl : MonoBehaviour
         if (characterController.isGrounded)
         {
             m_verticalVelocity = 0f;
-
             // velocity = Vector3.zero;
             // var input = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
             // 方向キーが多少押されている

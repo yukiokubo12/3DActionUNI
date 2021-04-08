@@ -79,8 +79,10 @@ public class InputManager : MonoBehaviour {
 		}
 	}
 	//ジャンプボタン
-	public void JumpButton()
+	public bool JumpButton()
 	{
+		return true;
+		
 		if(Input.GetKey(KeyCode.Space) || Input.GetButtonDown("Jump"))
 		{
 				jump = true;
