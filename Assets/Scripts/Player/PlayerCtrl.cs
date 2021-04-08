@@ -36,7 +36,7 @@ public class PlayerCtrl : MonoBehaviour
     void Update()
     {
         Walking();
-
+        Jumping();
         float v = Input.GetAxisRaw("Vertical");
         float h = Input.GetAxisRaw("Horizontal");
 
