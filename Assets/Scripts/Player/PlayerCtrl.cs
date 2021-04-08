@@ -13,25 +13,30 @@ public class PlayerCtrl : MonoBehaviour
     private Vector3 velocity;
     private Animator animator;
 
+
     const float RayCastMaxDistance = 100.0f;
     InputManager inputManager;
     [SerializeField] float m_walkSpeed = 3f;
     [SerializeField] float m_rotateSpeed = 10f;
-    CharacterController m_cc = null;
+    CharacterController characterController= null;
     float m_verticalVelocity = 0f;
+
+    [SerializeField] private float jumpPower = 5f;
 
     // Use this for initialization
     void Start()
     {
         inputManager = FindObjectOfType<InputManager>();
-        m_cc = GetComponent<CharacterController>();
+        characterController = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
+        velocity = Vector3.zero;
     }
 
     // Update is called once per frame
     void Update()
     {
         Walking();
+        Jumping();
 
         float v = Input.GetAxisRaw("Vertical");
         float h = Input.GetAxisRaw("Horizontal");
@@ -50,9 +55,30 @@ public class PlayerCtrl : MonoBehaviour
         }
 
         // 重力の処理
-        if (m_cc.isGrounded)
+        if (characterController.isGrounded)
         {
             m_verticalVelocity = 0f;
+
+            // velocity = Vector3.zero;
+            // var input = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
+            // 方向キーが多少押されている
+            // if(input.magnitude > 0f && !animator.GetCurrentAnimatorStateInfo(0).IsName("Jump")) 
+            // {
+			// 	animator.SetFloat("Speed", input.magnitude);
+			// 	transform.LookAt(transform.position + input);
+			// 	velocity += input.normalized * 2;
+			// //　キーの押しが小さすぎる場合は移動しない
+			// } 
+            // else 
+            // {
+			// 	animator.SetFloat("Speed", 0f);
+			// }
+			//　ジャンプキー（デフォルトではSpace）を押したらY軸方向の速度にジャンプ力を足す
+			// if(Input.GetButtonDown("Jump") && !animator.GetCurrentAnimatorStateInfo(0).IsName("Jump")) 
+            // {
+			// 	animator.SetBool ("Jump", true);
+			// 	velocity.y += jumpPower;
+			// }
         }
         else
         {
@@ -61,7 +87,8 @@ public class PlayerCtrl : MonoBehaviour
         }
 
         // 移動
-        m_cc.Move(moveDirection * Time.deltaTime);
+        characterController.Move(moveDirection * Time.deltaTime);
+        // velocity.y += Physics.gravity.y * Time.deltaTime;
     }
 
     void Walking()
@@ -77,6 +104,14 @@ public class PlayerCtrl : MonoBehaviour
             {
                 SendMessage("SetDestination", hitInfo.point);
             }
+        }
+    }
+
+    public void Jumping()
+    {
+        if(inputManager.JumpButton())
+        {
+            animator.SetBool("Jump", true);
         }
     }
 

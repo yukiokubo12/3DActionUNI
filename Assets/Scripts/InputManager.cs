@@ -6,6 +6,14 @@ public class InputManager : MonoBehaviour {
 	Vector2 prevPosition;
 	Vector2 delta = Vector2.zero;
 	bool moved = false;
+	Animator animator;
+
+	bool jump = true;
+
+	void Start()
+	{
+		animator = GetComponent<Animator>();
+	}
 		
 	void Update()
 	{		
@@ -68,6 +76,14 @@ public class InputManager : MonoBehaviour {
 		if(Input.GetKey(KeyCode.UpArrow))
 		{
 			moved = true;
+		}
+	}
+	//ジャンプボタン
+	public void JumpButton()
+	{
+		if(Input.GetKey(KeyCode.Space) || Input.GetButtonDown("Jump"))
+		{
+				jump = true;
 		}
 	}
 }
