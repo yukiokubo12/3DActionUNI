@@ -40,10 +40,13 @@ public class CharaAnimation : MonoBehaviour
 	
 	void Update ()
 	{
-		Vector3 delta_position = transform.position - prePosition;
-		float speedAnimeValue = delta_position.magnitude * 10000.0f;
 		// animator.SetFloat("Speed", delta_position.magnitude / Time.deltaTime);
-		animator.SetFloat("Speed", speedAnimeValue);
+		Vector3 delta_position = transform.position - prePosition;
+		float speedAnimeValue = delta_position.magnitude * 5000.0f;
+		// float speedAnimeValue = delta_position.magnitude * 1.0f;
+		// animator.SetFloat("Speed", speedAnimeValue);
+		Vector3 horizontalVelocity = characterController.velocity;
+		animator.SetFloat("Speed", horizontalVelocity.magnitude);
 		
 		if(attacked && !status.attacking)
 		{
