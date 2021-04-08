@@ -110,6 +110,7 @@ public class PlayerCtrl : MonoBehaviour
         if(inputManager.JumpButton())
         {
             animator.SetBool("Jump", true);
+            Debug.Log(inputManager.JumpButton());
         }
     }
 
@@ -117,7 +118,7 @@ public class PlayerCtrl : MonoBehaviour
     {
     state = MyState.Damage;
     velocity = Vector3.zero;
-    animator.SetTrigger ("Damage");
+    animator.SetTrigger("Damage");
     //	characterController.Move (enemyTransform.forward * 0.5f);
     }
 }

@@ -82,10 +82,11 @@ public class InputManager : MonoBehaviour {
 	public bool JumpButton()
 	{
 		return true;
-		
+
 		if(Input.GetKey(KeyCode.Space) || Input.GetButtonDown("Jump"))
 		{
-				jump = true;
+				return true;
 		}
+		return false;
 	}
 }
