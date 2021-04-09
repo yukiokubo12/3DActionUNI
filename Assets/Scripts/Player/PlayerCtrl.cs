@@ -88,7 +88,6 @@ public class PlayerCtrl : MonoBehaviour
 
         // 移動
         characterController.Move(moveDirection * Time.deltaTime);
-        // Running();
     }
 
     void Walking()
