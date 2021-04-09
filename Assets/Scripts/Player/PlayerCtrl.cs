@@ -56,9 +56,7 @@ public class PlayerCtrl : MonoBehaviour
         if(state == MyState.Jump)
         {
             //着地したら待機状態になる
-            {
-                state = MyState.Idle;
-            }
+            state = MyState.Idle;
         }
 
         float v = Input.GetAxisRaw("Vertical");
@@ -132,14 +130,6 @@ public class PlayerCtrl : MonoBehaviour
             m_walkSpeed = 3.0f;
         }
     }
-    
-    // public void AttackStanby()
-    // {
-    //     if(inputManager.AttackStanbyButton())
-    //     {
-    //         animator.SetBool("AttackStanby", true);
-    //     }
-    // }
 
     public void Attacking0()
     {
@@ -155,7 +145,7 @@ public class PlayerCtrl : MonoBehaviour
 
     public void TakeDamage(Transform enemyTransform) 
     {
-    // state = MyState.Damage;
+    state = MyState.Damage;
     velocity = Vector3.zero;
     animator.SetTrigger("Damage");
     //	characterController.Move (enemyTransform.forward * 0.5f);

@@ -97,14 +97,7 @@ public class InputManager : MonoBehaviour
 		}
 		return false;
 	}
-	// public bool AttackStanbyButton()
-	// {
-	// 	if(Input.GetKeyDown(KeyCode.R) || Input.GetButtonDown("AttackStanby"))
-	// 	{
-	// 		return true;
-	// 	}
-	// 	return false;
-	// }
+
 	public bool Attack0Button()
 	{
 		if(Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Attack0"))

@@ -157,37 +157,6 @@ public class CharacterMove : MonoBehaviour
 			Quaternion targetRotation = Quaternion.LookRotation(targetPosition - transform.position);
 			transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime);
 		}
-
-		// if(Mathf.Abs(x) >= 0.1f)
-		// {
-		// 	targetPosition += new Vector3(-1, 0, 0);
-		// 	transform.position += transform.forward * speed * Time.deltaTime;
-		// 	Quaternion targetRotation = Quaternion.LookRotation(targetPosition - transform.position);
-		// 	transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime);
-		// }
-		// if(Mathf.Abs(x) >= 0.1f)
-		// {
-		// 	targetPosition += new Vector3(1, 0, 0);
-		// 	transform.position += transform.forward * speed * Time.deltaTime;
-		// 	Quaternion targetRotation = Quaternion.LookRotation(targetPosition - transform.position);
-		// 	transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime);
-		// }
-
-		// if(Mathf.Abs(y) >= 0.1f)
-		// {
-		// 	targetPosition += new Vector3(0, 0, 1);
-		// 	transform.position += transform.forward * speed * Time.deltaTime;
-		// 	Quaternion targetRotation = Quaternion.LookRotation(targetPosition - transform.position);
-		// 	transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime);
-		// }
-		// if(Mathf.Abs(y) >= 0.1f)
-		// {
-		// 	targetPosition += new Vector3(0, 0, -1);
-		// 	transform.position += transform.forward * speed * Time.deltaTime;
-		// 	Quaternion targetRotation = Quaternion.LookRotation(targetPosition - transform.position);
-		// 	transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime);
-		// }
-		
 	}
 	
 	// 目的地を設定する.引数destinationは目的地.
