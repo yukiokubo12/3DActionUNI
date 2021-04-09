@@ -881,6 +881,7 @@ GameObject:
   - component: {fileID: 6165268821630463574}
   - component: {fileID: 6165268821630463569}
   - component: {fileID: 6165268821630463568}
+  - component: {fileID: 100163451}
   m_Layer: 0
   m_Name: Wolf
   m_TagString: Untagged
@@ -997,8 +998,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 1
+  runSpeed: 2
   waitTime: 5
   freezeTime: 0.5
+--- !u!114 &100163451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6165268823266297660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff86bc113b2324c79ac657d7f7d80dd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sphereCollider: {fileID: 0}
 --- !u!1 &6165268823266297662
 GameObject:
   m_ObjectHideFlags: 0
@@ -15845,7 +15860,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -15898,7 +15913,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeZ:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -25062,6 +25077,8 @@ GameObject:
   - component: {fileID: 3047517307001969965}
   - component: {fileID: 5708356133627408837}
   - component: {fileID: 3555997216429531091}
+  - component: {fileID: 1457096485}
+  - component: {fileID: 1457096486}
   m_Layer: 0
   m_Name: AttackPoint
   m_TagString: Untagged
@@ -25143,3 +25160,29 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.74
   m_Center: {x: 0, y: 0, z: 0.0000019073486}
+--- !u!114 &1457096485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8141225365481599799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff86bc113b2324c79ac657d7f7d80dd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sphereCollider: {fileID: 0}
+--- !u!114 &1457096486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8141225365481599799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 777a212a810324c9e92574f54b4f4646, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_anim: {fileID: 6165268823256912758}

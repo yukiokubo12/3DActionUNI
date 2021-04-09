@@ -23,6 +23,10 @@ public class PlayerCtrl : MonoBehaviour
 
     [SerializeField] private float jumpPower = 5f;
 
+    //走る処理
+    [SerializeField] float m_runSpeed = 6.0f;
+    private bool runFlag = false;
+
     // Use this for initialization
     void Start()
     {
@@ -36,7 +40,9 @@ public class PlayerCtrl : MonoBehaviour
     void Update()
     {
         Walking();
-        // Jumping();
+        Jumping();
+        AttackStanby();
+
         float v = Input.GetAxisRaw("Vertical");
         float h = Input.GetAxisRaw("Horizontal");
 
@@ -57,26 +63,6 @@ public class PlayerCtrl : MonoBehaviour
         if (characterController.isGrounded)
         {
             m_verticalVelocity = 0f;
-            // velocity = Vector3.zero;
-            // var input = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
-            // 方向キーが多少押されている
-            // if(input.magnitude > 0f && !animator.GetCurrentAnimatorStateInfo(0).IsName("Jump")) 
-            // {
-			// 	animator.SetFloat("Speed", input.magnitude);
-			// 	transform.LookAt(transform.position + input);
-			// 	velocity += input.normalized * 2;
-			// //　キーの押しが小さすぎる場合は移動しない
-			// } 
-            // else 
-            // {
-			// 	animator.SetFloat("Speed", 0f);
-			// }
-			//　ジャンプキー（デフォルトではSpace）を押したらY軸方向の速度にジャンプ力を足す
-			// if(Input.GetButtonDown("Jump") && !animator.GetCurrentAnimatorStateInfo(0).IsName("Jump")) 
-            // {
-			// 	animator.SetBool ("Jump", true);
-			// 	velocity.y += jumpPower;
-			// }
         }
         else
         {
@@ -86,7 +72,7 @@ public class PlayerCtrl : MonoBehaviour
 
         // 移動
         characterController.Move(moveDirection * Time.deltaTime);
-        // velocity.y += Physics.gravity.y * Time.deltaTime;
+        Running();
     }
 
     void Walking()
@@ -113,6 +99,25 @@ public class PlayerCtrl : MonoBehaviour
             Debug.Log(inputManager.JumpButton());
         }
     }
+    public void Running()
+    {
+        if(inputManager.RunButton())
+        {
+        runFlag = true;
+        animator.SetFloat("Speed", 6.0f);
+        }
+        // else
+        // {
+        //     runFlag = false;
+        // }
+    }
+    public void AttackStanby()
+    {
+        if(inputManager.AttackStanbyButton())
+        {
+            animator.SetBool("AttackStanby", true);
+        }
+    }
 
     public void TakeDamage(Transform enemyTransform) 
     {
@@ -122,3 +127,4 @@ public class PlayerCtrl : MonoBehaviour
     //	characterController.Move (enemyTransform.forward * 0.5f);
     }
 }
+

@@ -16,7 +16,7 @@ public class CameraSwitcher : MonoBehaviour
         if (Input.GetButtonDown(m_switchButton))
         {
             m_cameraIndex = (m_cameraIndex + 1) % m_virtualCameras.Length;
-            m_virtualCameras[m_cameraIndex].MoveToTopOfPrioritySubqueue();
+            // m_virtualCameras[m_cameraIndex].MoveToTopOfPrioritySubqueue();
         }
     }
 }

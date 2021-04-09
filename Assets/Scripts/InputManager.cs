@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class InputManager : MonoBehaviour {
+public class InputManager : MonoBehaviour 
+{
 	Vector2 slideStartPosition;
 	Vector2 prevPosition;
 	Vector2 delta = Vector2.zero;
@@ -81,12 +82,31 @@ public class InputManager : MonoBehaviour {
 	//ジャンプボタン
 	public bool JumpButton()
 	{
-		return true;
-
 		if(Input.GetKey(KeyCode.Space) || Input.GetButtonDown("Jump"))
 		{
 				return true;
 		}
 		return false;
+	}
+	public bool RunButton()
+	{
+		if(Input.GetKey(KeyCode.LeftShift) || Input.GetButton("Run"))
+		{
+				return true;
+		}
+		return false;
+	}
+	public bool AttackStanbyButton()
+	{
+		if(Input.GetKeyDown(KeyCode.R) || Input.GetButtonDown("AttackStanby"))
+		{
+			return true;
+		}
+		return false;
+		// if(Input.GetKey(KeyCode.R) || Input.GetButton("AttackStanby"))
+		// {
+		// 	return false;
+		// }
+		// return true;
 	}
 }
