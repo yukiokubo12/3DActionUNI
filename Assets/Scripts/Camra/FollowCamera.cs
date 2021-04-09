@@ -9,6 +9,7 @@ public class FollowCamera : MonoBehaviour {
 	public Transform lookTarget;
 	public Vector3 offset = Vector3.zero;
 
+
 	InputManager inputManager;
 	void Start()
 	{
