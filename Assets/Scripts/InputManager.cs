@@ -10,6 +10,7 @@ public class InputManager : MonoBehaviour
 	Animator animator;
 
 	bool jump = true;
+	bool run = true;
 
 	void Start()
 	{

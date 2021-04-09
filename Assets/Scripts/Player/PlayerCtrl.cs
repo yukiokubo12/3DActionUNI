@@ -5,11 +5,16 @@ public class PlayerCtrl : MonoBehaviour
 {
     public enum MyState 
     {
-	Normal,
-	Damage
+        Idle = 0,
+        Walk = 1,
+        Jump = 2,
+        Attack = 3,
+        Damage = 4,
+        Run = 5,
+        Normal
     };
 
-    // private MyState state;
+    private MyState state;
     private Vector3 velocity;
     private Animator animator;
 
@@ -27,9 +32,6 @@ public class PlayerCtrl : MonoBehaviour
     [SerializeField] float m_runSpeed = 6.0f;
     private bool runFlag = false;
 
-    //０が待機、１が歩き、２がジャンプ、３が攻撃
-    int state = 0; 
-
     // Use this for initialization
     void Start()
     {
@@ -42,35 +44,22 @@ public class PlayerCtrl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //待機、または歩き状態の場合
-     if(state == 0 || state == 1){
-        Walking();
-        Running();
-        Jumping();
-        Attacking0();
-     }
-     //ジャンプ状態の場合
-     if(state == 2)
-     {
-         Jumping();
-        //着地したら待機状態へ
-        if(characterController.isGrounded)
+        //待機、歩き状態の場合
+        if(state == MyState.Walk || state == MyState.Idle)
         {
-            state = 0;
+            Walking();
+            Running();
+            Jumping();
+            Attacking0();
         }
-     }
-     //攻撃状態の場合
-     if(state == 3){
-         Attacking0();
-        //攻撃終了したら待機状態へ
-        if(inputManager.Attack0Button()){
-            state = 0;
+        //ジャンプ状態の場合
+        if(state == MyState.Jump)
+        {
+            //着地したら待機状態になる
+            {
+                state = MyState.Idle;
+            }
         }
-     }
-        // Walking();
-        // Jumping();
-        // AttackStanby();
-        // Attacking0();
 
         float v = Input.GetAxisRaw("Vertical");
         float h = Input.GetAxisRaw("Horizontal");
@@ -125,6 +114,7 @@ public class PlayerCtrl : MonoBehaviour
         if(inputManager.JumpButton())
         {
             animator.SetBool("Jump", true);
+            state = MyState.Jump;
             Debug.Log(inputManager.JumpButton());
         }
     }
