@@ -111,6 +111,7 @@ public class PlayerCtrl : MonoBehaviour
         //     runFlag = false;
         // }
     }
+    
     public void AttackStanby()
     {
         if(inputManager.AttackStanbyButton())
