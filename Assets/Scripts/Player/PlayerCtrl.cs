@@ -41,7 +41,8 @@ public class PlayerCtrl : MonoBehaviour
     {
         Walking();
         Jumping();
-        AttackStanby();
+        // AttackStanby();
+        Attacking0();
 
         float v = Input.GetAxisRaw("Vertical");
         float h = Input.GetAxisRaw("Horizontal");
@@ -104,19 +105,33 @@ public class PlayerCtrl : MonoBehaviour
         if(inputManager.RunButton())
         {
         runFlag = true;
+        m_walkSpeed = 6.0f;
         animator.SetFloat("Speed", 6.0f);
         }
-        // else
-        // {
-        //     runFlag = false;
-        // }
+        else
+        {
+            runFlag = false;
+            m_walkSpeed = 3.0f;
+        }
     }
     
-    public void AttackStanby()
+    // public void AttackStanby()
+    // {
+    //     if(inputManager.AttackStanbyButton())
+    //     {
+    //         animator.SetBool("AttackStanby", true);
+    //     }
+    // }
+
+    public void Attacking0()
     {
-        if(inputManager.AttackStanbyButton())
+        if(inputManager.Attack0Button())
         {
-            animator.SetBool("AttackStanby", true);
+            animator.SetBool("Attack0", true);
+        }
+        else
+        {
+            animator.SetBool("Attack0", false);
         }
     }
 

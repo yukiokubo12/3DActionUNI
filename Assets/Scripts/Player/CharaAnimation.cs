@@ -52,7 +52,7 @@ public class CharaAnimation : MonoBehaviour
 		{
 			attacked = false;
 		}
-		animator.SetBool("Attack", (!attacked && status.attacking));
+		// animator.SetBool("Attack", (!attacked && status.attacking));
 		
 		if(!isDown && status.died)
 		{

@@ -13,10 +13,10 @@ public class CameraSwitcher : MonoBehaviour
     void Update()
     {
         // 設定したキーを押されたら、次のカメラに切り替える
-        if (Input.GetButtonDown(m_switchButton))
-        {
-            m_cameraIndex = (m_cameraIndex + 1) % m_virtualCameras.Length;
+        // if (Input.GetButtonDown(m_switchButton))
+        // {
+        //     m_cameraIndex = (m_cameraIndex + 1) % m_virtualCameras.Length;
             // m_virtualCameras[m_cameraIndex].MoveToTopOfPrioritySubqueue();
-        }
+        // }
     }
 }

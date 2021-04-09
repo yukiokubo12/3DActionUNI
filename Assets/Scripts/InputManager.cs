@@ -82,7 +82,7 @@ public class InputManager : MonoBehaviour
 	//ジャンプボタン
 	public bool JumpButton()
 	{
-		if(Input.GetKey(KeyCode.Space) || Input.GetButtonDown("Jump"))
+		if(Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Jump"))
 		{
 				return true;
 		}
@@ -96,17 +96,21 @@ public class InputManager : MonoBehaviour
 		}
 		return false;
 	}
-	public bool AttackStanbyButton()
+	// public bool AttackStanbyButton()
+	// {
+	// 	if(Input.GetKeyDown(KeyCode.R) || Input.GetButtonDown("AttackStanby"))
+	// 	{
+	// 		return true;
+	// 	}
+	// 	return false;
+	// }
+	public bool Attack0Button()
 	{
-		if(Input.GetKeyDown(KeyCode.R) || Input.GetButtonDown("AttackStanby"))
+		if(Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Attack0"))
 		{
 			return true;
 		}
 		return false;
-		// if(Input.GetKey(KeyCode.R) || Input.GetButton("AttackStanby"))
-		// {
-		// 	return false;
-		// }
-		// return true;
 	}
+	
 }
