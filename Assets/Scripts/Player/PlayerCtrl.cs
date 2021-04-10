@@ -59,18 +59,25 @@ public class PlayerCtrl : MonoBehaviour
             //着地したら待機状態になる
             if(characterController.isGrounded)
             {
+                velocity = Vector3.zero;
+                var input = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
+                if(inputManager.JumpButton())
+                {
+                    velocity.y += jumpPower;
+                }
                 m_verticalVelocity = 0f;
-                
                 animator.SetBool("Jump", false);
             }
             state = MyState.Idle;
         }
+        velocity.y += Physics.gravity.y * Time.deltaTime;
+        moveDirection.y += Physics.gravity.y * Time.deltaTime;
 
         float v = Input.GetAxisRaw("Vertical");
         float h = Input.GetAxisRaw("Horizontal");
 
         // 入力した方向をカメラを基準とした XZ 平面に変換する
-        Vector3 moveDirection = Vector3.forward * v + Vector3.right * h;
+        moveDirection = Vector3.forward * v + Vector3.right * h;
         moveDirection = Camera.main.transform.TransformDirection(moveDirection);
         moveDirection.y = 0f;
         moveDirection = moveDirection.normalized * m_walkSpeed;
@@ -95,7 +102,6 @@ public class PlayerCtrl : MonoBehaviour
 
         // 移動
         characterController.Move(moveDirection * Time.deltaTime);
-        moveDirection.y += Physics.gravity.y * Time.deltaTime;
     }
 
     void Walking()

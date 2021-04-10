@@ -881,7 +881,7 @@ GameObject:
   - component: {fileID: 6165268821630463574}
   - component: {fileID: 6165268821630463569}
   - component: {fileID: 6165268821630463568}
-  - component: {fileID: 100163451}
+  - component: {fileID: 737066545}
   m_Layer: 0
   m_Name: Wolf
   m_TagString: Untagged
@@ -1001,7 +1001,7 @@ MonoBehaviour:
   runSpeed: 2
   waitTime: 5
   freezeTime: 0.5
---- !u!114 &100163451
+--- !u!114 &737066545
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -25158,7 +25158,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.74
+  m_Radius: 0.47
   m_Center: {x: 0, y: 0, z: 0.0000019073486}
 --- !u!114 &1457096485
 MonoBehaviour:
