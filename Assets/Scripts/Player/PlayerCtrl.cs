@@ -26,7 +26,7 @@ public class PlayerCtrl : MonoBehaviour
     CharacterController characterController= null;
     float m_verticalVelocity = 0f;
 
-    [SerializeField] private float jumpPower = 5f;
+    [SerializeField] private float jumpPower = 10f;
     private Vector3 moveDirection;
 
     //走る処理
@@ -53,25 +53,22 @@ public class PlayerCtrl : MonoBehaviour
             Jumping();
             Attacking0();
         }
+        // Debug.Log("characterController.isGrounded" + characterController.isGrounded);
         //ジャンプ状態の場合
         if(state == MyState.Jump)
         {
             //着地したら待機状態になる
             if(characterController.isGrounded)
             {
-                velocity = Vector3.zero;
+                // velocity = Vector3.zero;
                 var input = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
-                if(inputManager.JumpButton())
-                {
-                    velocity.y += jumpPower;
-                }
                 m_verticalVelocity = 0f;
                 animator.SetBool("Jump", false);
             }
             state = MyState.Idle;
         }
         velocity.y += Physics.gravity.y * Time.deltaTime;
-        moveDirection.y += Physics.gravity.y * Time.deltaTime;
+        // moveDirection.y += Physics.gravity.y * Time.deltaTime;
 
         float v = Input.GetAxisRaw("Vertical");
         float h = Input.GetAxisRaw("Horizontal");
@@ -102,6 +99,8 @@ public class PlayerCtrl : MonoBehaviour
 
         // 移動
         characterController.Move(moveDirection * Time.deltaTime);
+        characterController.Move(velocity * Time.deltaTime);
+        velocity.y *= 0.9f;
     }
 
     void Walking()
@@ -126,7 +125,8 @@ public class PlayerCtrl : MonoBehaviour
         {
             animator.SetBool("Jump",true);
             state = MyState.Jump;
-            moveDirection.y = jumpPower;
+            velocity.y = jumpPower;
+            // moveDirection.y = jumpPower;
             // Debug.Log(inputManager.JumpButton());
         }
     }
