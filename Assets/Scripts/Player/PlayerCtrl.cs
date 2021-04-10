@@ -26,12 +26,14 @@ public class PlayerCtrl : MonoBehaviour
     CharacterController characterController= null;
     float m_verticalVelocity = 0f;
 
-    [SerializeField] private float jumpPower = 10f;
+    [SerializeField] private float jumpPower = 5f;
     private Vector3 moveDirection;
 
     //走る処理
     [SerializeField] float m_runSpeed = 6.0f;
     private bool runFlag = false;
+
+    AttackWolf attackWolf;
 
     // Use this for initialization
     void Start()
@@ -58,16 +60,16 @@ public class PlayerCtrl : MonoBehaviour
         if(state == MyState.Jump)
         {
             //着地したら待機状態になる
-            if(characterController.isGrounded)
-            {
+            // if(characterController.isGrounded)
+            // {
                 // velocity = Vector3.zero;
-                var input = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
-                m_verticalVelocity = 0f;
-                animator.SetBool("Jump", false);
-            }
+                // var input = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
+                // m_verticalVelocity = 0f;
+                // animator.SetBool("Jump", false);
+            // }
             state = MyState.Idle;
         }
-        velocity.y += Physics.gravity.y * Time.deltaTime;
+        // velocity.y += Physics.gravity.y * Time.deltaTime;
         // moveDirection.y += Physics.gravity.y * Time.deltaTime;
 
         float v = Input.GetAxisRaw("Vertical");
@@ -99,8 +101,8 @@ public class PlayerCtrl : MonoBehaviour
 
         // 移動
         characterController.Move(moveDirection * Time.deltaTime);
-        characterController.Move(velocity * Time.deltaTime);
-        velocity.y *= 0.9f;
+        // characterController.Move(velocity * Time.deltaTime);
+        // velocity.y *= 0.9f;
     }
 
     void Walking()
@@ -159,9 +161,12 @@ public class PlayerCtrl : MonoBehaviour
 
     public void TakeDamage(Transform enemyTransform) 
     {
-    state = MyState.Damage;
-    velocity = Vector3.zero;
-    animator.SetTrigger("Damage");
+        // if(AttackWolf.m_anim.SetTrigger("AttackTrigger"))
+        // {
+            state = MyState.Damage;
+            velocity = Vector3.zero;
+            animator.SetTrigger("Damage");
+        // }
     //	characterController.Move (enemyTransform.forward * 0.5f);
     }
 }
