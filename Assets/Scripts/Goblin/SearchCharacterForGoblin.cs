@@ -21,7 +21,7 @@ public class SearchCharacterForGoblin : MonoBehaviour
             //　敵キャラクターが追いかける状態でなければ追いかける設定に変更
             if (state == MoveGoblin.GoblinState.Wait || state == MoveGoblin.GoblinState.Walk) 
             {
-                Debug.Log("プレイヤー発見");
+                // Debug.Log("プレイヤー発見");
                 moveGoblin.SetState(MoveGoblin.GoblinState.Chase, col.transform);
                 // animator.SetFloat("Run", 3.0f);
                 // Debug.Log("プレイヤーへ向かって走る");
@@ -31,7 +31,7 @@ public class SearchCharacterForGoblin : MonoBehaviour
  
     void OnTriggerExit(Collider col) {
         if (col.tag == "Player") {
-            Debug.Log("見失う");
+            // Debug.Log("見失う");
             moveGoblin.SetState(MoveGoblin.GoblinState.Wait);
         }
     }
