@@ -173,7 +173,7 @@ public class MoveGoblin : MonoBehaviour
         {
             velocity = Vector3.zero;
             animator.ResetTrigger("Attack");
-            animator.SetTrigger("Damage");
+            // animator.SetTrigger("Damage");
         }
 }
     //　敵キャラクターの状態取得メソッド

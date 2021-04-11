@@ -10,7 +10,7 @@ public class AttackGoblin : MonoBehaviour
 		if(col.tag == "Player") {
 			Debug.Log("当たり");
 			m_anim.SetTrigger("AttackTrigger");
-			col.GetComponent<PlayerCtrl>().TakeDamage(transform.root);
+			// col.GetComponent<PlayerCtrl>().TakeDamage(transform.root);
 		}
 	}
 }

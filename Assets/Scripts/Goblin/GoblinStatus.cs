@@ -18,8 +18,6 @@ public class GoblinStatus : MonoBehaviour
     public Slider goblinHPSlider;
     public GameObject hitEffectPrefab;
 
-    bool isbattle = true;
-
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -30,11 +28,11 @@ public class GoblinStatus : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        isbattle = true;
         if(other.gameObject.tag == "Sword")
         {
             int damage = 10;
             this.currentGoblinHp -= damage;
+            Debug.Log("ダメージ10");
             goblinHPSlider.value = (float)currentGoblinHp / maxGoblinHp;
             GameObject hitEffect = Instantiate(hitEffectPrefab, this.transform.position, Quaternion.identity);
 
