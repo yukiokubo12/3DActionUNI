@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class AttackSword : MonoBehaviour
 {
-    // void OnTriggerEnter(Collider col)
-    // {
-    //     if(col.tag == "Enemy")
-    //     {
-    //         Debug.Log("敵に当たった");
-    //         col.GetComponent<Goblin>().SetState(Goblin.GoblinState.Damage);
-    //     }
-    // }
+    private bool triggerFlag = true;
+
+    void OnTriggerEnter(Collider col)
+    {
+        if(col.tag == "Goblin")
+        {
+            if(triggerFlag)
+            {
+            Debug.Log("ゴブリンに当たった");
+            col.GetComponent<MoveGoblin>().SetState(MoveGoblin.GoblinState.Damage);
+            }
+            triggerFlag = false;
+        }
+    }
 }

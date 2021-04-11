@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Goblin
+  - Sword
   layers:
   - Default
   - TransparentFX

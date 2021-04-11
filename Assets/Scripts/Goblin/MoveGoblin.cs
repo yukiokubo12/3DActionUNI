@@ -10,6 +10,7 @@ public class MoveGoblin : MonoBehaviour
         Wait,
         Chase,
         Attack,
+        Damage,
         Freeze
     };
  
@@ -167,7 +168,13 @@ public class MoveGoblin : MonoBehaviour
             velocity = Vector3.zero;
             animator.SetFloat("Speed", 0f);
             animator.SetBool("Attack", false);
-    }
+        }
+        else if(tempState == GoblinState.Damage)
+        {
+            velocity = Vector3.zero;
+            animator.ResetTrigger("Attack");
+            animator.SetTrigger("Damage");
+        }
 }
     //　敵キャラクターの状態取得メソッド
     public GoblinState GetState() 

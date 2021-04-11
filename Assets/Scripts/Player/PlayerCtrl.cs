@@ -5,12 +5,12 @@ public class PlayerCtrl : MonoBehaviour
 {
     public enum MyState 
     {
-        Idle = 0,
-        Walk = 1,
-        Jump = 2,
-        Attack = 3,
-        Damage = 4,
-        Run = 5,
+        Idle,
+        Walk,
+        Jump,
+        Attack0,
+        Damage,
+        Run,
         Normal
     };
 
@@ -105,6 +105,19 @@ public class PlayerCtrl : MonoBehaviour
         // velocity.y *= 0.9f;
     }
 
+    public void SetState(MyState state)
+    {
+        if(state == MyState.Normal)
+        {
+            state = MyState.Normal;
+        } else if(state == MyState.Attack0)
+        {
+            state = MyState.Attack0;
+            animator.SetBool("Attack0", true);
+        }
+
+        
+    }
     void Walking()
     {
         if (inputManager.Clicked())

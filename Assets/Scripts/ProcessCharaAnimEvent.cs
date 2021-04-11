@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class ProcessCharaAnimEvent : MonoBehaviour
 {
-    // private PlayerCtrl playerCtrl;
-    // [SerializeField] private CapsuleCollider capsuleCollider;
+    private PlayerCtrl playerCtrl;
+    [SerializeField] private CapsuleCollider capsuleCollider;
 
-    // private void Start()
-    // {
-    //     playerCtrl = GetComponent<PlayerCtrl>();
-    // }
-    // void AttackStart()
-    // {
-    //     capsuleCollider.enabled = true;
-    // }
-    // void AttackEnd()
-    // {
-    //     capsuleCollider.enabled = false;
-    // }
+    private void Start()
+    {
+        playerCtrl = GetComponent<PlayerCtrl>();
+    }
+    void AttackStart()
+    {
+        capsuleCollider.enabled = true;
+    }
+    void AttackEnd()
+    {
+        capsuleCollider.enabled = false;
+    }
     // void StateEnd()
     // {
     //     playerCtrl.SetState(playerCtrl.MyState.Normal);
