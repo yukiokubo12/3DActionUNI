@@ -23,7 +23,7 @@ public class GoblinStatus : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        this.maxGoblinHp = 30;
+        this.maxGoblinHp = 100;
         this.currentGoblinHp = this.maxGoblinHp;
         this.goblinHPSlider.value = 1;
     }
@@ -33,7 +33,7 @@ public class GoblinStatus : MonoBehaviour
         isbattle = true;
         if(other.gameObject.tag == "Sword")
         {
-            int damage = 5;
+            int damage = 10;
             this.currentGoblinHp -= damage;
             goblinHPSlider.value = (float)currentGoblinHp / maxGoblinHp;
             GameObject hitEffect = Instantiate(hitEffectPrefab, this.transform.position, Quaternion.identity);
