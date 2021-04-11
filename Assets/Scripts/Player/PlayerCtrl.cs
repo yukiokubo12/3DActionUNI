@@ -127,10 +127,10 @@ public class PlayerCtrl : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(clickPos);
             RaycastHit hitInfo;
 
-            if (Physics.Raycast(ray, out hitInfo, RayCastMaxDistance, 1 << LayerMask.NameToLayer("Ground")))
-            {
-                SendMessage("SetDestination", hitInfo.point);
-            }
+            // if (Physics.Raycast(ray, out hitInfo, RayCastMaxDistance, 1 << LayerMask.NameToLayer("Ground")))
+            // {
+            //     SendMessage("SetDestination", hitInfo.point);
+            // }
         }
     }
 
