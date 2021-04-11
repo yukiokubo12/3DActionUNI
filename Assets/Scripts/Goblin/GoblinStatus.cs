@@ -18,6 +18,11 @@ public class GoblinStatus : MonoBehaviour
     public Slider goblinHPSlider;
     public GameObject hitEffectPrefab;
 
+    //無敵時間作成
+    public float mutekiFlag = 0;
+    public float mutekiTime = 10;
+    public float timeStep = 0;
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -28,8 +33,9 @@ public class GoblinStatus : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Sword")
+        if(other.gameObject.tag == "Sword" && mutekiFlag == 0)
         {
+            mutekiFlag = 1;
             int damage = 10;
             this.currentGoblinHp -= damage;
             Debug.Log("ダメージ10");
@@ -50,7 +56,15 @@ public class GoblinStatus : MonoBehaviour
 
     void Update()
     {
-
+        //無敵状態処理
+        if(mutekiFlag == 1)
+        {
+            mutekiTime -= timeStep;
+            if(mutekiTime < 0)
+            {
+                mutekiFlag = 0;
+            }
+        }
     }
     
 }
