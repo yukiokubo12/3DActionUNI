@@ -13,8 +13,12 @@ public class GoblinStatus : MonoBehaviour
 
     private bool isDead = true;
 
+
     //HPスライダー管理
     public Slider goblinHPSlider;
+    public GameObject hitEffectPrefab;
+
+    bool isbattle = true;
 
     void Start()
     {
@@ -26,11 +30,14 @@ public class GoblinStatus : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        isbattle = true;
         if(other.gameObject.tag == "Sword")
         {
             int damage = 30;
             this.currentGoblinHp -= damage;
             goblinHPSlider.value = (float)currentGoblinHp / maxGoblinHp;
+            GameObject hitEffect = Instantiate(hitEffectPrefab, this.transform.position, Quaternion.identity);
+
         }
         if(this.currentGoblinHp <= 0)
         {
