@@ -10,6 +10,7 @@ public class GoblinStatus : MonoBehaviour
     private int currentGoblinHp;
     private int attack = 5;
     private int damage;
+    private Vector3 hitEffectPos;
 
     private bool isDead = true;
 
@@ -20,7 +21,7 @@ public class GoblinStatus : MonoBehaviour
 
     //無敵時間作成
     public float mutekiFlag = 0;
-    public float mutekiTime = 3;
+    public float mutekiTime = 200;
     public float timeStep = 1;
 
     void Start()
@@ -55,7 +56,10 @@ public class GoblinStatus : MonoBehaviour
             Debug.Log("ダメージ10");
             animator.SetTrigger("Damage");
             goblinHPSlider.value = (float)currentGoblinHp / maxGoblinHp;
-            GameObject hitEffect = Instantiate(hitEffectPrefab, this.transform.position, Quaternion.identity);
+            this.hitEffectPos = this.transform.position;
+            this.hitEffectPos.y += 1.8f;
+            this.transform.position = this.hitEffectPos;
+            GameObject hitEffect = Instantiate(hitEffectPrefab, this.hitEffectPos, Quaternion.identity);
             }
         }
 

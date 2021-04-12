@@ -138,7 +138,7 @@ public class PlayerCtrl : MonoBehaviour
     {
         if(inputManager.JumpButton())
         {
-            animator.SetBool("Jump",true);
+            animator.SetTrigger("Jump");
             state = MyState.Jump;
             velocity.y = jumpPower;
             // moveDirection.y = jumpPower;
