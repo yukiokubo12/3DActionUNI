@@ -411,51 +411,6 @@ Transform:
   m_Father: {fileID: 1651418450}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &218513955
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 218513956}
-  - component: {fileID: 218513957}
-  m_Layer: 0
-  m_Name: GoblinBodyCollider
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &218513956
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 218513955}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 15.300001, z: 0}
-  m_LocalScale: {x: 8.333334, y: 8.333334, z: 8.333334}
-  m_Children: []
-  m_Father: {fileID: 954215799}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &218513957
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 218513955}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.49
-  m_Height: 1.97
-  m_Direction: 1
-  m_Center: {x: 0, y: -0.87, z: 0}
 --- !u!1 &228094889
 GameObject:
   m_ObjectHideFlags: 0
@@ -813,7 +768,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 435318407}
-  m_LocalRotation: {x: 0.1203885, y: 0.5310856, z: -0.07655049, w: 0.8352213}
+  m_LocalRotation: {x: 0.12038852, y: 0.53108567, z: -0.07655052, w: 0.83522135}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2599,7 +2554,7 @@ Transform:
   m_LocalScale: {x: 6.666667, y: 6.666667, z: 6.666667}
   m_Children: []
   m_Father: {fileID: 954215799}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1359946943
 MonoBehaviour:
@@ -3032,7 +2987,7 @@ RectTransform:
   m_Children:
   - {fileID: 1820560615}
   m_Father: {fileID: 954215799}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3478,6 +3433,9 @@ MonoBehaviour:
   goblinHPSlider: {fileID: 1820560616}
   hitEffectPrefab: {fileID: 433408104471584020, guid: cba92e56a1ec346079f3263c2689037c,
     type: 3}
+  mutekiFlag: 0
+  mutekiTime: 10
+  timeStep: 0
 --- !u!1 &1674905813
 GameObject:
   m_ObjectHideFlags: 0
@@ -4608,7 +4566,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1977132601}
-  m_LocalRotation: {x: 0.15064844, y: 0.52795446, z: -0.095791616, w: 0.83029705}
+  m_LocalRotation: {x: 0.15064846, y: 0.52795446, z: -0.09579165, w: 0.830297}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

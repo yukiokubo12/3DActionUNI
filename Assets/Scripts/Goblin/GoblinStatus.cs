@@ -20,8 +20,8 @@ public class GoblinStatus : MonoBehaviour
 
     //無敵時間作成
     public float mutekiFlag = 0;
-    public float mutekiTime = 10;
-    public float timeStep = 0;
+    public float mutekiTime = 3;
+    public float timeStep = 1;
 
     void Start()
     {
@@ -30,29 +30,6 @@ public class GoblinStatus : MonoBehaviour
         this.currentGoblinHp = this.maxGoblinHp;
         this.goblinHPSlider.value = 1;
     }
-
-    void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.tag == "Sword" && mutekiFlag == 0)
-        {
-            mutekiFlag = 1;
-            int damage = 10;
-            this.currentGoblinHp -= damage;
-            Debug.Log("ダメージ10");
-            goblinHPSlider.value = (float)currentGoblinHp / maxGoblinHp;
-            GameObject hitEffect = Instantiate(hitEffectPrefab, this.transform.position, Quaternion.identity);
-
-        }
-        if(this.currentGoblinHp <= 0)
-        {
-            if(isDead)
-            {
-            animator.SetTrigger("Dead");
-            }
-            isDead = false;
-        }
-    }
-
 
     void Update()
     {
@@ -66,5 +43,29 @@ public class GoblinStatus : MonoBehaviour
             }
         }
     }
-    
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Sword")
+        {
+            if(mutekiFlag == 0)
+            {
+            mutekiFlag = 1;
+            this.damage = 10;
+            this.currentGoblinHp -= damage;
+            Debug.Log("ダメージ10");
+            animator.SetTrigger("Damage");
+            goblinHPSlider.value = (float)currentGoblinHp / maxGoblinHp;
+            GameObject hitEffect = Instantiate(hitEffectPrefab, this.transform.position, Quaternion.identity);
+            }
+        }
+
+        if(this.currentGoblinHp <= 0)
+        {
+            if(isDead)
+            {
+            animator.SetTrigger("Dead");
+            }
+            isDead = false;
+        }
+    }
 }
