@@ -14,10 +14,10 @@ public class AttackSword : MonoBehaviour
         goblinStatus = GetComponent<GoblinStatus>();
     }
 
-    void OnTriggerEnter(Collider col)
-    {
-        if(col.tag == "Goblin")
-        {
+    // void OnTriggerEnter(Collider col)
+    // {
+    //     if(col.tag == "Goblin")
+    //     {
             // int[] enemyid = new int[3];
             // enemyid[0] = goblinStatus.id;
             // enemyid[1] = goblinStatus.id;
@@ -40,6 +40,6 @@ public class AttackSword : MonoBehaviour
             // col.GetComponent<MoveGoblin>().SetState(MoveGoblin.GoblinState.Damage);
             // }
             // triggerFlag = false;
-        }
-    }
+    //     }
+    // }
 }

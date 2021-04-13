@@ -170,14 +170,14 @@ public class MoveGoblin : MonoBehaviour
         {
             velocity = Vector3.zero;
             animator.SetFloat("Speed", 0f);
-            animator.SetBool("Attack", true);
+            animator.SetTrigger("Attack");
         } 
         else if (tempState == GoblinState.Freeze) 
         {
             elapsedTime = 0f;
             velocity = Vector3.zero;
             animator.SetFloat("Speed", 0f);
-            animator.SetBool("Attack", false);
+            animator.SetTrigger("Attack");
         }
         else if(tempState == GoblinState.Damage)
         {
