@@ -1,26 +1,67 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CharacterStatus : MonoBehaviour {
-	
-	//---------- 攻撃の章で使用します. ----------
+public class CharacterStatus : MonoBehaviour 
+{	
+	Animator animator;
 	// 体力.
-	public int HP = 100;
-	public int MaxHP = 100;
+	// public int HP = 100;
+	public int maxPlayerHp = 100;
+	public int currentPlayerHp;
 	
 	// 攻撃力.
-	public int Power = 10;
-	
-	// 最後に攻撃した対象.
-	public GameObject lastAttackTarget = null;
-	
-	//---------- GUIおよびネットワークの章で使用します. ----------
-	// プレイヤー名.
-	public string characterName = "Player";
-	
-	//--------- アニメーションの章で使用します. -----------
-	//状態.
-	public bool attacking = false;
-	public bool died = false;
-	
+	// public int power = 10;
+
+	private int damage;
+
+	//無敵時間作成
+	public float mutekiFlag = 0;
+	[SerializeField] float m_mutekiTime = 1f;
+	float m_mutekiTimer;
+
+	void Start()
+	{
+			animator = GetComponent<Animator>();
+			this.maxPlayerHp = 100;
+			this.currentPlayerHp = this.maxPlayerHp;
+	}
+
+	void Update()
+	{
+			//無敵状態処理
+			if(mutekiFlag == 1)
+			{
+					m_mutekiTimer += Time.deltaTime;
+					if(m_mutekiTimer > m_mutekiTime)
+					{
+							Debug.Log("無敵解除");
+							m_mutekiTimer = 0f;
+							mutekiFlag = 0;
+					}
+			}
+	}
+	void OnTriggerEnter(Collider other)
+	{
+		if(other.gameObject.tag == "GoblinArm")
+		{
+			if(mutekiFlag == 0)
+			{
+				Debug.Log("無敵");
+				mutekiFlag = 1;
+				this.damage = 5;
+				this.currentPlayerHp -= damage;
+				Debug.Log("ダメージ5");
+				animator.SetTrigger("Damage");
+				// PlayerHPSlider.value = (float)currentPlayerHp / maxPlayerHp;
+				// this.hitEffectPos = this.transform.position;
+				// this.hitEffectPos.y += 1.8f;
+				// this.transform.position = this.hitEffectPos;
+				// GameObject hitEffect = Instantiate(hitEffectPrefab, this.hitEffectPos, Quaternion.identity);
+			}
+		}
+			else if(this.currentPlayerHp <= 0)
+			{
+				animator.SetTrigger("Dead");
+			}
+	}
 }

@@ -48,19 +48,19 @@ public class CharaAnimation : MonoBehaviour
 		// float speedAnimeValue = delta_position.magnitude * 1.0f;
 		// animator.SetFloat("Speed", speedAnimeValue);
 		
-		if(attacked && !status.attacking)
-		{
-			attacked = false;
-		}
+		// if(attacked && !status.attacking)
+		// {
+		// 	attacked = false;
+		// }
 		// animator.SetBool("Attack", (!attacked && status.attacking));
 		
-		if(!isDown && status.died)
-		{
-			isDown = true;
-			animator.SetTrigger("Damage");
-		}
+		// if(!isDown && status.died)
+		// {
+		// 	isDown = true;
+		// 	animator.SetTrigger("Damage");
+		// }
 		
-		prePosition = transform.position;
+		// prePosition = transform.position;
 
 		// if(characterController.isGrounded)
 		// {

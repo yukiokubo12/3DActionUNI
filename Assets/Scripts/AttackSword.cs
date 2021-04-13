@@ -18,15 +18,15 @@ public class AttackSword : MonoBehaviour
     {
         if(col.tag == "Goblin")
         {
-            int[] enemyid = new int[3];
-            enemyid[0] = goblinStatus.id;
-            enemyid[1] = goblinStatus.id;
-            enemyid[2] = goblinStatus.id;
+            // int[] enemyid = new int[3];
+            // enemyid[0] = goblinStatus.id;
+            // enemyid[1] = goblinStatus.id;
+            // enemyid[2] = goblinStatus.id;
 
-            if(triggerFlag)
-            {
-                for(int i = 0; i < enemyid.Length; i++)
-                {
+            // if(triggerFlag)
+            // {
+            //     for(int i = 0; i < enemyid.Length; i++)
+            //     {
                     // if(enemyid = 100)
                     // {
                     //     return;
@@ -35,11 +35,11 @@ public class AttackSword : MonoBehaviour
                     // {
                     //     return;
                     // }
-                }
-            Debug.Log("ゴブリンに当たった");
-            col.GetComponent<MoveGoblin>().SetState(MoveGoblin.GoblinState.Damage);
-            }
-            triggerFlag = false;
+                // }
+            // Debug.Log("ゴブリンに当たった");
+            // col.GetComponent<MoveGoblin>().SetState(MoveGoblin.GoblinState.Damage);
+            // }
+            // triggerFlag = false;
         }
     }
 }

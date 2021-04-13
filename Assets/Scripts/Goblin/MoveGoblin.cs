@@ -43,6 +43,9 @@ public class MoveGoblin : MonoBehaviour
 
     private SearchCharacter searchCharacter;
     [SerializeField] private float freezeTime = 0.5f;
+
+    GoblinStatus goblinStatus;
+    private float mutekiFlag = 0;
  
     // Use this for initialization
     void Start() 
@@ -56,6 +59,8 @@ public class MoveGoblin : MonoBehaviour
         elapsedTime = 0f;
         SetState(GoblinState.Walk);
         searchCharacter = GetComponentInParent<SearchCharacter>();
+
+        goblinStatus = GetComponent<GoblinStatus>();
     }
  
     // Update is called once per frame
@@ -98,9 +103,14 @@ public class MoveGoblin : MonoBehaviour
             else if (state == GoblinState.Chase) 
             {
                 //　攻撃する距離だったら攻撃
-                if (Vector3.Distance (transform.position, setGoblinPosition.GetDestination ()) < 1f) 
+                if (Vector3.Distance (transform.position, setGoblinPosition.GetDestination ()) < 1.3f) 
                 {
                     SetState(GoblinState.Attack);
+                    animator.SetTrigger("Attack");
+
+                    Debug.Log("無敵");
+                    mutekiFlag = 1;
+                    goblinStatus.damage = 0;
                 }
 		    }
 	    } 
@@ -172,7 +182,7 @@ public class MoveGoblin : MonoBehaviour
         else if(tempState == GoblinState.Damage)
         {
             velocity = Vector3.zero;
-            animator.ResetTrigger("Attack");
+            // animator.ResetTrigger("Attack");
             // animator.SetTrigger("Damage");
         }
 }
