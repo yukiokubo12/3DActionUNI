@@ -3508,6 +3508,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 526957738, guid: ea25298e2cf544e269531119adb25e38, type: 3}
+      propertyPath: m_TagString
+      value: GoblinArm
+      objectReference: {fileID: 0}
     - target: {fileID: 1462437485, guid: ea25298e2cf544e269531119adb25e38, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

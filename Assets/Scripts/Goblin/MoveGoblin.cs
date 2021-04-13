@@ -45,9 +45,8 @@ public class MoveGoblin : MonoBehaviour
     [SerializeField] private float freezeTime = 0.5f;
 
     GoblinStatus goblinStatus;
-    private float mutekiFlag = 0;
+    // private float mutekiFlag = 0;
  
-    // Use this for initialization
     void Start() 
     {
         goblinController = GetComponent<CharacterController>();
@@ -63,7 +62,6 @@ public class MoveGoblin : MonoBehaviour
         goblinStatus = GetComponent<GoblinStatus>();
     }
  
-    // Update is called once per frame
     void Update () 
     {
         //　見回りまたはキャラクターを追いかける状態
@@ -103,14 +101,14 @@ public class MoveGoblin : MonoBehaviour
             else if (state == GoblinState.Chase) 
             {
                 //　攻撃する距離だったら攻撃
-                if (Vector3.Distance (transform.position, setGoblinPosition.GetDestination ()) < 1.3f) 
+                if (Vector3.Distance (transform.position, setGoblinPosition.GetDestination ()) < 1.5f) 
                 {
                     SetState(GoblinState.Attack);
                     animator.SetTrigger("Attack");
-
-                    Debug.Log("無敵");
-                    mutekiFlag = 1;
+                    
+                    Debug.Log("攻撃中は無敵状態");
                     goblinStatus.damage = 0;
+                    goblinStatus.currentGoblinHp = goblinStatus.currentGoblinHp;
                 }
 		    }
 	    } 

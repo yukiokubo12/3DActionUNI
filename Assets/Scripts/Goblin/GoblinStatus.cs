@@ -7,7 +7,7 @@ public class GoblinStatus : MonoBehaviour
 {
     private Animator animator;
     private int maxGoblinHp;
-    private int currentGoblinHp;
+    public int currentGoblinHp;
     private int attack = 5;
     public int damage;
     private Vector3 hitEffectPos;
@@ -54,7 +54,7 @@ public class GoblinStatus : MonoBehaviour
     {
         if(other.gameObject.tag == "Sword")
         {
-            if(mutekiFlag == 0)
+            if(mutekiFlag == 0 && !isDead)
             {
                 // Debug.Log("無敵");
                 mutekiFlag = 1;

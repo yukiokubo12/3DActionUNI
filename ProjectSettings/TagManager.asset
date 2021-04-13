@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Goblin
   - Sword
+  - GoblinArm
   layers:
   - Default
   - TransparentFX
