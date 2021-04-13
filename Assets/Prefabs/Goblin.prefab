@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 526957741}
   m_Layer: 0
   m_Name: GoblinAttackPoint
-  m_TagString: Untagged
+  m_TagString: GoblinArm
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25808,6 +25808,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c1b0773497ef44d98b5e227d958e8b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentGoblinHp: 0
   damage: 0
   goblinHPSlider: {fileID: 1820560616}
   hitEffectPrefab: {fileID: 433408104471584020, guid: cba92e56a1ec346079f3263c2689037c,
