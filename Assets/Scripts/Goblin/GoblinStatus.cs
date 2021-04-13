@@ -12,7 +12,7 @@ public class GoblinStatus : MonoBehaviour
     public int damage;
     private Vector3 hitEffectPos;
 
-    private bool isDead = true;
+    private bool isDead;
 
 
     //HPスライダー管理
@@ -33,6 +33,7 @@ public class GoblinStatus : MonoBehaviour
         this.maxGoblinHp = 30;
         this.currentGoblinHp = this.maxGoblinHp;
         this.goblinHPSlider.value = 1;
+        isDead = false;
     }
 
     void Update()
@@ -68,10 +69,11 @@ public class GoblinStatus : MonoBehaviour
                 GameObject hitEffect = Instantiate(hitEffectPrefab, this.hitEffectPos, Quaternion.identity);
             }
         }
-        else if(this.currentGoblinHp <= 0)
+        if(this.currentGoblinHp <= 0 && isDead == false)
         {
             animator.SetTrigger("Dead");
             DestroyGoblin();
+            isDead = true;  
         }
     }
     public void DestroyGoblin()
