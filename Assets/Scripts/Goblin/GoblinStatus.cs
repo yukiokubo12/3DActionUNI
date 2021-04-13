@@ -24,6 +24,9 @@ public class GoblinStatus : MonoBehaviour
     public float mutekiTime = 200;
     public float timeStep = 1;
 
+    //敵id番号
+    public int id;
+
     void Start()
     {
         animator = GetComponent<Animator>();
