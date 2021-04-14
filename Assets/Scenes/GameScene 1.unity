@@ -991,7 +991,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 435318407}
-  m_LocalRotation: {x: 0.12038852, y: 0.53108567, z: -0.07655052, w: 0.83522135}
+  m_LocalRotation: {x: 0.1203885, y: 0.5310856, z: -0.07655049, w: 0.8352213}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3910,10 +3910,19 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 526957740, guid: ea25298e2cf544e269531119adb25e38, type: 3}
+      propertyPath: m_Radius
+      value: 3.6
+      objectReference: {fileID: 0}
     - target: {fileID: 1462437485, guid: ea25298e2cf544e269531119adb25e38, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4973628467100587677, guid: ea25298e2cf544e269531119adb25e38,
+        type: 3}
+      propertyPath: goblinHand
+      value: 
+      objectReference: {fileID: 1702586091}
     - target: {fileID: 4973628467540234803, guid: ea25298e2cf544e269531119adb25e38,
         type: 3}
       propertyPath: m_Name
@@ -4022,6 +4031,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1702586091 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 526957738, guid: ea25298e2cf544e269531119adb25e38,
+    type: 3}
+  m_PrefabInstance: {fileID: 1686610488}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1709505920
 GameObject:
   m_ObjectHideFlags: 0

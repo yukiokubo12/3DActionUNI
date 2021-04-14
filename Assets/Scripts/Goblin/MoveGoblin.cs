@@ -48,9 +48,7 @@ public class MoveGoblin : MonoBehaviour
     // private float mutekiFlag = 0;
 
     [SerializeField] private float attackTime = 1f;
-
-    ProcessGoblinAnimEvent processGoblinAnimEvent;
-
+    public GameObject goblinHand;
 
  
     void Start() 
@@ -66,8 +64,6 @@ public class MoveGoblin : MonoBehaviour
         searchCharacter = GetComponentInParent<SearchCharacter>();
 
         goblinStatus = GetComponent<GoblinStatus>();
-
-        // processGoblinAnimEvent = GetComponent<ProcessGoblinAnimEvent>().AttackStart();
     }
  
     void Update () 
@@ -112,9 +108,9 @@ public class MoveGoblin : MonoBehaviour
                     SetState(GoblinState.Attack);
                     // animator.SetTrigger("Attack");
                     
-                    Debug.Log("攻撃中は無敵状態");
-                    goblinStatus.damage = 0;
-                    goblinStatus.currentGoblinHp = goblinStatus.currentGoblinHp;
+                    // Debug.Log("攻撃中は無敵状態");
+                    // goblinStatus.damage = 0;
+                    // goblinStatus.currentGoblinHp = goblinStatus.currentGoblinHp;
                 }
 		    }
 	    } 
@@ -147,7 +143,6 @@ public class MoveGoblin : MonoBehaviour
                 SetState(GoblinState.Walk);
             }
         }
-        Debug.Log(GetState());
         
         velocity.y += Physics.gravity.y * Time.deltaTime;
         goblinController.Move (velocity * Time.deltaTime);
@@ -186,7 +181,7 @@ public class MoveGoblin : MonoBehaviour
             velocity = Vector3.zero;
             animator.SetFloat("Speed", 0f);
             animator.SetTrigger("Attack");
-            // AttackStart();
+            goblinHand.GetComponent<ProcessGoblinAnimEvent>().AttackStart();
         } 
         else if (tempState == GoblinState.Freeze) 
         {
@@ -194,6 +189,7 @@ public class MoveGoblin : MonoBehaviour
             velocity = Vector3.zero;
             animator.SetFloat("Speed", 0f);
             animator.SetTrigger("Attack");
+            goblinHand.GetComponent<ProcessGoblinAnimEvent>().AttackEnd();
         }
         else if(tempState == GoblinState.Damage)
         {

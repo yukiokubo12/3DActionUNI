@@ -11,22 +11,25 @@ public class ProcessGoblinAnimEvent : MonoBehaviour
     {
         goblin = GetComponent<MoveGoblin>();
         GetComponent<CapsuleCollider>().enabled = false;
-        // capsuleCollider.enabled = false;
     }
  
-    public void AttackStart() {
+    public void AttackStart() 
+    {
         capsuleCollider.enabled = true;
     }
  
-    public void AttackEnd() {
+    public void AttackEnd() 
+    {
         capsuleCollider.enabled = false;
     }
  
-    public void StateEnd() {
+    public void StateEnd() 
+    {
         goblin.SetState(MoveGoblin.GoblinState.Freeze);
     }
  
-    public void EndDamage() {
+    public void EndDamage() 
+    {
         goblin.SetState(MoveGoblin.GoblinState.Walk);
     }
 }

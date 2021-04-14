@@ -14,6 +14,7 @@ public class GameSystemScript : MonoBehaviour
 
     public void HowToPlay()
     {
+        
         this.howToPlayText.GetComponent<Text>().text = "[キーパッド]\n←↑→ 移動\nShiftキー 走る\nSpace ジャンプ\nE→攻撃\n\n[ゲームパッド]\n左スティック 移動\n右スティック カメラ操作\n 移動\n右スティック カメラ操作\nL2 走る\n☓ ジャンプ\n○ 攻撃";
     }
     // public void StartGame()

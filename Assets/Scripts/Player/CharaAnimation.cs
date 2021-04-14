@@ -39,9 +39,6 @@ public class CharaAnimation : MonoBehaviour
 		status = GetComponent<CharacterStatus>();
 		characterController = GetComponent<CharacterController>();
 		prePosition = transform.position;
-
-		player = GameObject.Find("player");
-		playerCtrl = player.GetComponent<PlayerCtrl>();
 	}
 	
 	void Update ()
