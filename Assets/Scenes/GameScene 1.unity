@@ -1733,8 +1733,7 @@ MonoBehaviour:
   mutekiFlag: 0
   m_mutekiTime: 1
   playerHPSlider: {fileID: 124326169}
-  hitEffectPrefab: {fileID: 433408104471584020, guid: cba92e56a1ec346079f3263c2689037c,
-    type: 3}
+  hitEffectPrefab: {fileID: 0}
   isDead: 0
 --- !u!114 &758574406
 MonoBehaviour:
@@ -3914,11 +3913,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4973628467100587677, guid: ea25298e2cf544e269531119adb25e38,
-        type: 3}
-      propertyPath: attackTime
-      value: 2.5
-      objectReference: {fileID: 0}
     - target: {fileID: 4973628467540234803, guid: ea25298e2cf544e269531119adb25e38,
         type: 3}
       propertyPath: m_Name
@@ -3977,11 +3971,6 @@ PrefabInstance:
     - target: {fileID: 4973628467540452819, guid: ea25298e2cf544e269531119adb25e38,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4973628467545420095, guid: ea25298e2cf544e269531119adb25e38,
-        type: 3}
-      propertyPath: m_CollisionDetection
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

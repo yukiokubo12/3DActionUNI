@@ -106,11 +106,6 @@ public class MoveGoblin : MonoBehaviour
                 if (Vector3.Distance (transform.position, setGoblinPosition.GetDestination ()) < 1.5f) 
                 {
                     SetState(GoblinState.Attack);
-                    // animator.SetTrigger("Attack");
-                    
-                    // Debug.Log("攻撃中は無敵状態");
-                    // goblinStatus.damage = 0;
-                    // goblinStatus.currentGoblinHp = goblinStatus.currentGoblinHp;
                 }
 		    }
 	    } 
