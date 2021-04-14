@@ -151,8 +151,8 @@ public class PlayerCtrl : MonoBehaviour
     {
         if(inputManager.Attack0Button())
         {
-            animator.SetBool("Attack0", true);
             playerSword.GetComponent<ProcessPlayerAnimEvent>().AttackStart();
+            animator.SetBool("Attack0", true);
         }
         else
         {

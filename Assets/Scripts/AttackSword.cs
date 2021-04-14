@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class AttackSword : MonoBehaviour
 {
-    private bool triggerFlag = true;
+    // private bool triggerFlag = true;
 
-    private int enemyid;
-    public GoblinStatus goblinStatus;
+    // private int enemyid;
+    // public GoblinStatus goblinStatus;
 
-    void Start()
-    {
-        goblinStatus = GetComponent<GoblinStatus>();
-    }
+    // void Start()
+    // {
+    //     goblinStatus = GetComponent<GoblinStatus>();
+    // }
 
     // void OnTriggerEnter(Collider col)
     // {
