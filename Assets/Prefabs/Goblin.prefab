@@ -43,10 +43,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 3.0617392
-  m_Height: 7.1397414
+  m_Radius: 3.2453606
+  m_Height: 6.8042555
   m_Direction: 0
-  m_Center: {x: 2.1479776, y: 4.864256, z: -0.12322997}
+  m_Center: {x: 1.9501035, y: 4.8642564, z: 0.23140924}
 --- !u!114 &526957741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25810,6 +25810,8 @@ MonoBehaviour:
   runSpeed: 2
   waitTime: 3
   freezeTime: 0.5
+  attackTime: 1
+  goblinHand: {fileID: 526957738}
 --- !u!114 &4973628467100587676
 MonoBehaviour:
   m_ObjectHideFlags: 0

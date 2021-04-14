@@ -1714,6 +1714,7 @@ MonoBehaviour:
   m_rotateSpeed: 10
   jumpPower: 5
   m_runSpeed: 6
+  playerSword: {fileID: 1635558946}
 --- !u!114 &758574405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1778,9 +1779,9 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 2
+  m_Height: 1.9
   m_Direction: 1
-  m_Center: {x: 0, y: 0.92, z: 0}
+  m_Center: {x: 0, y: 0.96, z: 0}
 --- !u!54 &758574409
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2384,7 +2385,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1045165920}
-  m_LocalRotation: {x: 0.0639683, y: 0.5350305, z: -0.040675033, w: 0.841425}
+  m_LocalRotation: {x: 0.06396829, y: 0.5350304, z: -0.040675033, w: 0.841425}
   m_LocalPosition: {x: -57.5417, y: 2.03, z: -37.204193}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -3705,8 +3706,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1635558947}
-  - component: {fileID: 1635558948}
   - component: {fileID: 1635558950}
+  - component: {fileID: 1635558948}
   m_Layer: 0
   m_Name: WeaponBoneCollider
   m_TagString: Sword
@@ -3721,15 +3722,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1635558946}
-  m_LocalRotation: {x: 0.43266922, y: 0.4053065, z: -0.57280284, w: 0.5660574}
-  m_LocalPosition: {x: -0.90525055, y: 0.032920256, z: -0.0612252}
+  m_LocalRotation: {x: 0.41414133, y: 0.4234566, z: -0.59013116, w: 0.5485587}
+  m_LocalPosition: {x: -0.9, y: -0.135, z: -0.338}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1540275456}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 11.12, y: 0.26, z: -18.5}
---- !u!136 &1635558948
-CapsuleCollider:
+  m_LocalEulerAnglesHint: {x: 72.583, y: -4.64, z: -97.59}
+--- !u!65 &1635558948
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -3738,10 +3739,9 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.19
-  m_Height: 1.8468885
-  m_Direction: 1
-  m_Center: {x: 0.0161187, y: 0.29750896, z: -0.0000002721367}
+  serializedVersion: 2
+  m_Size: {x: 0.31454802, y: 1.019033, z: 0.17628592}
+  m_Center: {x: -0.3427277, y: -0.0095169665, z: -0.009605924}
 --- !u!114 &1635558950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3910,19 +3910,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 526957740, guid: ea25298e2cf544e269531119adb25e38, type: 3}
-      propertyPath: m_Radius
-      value: 3.6
-      objectReference: {fileID: 0}
     - target: {fileID: 1462437485, guid: ea25298e2cf544e269531119adb25e38, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4973628467100587677, guid: ea25298e2cf544e269531119adb25e38,
         type: 3}
-      propertyPath: goblinHand
-      value: 
-      objectReference: {fileID: 1702586091}
+      propertyPath: attackTime
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4973628467540234803, guid: ea25298e2cf544e269531119adb25e38,
         type: 3}
       propertyPath: m_Name
@@ -4031,12 +4027,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1702586091 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 526957738, guid: ea25298e2cf544e269531119adb25e38,
-    type: 3}
-  m_PrefabInstance: {fileID: 1686610488}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1709505920
 GameObject:
   m_ObjectHideFlags: 0
@@ -4819,7 +4809,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1975570974}
-  m_LocalRotation: {x: 0.0639683, y: 0.53503036, z: -0.04067501, w: 0.8414251}
+  m_LocalRotation: {x: 0.0639683, y: 0.53503036, z: -0.040675018, w: 0.84142506}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -4893,7 +4883,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1977132601}
-  m_LocalRotation: {x: 0.15064846, y: 0.52795446, z: -0.09579165, w: 0.830297}
+  m_LocalRotation: {x: 0.15064844, y: 0.52795446, z: -0.095791616, w: 0.83029705}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

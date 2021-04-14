@@ -35,6 +35,8 @@ public class PlayerCtrl : MonoBehaviour
 
     AttackWolf attackWolf;
 
+    public GameObject playerSword;
+
     // Use this for initialization
     void Start()
     {
@@ -55,22 +57,11 @@ public class PlayerCtrl : MonoBehaviour
             Jumping();
             Attacking0();
         }
-        // Debug.Log("characterController.isGrounded" + characterController.isGrounded);
         //ジャンプ状態の場合
         if(state == MyState.Jump)
         {
-            //着地したら待機状態になる
-            // if(characterController.isGrounded)
-            // {
-                // velocity = Vector3.zero;
-                // var input = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
-                // m_verticalVelocity = 0f;
-                // animator.SetBool("Jump", false);
-            // }
             state = MyState.Idle;
         }
-        // velocity.y += Physics.gravity.y * Time.deltaTime;
-        // moveDirection.y += Physics.gravity.y * Time.deltaTime;
 
         float v = Input.GetAxisRaw("Vertical");
         float h = Input.GetAxisRaw("Horizontal");
@@ -101,8 +92,6 @@ public class PlayerCtrl : MonoBehaviour
 
         // 移動
         characterController.Move(moveDirection * Time.deltaTime);
-        // characterController.Move(velocity * Time.deltaTime);
-        // velocity.y *= 0.9f;
     }
 
     public void SetState(MyState state)
@@ -113,7 +102,7 @@ public class PlayerCtrl : MonoBehaviour
         } else if(state == MyState.Attack0)
         {
             state = MyState.Attack0;
-            animator.SetBool("Attack0", true);
+            // animator.SetBool("Attack0", true);
         }
 
         
@@ -141,8 +130,6 @@ public class PlayerCtrl : MonoBehaviour
             animator.SetTrigger("Jump");
             state = MyState.Jump;
             velocity.y = jumpPower;
-            // moveDirection.y = jumpPower;
-            // Debug.Log(inputManager.JumpButton());
         }
     }
     public void Running()
@@ -165,10 +152,12 @@ public class PlayerCtrl : MonoBehaviour
         if(inputManager.Attack0Button())
         {
             animator.SetBool("Attack0", true);
+            playerSword.GetComponent<ProcessPlayerAnimEvent>().AttackStart();
         }
         else
         {
             animator.SetBool("Attack0", false);
+            playerSword.GetComponent<ProcessPlayerAnimEvent>().AttackEnd();
         }
     }
 
