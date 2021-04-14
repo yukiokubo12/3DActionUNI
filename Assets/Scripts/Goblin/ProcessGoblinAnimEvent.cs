@@ -10,10 +10,11 @@ public class ProcessGoblinAnimEvent : MonoBehaviour
     void Start() 
     {
         goblin = GetComponent<MoveGoblin>();
-        capsuleCollider.enabled = false;
+        GetComponent<CapsuleCollider>().enabled = false;
+        // capsuleCollider.enabled = false;
     }
  
-    void AttackStart() {
+    public void AttackStart() {
         capsuleCollider.enabled = true;
     }
  

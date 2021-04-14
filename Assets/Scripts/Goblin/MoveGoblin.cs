@@ -46,6 +46,12 @@ public class MoveGoblin : MonoBehaviour
 
     GoblinStatus goblinStatus;
     // private float mutekiFlag = 0;
+
+    [SerializeField] private float attackTime = 1f;
+
+    ProcessGoblinAnimEvent processGoblinAnimEvent;
+
+
  
     void Start() 
     {
@@ -60,6 +66,8 @@ public class MoveGoblin : MonoBehaviour
         searchCharacter = GetComponentInParent<SearchCharacter>();
 
         goblinStatus = GetComponent<GoblinStatus>();
+
+        // processGoblinAnimEvent = GetComponent<ProcessGoblinAnimEvent>().AttackStart();
     }
  
     void Update () 
@@ -121,6 +129,14 @@ public class MoveGoblin : MonoBehaviour
                 SetState(GoblinState.Walk);
             }		
         } 
+        else if(state == GoblinState.Attack)
+        {
+            elapsedTime += Time.deltaTime;
+            if(elapsedTime > attackTime)
+            {
+                SetState(GoblinState.Freeze);
+            }
+        }
         //攻撃後のフリーズ状態
         else if(state == GoblinState.Freeze) 
         {
@@ -131,6 +147,8 @@ public class MoveGoblin : MonoBehaviour
                 SetState(GoblinState.Walk);
             }
         }
+        Debug.Log(GetState());
+        
         velocity.y += Physics.gravity.y * Time.deltaTime;
         goblinController.Move (velocity * Time.deltaTime);
     }
@@ -164,9 +182,11 @@ public class MoveGoblin : MonoBehaviour
         } 
         else if (tempState == GoblinState.Attack) 
         {
+            elapsedTime = 0f;
             velocity = Vector3.zero;
             animator.SetFloat("Speed", 0f);
             animator.SetTrigger("Attack");
+            // AttackStart();
         } 
         else if (tempState == GoblinState.Freeze) 
         {
