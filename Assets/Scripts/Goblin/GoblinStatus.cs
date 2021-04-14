@@ -25,7 +25,7 @@ public class GoblinStatus : MonoBehaviour
     float m_mutekiTimer;
 
     //敵id番号
-    public int id;
+    // public int id;
 
     void Start()
     {

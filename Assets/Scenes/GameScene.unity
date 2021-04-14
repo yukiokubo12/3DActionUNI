@@ -610,13 +610,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73adfa035113249e2a4ad142552797bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 100
-  MaxHP: 100
-  Power: 10
-  lastAttackTarget: {fileID: 0}
-  characterName: Player
-  attacking: 0
-  died: 0
+  maxPlayerHp: 100
+  currentPlayerHp: 0
+  mutekiFlag: 0
+  m_mutekiTime: 1
 --- !u!114 &2126577792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -631,6 +628,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_walkSpeed: 3
   m_rotateSpeed: 10
+  jumpPower: 5
+  m_runSpeed: 6
 --- !u!114 &2126577793
 MonoBehaviour:
   m_ObjectHideFlags: 0

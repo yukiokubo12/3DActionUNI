@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AttackGoblin : MonoBehaviour
 {
-	[SerializeField] Animator m_anim = null;
+	// [SerializeField] Animator m_anim = null;
 
     // void OnTriggerEnter(Collider col) {
 		// if(col.tag == "Player") {

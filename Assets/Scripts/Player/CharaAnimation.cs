@@ -9,6 +9,9 @@ public class CharaAnimation : MonoBehaviour
 	bool attacked = false;
 
 	CharacterController characterController;
+
+	GameObject player;
+	PlayerCtrl playerCtrl;
 	
 	public bool IsAttacked()
 	{
@@ -36,14 +39,22 @@ public class CharaAnimation : MonoBehaviour
 		status = GetComponent<CharacterStatus>();
 		characterController = GetComponent<CharacterController>();
 		prePosition = transform.position;
+
+		player = GameObject.Find("player");
+		playerCtrl = player.GetComponent<PlayerCtrl>();
 	}
 	
 	void Update ()
 	{
-		Vector3 delta_position = transform.position - prePosition;
-		float speedAnimeValue = delta_position.magnitude * 5000.0f;
-		Vector3 horizontalVelocity = characterController.velocity;
-		animator.SetFloat("Speed", horizontalVelocity.magnitude);
+		// if(playerCtrl.isDead == false)
+		// {
+			Vector3 delta_position = transform.position - prePosition;
+			float speedAnimeValue = delta_position.magnitude * 5000.0f;
+			Vector3 horizontalVelocity = characterController.velocity;
+			animator.SetFloat("Speed", horizontalVelocity.magnitude);
+		// }
+
+
 		// animator.SetFloat("Speed", delta_position.magnitude / Time.deltaTime);
 		// float speedAnimeValue = delta_position.magnitude * 1.0f;
 		// animator.SetFloat("Speed", speedAnimeValue);

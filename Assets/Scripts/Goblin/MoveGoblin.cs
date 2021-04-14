@@ -16,29 +16,29 @@ public class MoveGoblin : MonoBehaviour
  
     private CharacterController goblinController;
     private Animator animator;
-    //　目的地
+    //目的地
     private Vector3 destination;
-    //　歩くスピード
+    //歩くスピード
     [SerializeField]
     private float walkSpeed = 1.0f;
     [SerializeField]
     private float runSpeed = 2.0f;
-    //　速度
+    //速度
     private Vector3 velocity;
-    //　移動方向
+    //移動方向
     private Vector3 direction;
-    //　到着フラグ
+    //到着フラグ
     private bool arrived;
-    //　setGoblinPositionスクリプト
+    //setGoblinPositionスクリプト
     private SetGoblinPosition setGoblinPosition;
-    //　待ち時間
+    //待ち時間
     [SerializeField]
     private float waitTime = 5f;
-    //　経過時間
+    //経過時間
     private float elapsedTime;
-    // 敵の状態
+    //敵の状態
     private GoblinState state;
-    //　プレイヤーTransform
+    //プレイヤーTransform
     private Transform playerTransform;
 
     private SearchCharacter searchCharacter;
@@ -64,10 +64,10 @@ public class MoveGoblin : MonoBehaviour
  
     void Update () 
     {
-        //　見回りまたはキャラクターを追いかける状態
+        //見回りまたはキャラクターを追いかける状態
         if (state == GoblinState.Walk || state == GoblinState.Chase) 
         {
-            //　キャラクターを追いかける状態であればキャラクターの目的地を再設定
+            //キャラクターを追いかける状態であればキャラクターの目的地を再設定
             if (state == GoblinState.Chase) 
             {
                 setGoblinPosition.SetDestination (playerTransform.position);
@@ -75,10 +75,8 @@ public class MoveGoblin : MonoBehaviour
             if (goblinController.isGrounded) 
             {
                 velocity = Vector3.zero;
-                //animator.SetFloat ("Speed", 2.0f);
                 direction = (setGoblinPosition.GetDestination () - transform.position).normalized;
                 transform.LookAt (new Vector3 (setGoblinPosition.GetDestination ().x, transform.position.y, setGoblinPosition.GetDestination ().z));
-                // velocity = direction * walkSpeed;
                 if(state == GoblinState.Walk)
                 {
                     velocity = direction * walkSpeed;
@@ -104,7 +102,7 @@ public class MoveGoblin : MonoBehaviour
                 if (Vector3.Distance (transform.position, setGoblinPosition.GetDestination ()) < 1.5f) 
                 {
                     SetState(GoblinState.Attack);
-                    animator.SetTrigger("Attack");
+                    // animator.SetTrigger("Attack");
                     
                     Debug.Log("攻撃中は無敵状態");
                     goblinStatus.damage = 0;
@@ -117,13 +115,13 @@ public class MoveGoblin : MonoBehaviour
         {
             elapsedTime += Time.deltaTime;
     
-            //　待ち時間を越えたら次の目的地を設定
+            //待ち時間を越えたら次の目的地を設定
             if (elapsedTime > waitTime) 
             {
                 SetState(GoblinState.Walk);
             }		
         } 
-        //　攻撃後のフリーズ状態
+        //攻撃後のフリーズ状態
         else if(state == GoblinState.Freeze) 
         {
             elapsedTime += Time.deltaTime;
@@ -137,7 +135,7 @@ public class MoveGoblin : MonoBehaviour
         goblinController.Move (velocity * Time.deltaTime);
     }
  
-    //　敵キャラクターの状態変更メソッド
+    //敵キャラクターの状態変更メソッド
     public void SetState(GoblinState tempState, Transform targetObj = null) 
     {
         state = tempState;
@@ -150,9 +148,9 @@ public class MoveGoblin : MonoBehaviour
         } 
         else if (tempState == GoblinState.Chase) 
         {
-            //　待機状態から追いかける場合もあるのでOff
+            //待機状態から追いかける場合もあるのでOff
             arrived = false;
-            //　追いかける対象をセット
+            //追いかける対象をセット
             playerTransform = targetObj;
             animator.SetFloat("Speed", 3.0f);
             velocity = direction * runSpeed;
@@ -180,11 +178,11 @@ public class MoveGoblin : MonoBehaviour
         else if(tempState == GoblinState.Damage)
         {
             velocity = Vector3.zero;
-            // animator.ResetTrigger("Attack");
-            // animator.SetTrigger("Damage");
+            animator.ResetTrigger("Attack");
+            animator.SetTrigger("Damage");
         }
 }
-    //　敵キャラクターの状態取得メソッド
+    //敵キャラクターの状態取得メソッド
     public GoblinState GetState() 
     {
         return state;

@@ -5,19 +5,20 @@ using UnityEngine;
 public class ProcessGoblinAnimEvent : MonoBehaviour
 {
     private MoveGoblin goblin;
-    [SerializeField]
-    private SphereCollider sphereCollider;
+    [SerializeField] private CapsuleCollider capsuleCollider;
  
-    void Start() {
+    void Start() 
+    {
         goblin = GetComponent<MoveGoblin>();
+        capsuleCollider.enabled = false;
     }
  
     void AttackStart() {
-        sphereCollider.enabled = true;
+        capsuleCollider.enabled = true;
     }
  
     public void AttackEnd() {
-        sphereCollider.enabled = false;
+        capsuleCollider.enabled = false;
     }
  
     public void StateEnd() {

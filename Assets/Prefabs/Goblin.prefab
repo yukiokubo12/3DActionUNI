@@ -25,13 +25,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 526957738}
-  m_LocalRotation: {x: -0.00016078213, y: -0.046060137, z: 0.0034869742, w: 0.9989326}
-  m_LocalPosition: {x: -8.83, y: -4.08, z: -0.14}
+  m_LocalRotation: {x: 0.0047801747, y: -0.04275171, z: -0.0442394, w: 0.9980943}
+  m_LocalPosition: {x: -5.46, y: -3.25, z: 0.23}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4973628467540497701}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: -5.28, z: 0.4}
+  m_LocalEulerAnglesHint: {x: 0.33, y: -4.92, z: -5.09}
 --- !u!136 &526957740
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -42,10 +42,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 3.0708241
-  m_Height: 6.4923973
+  m_Radius: 3.0617392
+  m_Height: 7.1397414
   m_Direction: 0
-  m_Center: {x: 6.333911, y: 5.210082, z: -0.56227654}
+  m_Center: {x: 2.1479776, y: 4.864256, z: -0.12322997}
 --- !u!114 &526957741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,6 +352,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1820560615}
   - component: {fileID: 1820560616}
+  - component: {fileID: 1873375306}
   m_Layer: 5
   m_Name: GoblinHpSlider
   m_TagString: Untagged
@@ -430,6 +431,18 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1873375306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1820560614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 124c59b9be5f941e58dd201b99b213d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1962011916
 GameObject:
   m_ObjectHideFlags: 0
@@ -25815,4 +25828,3 @@ MonoBehaviour:
     type: 3}
   mutekiFlag: 0
   m_mutekiTime: 1
-  id: 100

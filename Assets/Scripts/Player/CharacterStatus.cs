@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class CharacterStatus : MonoBehaviour 
@@ -7,7 +8,7 @@ public class CharacterStatus : MonoBehaviour
 	// 体力.
 	// public int HP = 100;
 	public int maxPlayerHp = 100;
-	public int currentPlayerHp;
+	private int currentPlayerHp;
 	
 	// 攻撃力.
 	// public int power = 10;
@@ -19,11 +20,23 @@ public class CharacterStatus : MonoBehaviour
 	[SerializeField] float m_mutekiTime = 1f;
 	float m_mutekiTimer;
 
+	//HPスライダー管理
+	public Slider playerHPSlider;
+	public GameObject hitEffectPrefab;
+
+	//エフェクト位置管理
+	private Vector3 hitEffectPos;
+
+	public bool isDead;
+
+
 	void Start()
 	{
 			animator = GetComponent<Animator>();
-			this.maxPlayerHp = 100;
+			this.maxPlayerHp = 50;
 			this.currentPlayerHp = this.maxPlayerHp;
+			this.playerHPSlider.value = 1;
+			isDead = false;
 	}
 
 	void Update()
@@ -44,7 +57,7 @@ public class CharacterStatus : MonoBehaviour
 	{
 		if(other.gameObject.tag == "GoblinArm")
 		{
-			if(mutekiFlag == 0)
+			if(mutekiFlag == 0 && !isDead)
 			{
 				Debug.Log("無敵");
 				mutekiFlag = 1;
@@ -52,16 +65,18 @@ public class CharacterStatus : MonoBehaviour
 				this.currentPlayerHp -= damage;
 				Debug.Log("ダメージ5");
 				animator.SetTrigger("Damage");
-				// PlayerHPSlider.value = (float)currentPlayerHp / maxPlayerHp;
-				// this.hitEffectPos = this.transform.position;
-				// this.hitEffectPos.y += 1.8f;
-				// this.transform.position = this.hitEffectPos;
-				// GameObject hitEffect = Instantiate(hitEffectPrefab, this.hitEffectPos, Quaternion.identity);
+
+				playerHPSlider.value = (float)currentPlayerHp / maxPlayerHp;
+				this.hitEffectPos = this.transform.position;
+				this.hitEffectPos.y += 1.8f;
+				this.transform.position = this.hitEffectPos;
+				GameObject hitEffect = Instantiate(hitEffectPrefab, this.hitEffectPos, Quaternion.identity);
 			}
 		}
-			else if(this.currentPlayerHp <= 0)
+			else if(this.currentPlayerHp <= 0 && isDead == false)
 			{
-				animator.SetTrigger("Dead");
+				animator.SetTrigger("Death");
+				isDead = true;
 			}
 	}
 }
