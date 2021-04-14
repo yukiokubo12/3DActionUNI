@@ -37,6 +37,9 @@ public class PlayerCtrl : MonoBehaviour
 
     public GameObject playerSword;
 
+    private float elapsedTime;
+    [SerializeField] private float attackTime = 1f;
+
     // Use this for initialization
     void Start()
     {
@@ -44,6 +47,8 @@ public class PlayerCtrl : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         velocity = Vector3.zero;
+
+        elapsedTime = 0;
     }
 
     // Update is called once per frame
@@ -56,6 +61,14 @@ public class PlayerCtrl : MonoBehaviour
             Running();
             Jumping();
             Attacking0();
+        }
+        else if(state == MyState.Attack0)
+        {
+            elapsedTime += Time.deltaTime;
+            if(elapsedTime > attackTime)
+            {
+                SetState(MyState.Idle);
+            }
         }
         //ジャンプ状態の場合
         if(state == MyState.Jump)
@@ -98,14 +111,22 @@ public class PlayerCtrl : MonoBehaviour
     {
         if(state == MyState.Normal)
         {
+            // elapsedTime = 0f;
             state = MyState.Normal;
-        } else if(state == MyState.Attack0)
+            // playerSword.GetComponent<ProcessPlayerAnimEvent>().AttackEnd();
+        } 
+        else if(state == MyState.Attack0)
         {
+            elapsedTime = 0f;
+            animator.SetFloat("Speed", 0f);
+            animator.SetBool("Attack", true);
             state = MyState.Attack0;
-            // animator.SetBool("Attack0", true);
         }
-
-        
+        else if(state == MyState.Idle)
+        {
+            elapsedTime = 0f;
+            animator.SetFloat("Speed", 0f);
+        }
     }
     void Walking()
     {
@@ -151,13 +172,12 @@ public class PlayerCtrl : MonoBehaviour
     {
         if(inputManager.Attack0Button())
         {
-            playerSword.GetComponent<ProcessPlayerAnimEvent>().AttackStart();
             animator.SetBool("Attack0", true);
+            playerSword.GetComponent<ProcessPlayerAnimEvent>().AttackStart();
         }
         else
         {
             animator.SetBool("Attack0", false);
-            playerSword.GetComponent<ProcessPlayerAnimEvent>().AttackEnd();
         }
     }
 
