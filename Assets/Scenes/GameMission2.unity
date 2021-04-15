@@ -284,7 +284,7 @@ RectTransform:
   - {fileID: 124326168}
   - {fileID: 1476253056}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4335,11 +4335,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90e2aa570dd494b8ebb474047a41ed81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextMissionButton: {fileID: 0}
+  clearText: {fileID: 0}
   howToPlayButton: {fileID: 1103484452}
   howToPlayText: {fileID: 1517814381}
   missionButton: {fileID: 1476253057}
   missionText: {fileID: 328315705}
   timerText: {fileID: 151625478}
+  m_missionDescription: "\u6575\u30925\u4F53\u5012\u305B"
 --- !u!4 &1691826723
 Transform:
   m_ObjectHideFlags: 0

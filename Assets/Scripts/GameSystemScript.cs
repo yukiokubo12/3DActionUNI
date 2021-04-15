@@ -21,6 +21,8 @@ public class GameSystemScript : MonoBehaviour
     private bool isDisplay = false;
     // 外部から表示中かどうかを見たい場合のため用意
     public bool IsDisplay => isDisplay;
+
+    [SerializeField] string m_missionDescription = "ここにミッション内容を設定する";
     private void Start()
     {
         // ボタンをアタッチしている場合は押したらトグルが呼ばれるようにする
@@ -70,7 +72,8 @@ public class GameSystemScript : MonoBehaviour
     }
     public void ShowMissionText()
     {
-        missionText.GetComponent<Text>().text = "敵を５体倒せ";
+        // missionText.GetComponent<Text>().text = "敵を５体倒せ";
+        missionText.GetComponent<Text>().text = m_missionDescription;
         // missionText.GetComponent<Text>().text = "3分以内にゴブリンを５体倒せ";
         isDisplay = true;
     }

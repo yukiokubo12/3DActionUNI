@@ -62,7 +62,7 @@ public class MoveGoblin : MonoBehaviour
         elapsedTime = 0f;
         SetState(GoblinState.Walk);
         searchCharacter = GetComponentInParent<SearchCharacter>();
-
+        
         goblinStatus = GetComponent<GoblinStatus>();
     }
  
@@ -183,7 +183,6 @@ public class MoveGoblin : MonoBehaviour
             elapsedTime = 0f;
             velocity = Vector3.zero;
             animator.SetFloat("Speed", 0f);
-            // animator.SetTrigger("Attack");
             goblinHand.GetComponent<ProcessGoblinAnimEvent>().AttackEnd();
         }
         else if(tempState == GoblinState.Damage)

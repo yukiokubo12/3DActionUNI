@@ -50,6 +50,13 @@ public class PlayerCtrl : MonoBehaviour
         elapsedTime = 0;
     }
 
+    void LateUpdate()
+    {
+        animator.SetBool("Jump", false);
+        animator.SetBool("Attack", false);
+        state = MyState.Idle;
+    }
+
     void Update()
     {
         //待機、歩き状態の場合
