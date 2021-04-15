@@ -26,21 +26,20 @@ public class PlayerCtrl : MonoBehaviour
     CharacterController characterController= null;
     float m_verticalVelocity = 0f;
 
-    [SerializeField] private float jumpPower = 5f;
+    // [SerializeField] private float jumpPower = 5f;
     private Vector3 moveDirection;
 
     //走る処理
     [SerializeField] float m_runSpeed = 6.0f;
     private bool runFlag = false;
 
-    AttackWolf attackWolf;
+    // AttackWolf attackWolf;
 
     public GameObject playerSword;
 
     private float elapsedTime;
     [SerializeField] private float attackTime = 1f;
 
-    // Use this for initialization
     void Start()
     {
         inputManager = FindObjectOfType<InputManager>();
@@ -51,7 +50,6 @@ public class PlayerCtrl : MonoBehaviour
         elapsedTime = 0;
     }
 
-    // Update is called once per frame
     void Update()
     {
         //待機、歩き状態の場合
@@ -62,18 +60,20 @@ public class PlayerCtrl : MonoBehaviour
             Jumping();
             Attacking0();
         }
+        //攻撃の場合
         else if(state == MyState.Attack0)
         {
-            elapsedTime += Time.deltaTime;
-            if(elapsedTime > attackTime)
-            {
-                SetState(MyState.Idle);
-            }
+            // Attacking0();
         }
         //ジャンプ状態の場合
-        if(state == MyState.Jump)
+        else if(state == MyState.Jump)
         {
-            state = MyState.Idle;
+            state = MyState.Jump;
+        }
+        //走る場合
+        else if(state == MyState.Run)
+        {
+            state =  MyState.Run;
         }
 
         float v = Input.GetAxisRaw("Vertical");
@@ -105,28 +105,46 @@ public class PlayerCtrl : MonoBehaviour
 
         // 移動
         characterController.Move(moveDirection * Time.deltaTime);
+        Debug.Log(state);
     }
 
     public void SetState(MyState state)
     {
-        if(state == MyState.Normal)
+        if(state == MyState.Idle)
         {
-            // elapsedTime = 0f;
-            state = MyState.Normal;
-            // playerSword.GetComponent<ProcessPlayerAnimEvent>().AttackEnd();
+            playerSword.GetComponent<ProcessPlayerAnimEvent>().AttackEnd();
         } 
         else if(state == MyState.Attack0)
         {
-            elapsedTime = 0f;
-            animator.SetFloat("Speed", 0f);
-            animator.SetBool("Attack", true);
-            state = MyState.Attack0;
+            Attacking0();
+            playerSword.GetComponent<ProcessPlayerAnimEvent>().AttackStart();
         }
-        else if(state == MyState.Idle)
+        else if(state == MyState.Jump)
         {
-            elapsedTime = 0f;
-            animator.SetFloat("Speed", 0f);
+            Jumping();
         }
+        else if(state == MyState.Run)
+        {
+            Running();
+        }
+        else if(state == MyState.Walk)
+        {
+            Walking();
+        }
+
+
+        // else if(state == MyState.Attack0)
+        // {
+        //     elapsedTime = 0f;
+        //     animator.SetFloat("Speed", 0f);
+        //     animator.SetBool("Attack", true);
+        //     state = MyState.Attack0;
+        // }
+        // else if(state == MyState.Idle)
+        // {
+        //     elapsedTime = 0f;
+        //     animator.SetFloat("Speed", 0f);
+        // }
     }
     void Walking()
     {
@@ -150,13 +168,14 @@ public class PlayerCtrl : MonoBehaviour
         {
             animator.SetTrigger("Jump");
             state = MyState.Jump;
-            velocity.y = jumpPower;
+            // velocity.y = jumpPower;
         }
     }
     public void Running()
     {
         if(inputManager.RunButton())
         {
+        state = MyState.Run;
         runFlag = true;
         m_walkSpeed = 6.0f;
         animator.SetFloat("Speed", 6.0f);
@@ -172,6 +191,7 @@ public class PlayerCtrl : MonoBehaviour
     {
         if(inputManager.Attack0Button())
         {
+            state = MyState.Attack0;
             animator.SetBool("Attack0", true);
             playerSword.GetComponent<ProcessPlayerAnimEvent>().AttackStart();
         }

@@ -45,7 +45,7 @@ public class MoveGoblin : MonoBehaviour
     [SerializeField] private float freezeTime = 0.5f;
 
     GoblinStatus goblinStatus;
-    // private float mutekiFlag = 0;
+    private float mutekiFlag = 0;
 
     [SerializeField] private float attackTime = 1f;
     public GameObject goblinHand;
