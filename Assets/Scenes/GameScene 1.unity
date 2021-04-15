@@ -1816,25 +1816,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 50, y: 0, z: 0}
---- !u!1 &712653988 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4973628467540234803, guid: ea25298e2cf544e269531119adb25e38,
-    type: 3}
-  m_PrefabInstance: {fileID: 1718785639}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &712653989
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 712653988}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5293bf60ad6a4c6690cc107ee0a6984, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_goblinhand: {fileID: 1352647263}
 --- !u!1 &754856687
 GameObject:
   m_ObjectHideFlags: 0
@@ -3097,12 +3078,6 @@ Transform:
   m_Father: {fileID: 1647882035}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &1352647263 stripped
-CapsuleCollider:
-  m_CorrespondingSourceObject: {fileID: 526957740, guid: ea25298e2cf544e269531119adb25e38,
-    type: 3}
-  m_PrefabInstance: {fileID: 1718785639}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1354122037
 GameObject:
   m_ObjectHideFlags: 0
@@ -4402,7 +4377,7 @@ PrefabInstance:
     - target: {fileID: 102282221, guid: ea25298e2cf544e269531119adb25e38, type: 3}
       propertyPath: m_goblinhand
       value: 
-      objectReference: {fileID: 1352647263}
+      objectReference: {fileID: 0}
     - target: {fileID: 1462437485, guid: ea25298e2cf544e269531119adb25e38, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
