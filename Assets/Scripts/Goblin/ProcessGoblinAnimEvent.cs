@@ -21,6 +21,10 @@ public class ProcessGoblinAnimEvent : MonoBehaviour
         m_goblinhand.enabled = false;
     }
 
+
+
+
+
     // void Start() 
     // {
     //     GetComponent<CapsuleCollider>().enabled = false;

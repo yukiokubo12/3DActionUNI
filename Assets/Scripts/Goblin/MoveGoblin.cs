@@ -141,7 +141,6 @@ public class MoveGoblin : MonoBehaviour
         
         velocity.y += Physics.gravity.y * Time.deltaTime;
         goblinController.Move (velocity * Time.deltaTime);
-        Debug.Log(goblinHand);
     }
  
     //敵キャラクターの状態変更メソッド

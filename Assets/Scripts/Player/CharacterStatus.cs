@@ -47,7 +47,7 @@ public class CharacterStatus : MonoBehaviour
 					m_mutekiTimer += Time.deltaTime;
 					if(m_mutekiTimer > m_mutekiTime)
 					{
-							Debug.Log("無敵解除");
+							// Debug.Log("無敵解除");
 							m_mutekiTimer = 0f;
 							mutekiFlag = 0;
 					}
@@ -59,11 +59,11 @@ public class CharacterStatus : MonoBehaviour
 		{
 			if(mutekiFlag == 0 && !isDead)
 			{
-				Debug.Log("無敵");
+				// Debug.Log("無敵");
 				mutekiFlag = 1;
 				this.damage = 5;
 				this.currentPlayerHp -= damage;
-				Debug.Log("ダメージ5");
+				// Debug.Log("ダメージ5");
 				animator.SetTrigger("Damage");
 
 				playerHPSlider.value = (float)currentPlayerHp / maxPlayerHp;

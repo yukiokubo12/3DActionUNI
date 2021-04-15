@@ -53,7 +53,7 @@ public class PlayerCtrl : MonoBehaviour
     void LateUpdate()
     {
         animator.SetBool("Jump", false);
-        animator.SetBool("Attack", false);
+        // animator.SetBool("Attack", false);
         state = MyState.Idle;
     }
 
@@ -112,7 +112,6 @@ public class PlayerCtrl : MonoBehaviour
 
         // 移動
         characterController.Move(moveDirection * Time.deltaTime);
-        Debug.Log(state);
     }
 
     public void SetState(MyState state)

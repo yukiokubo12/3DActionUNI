@@ -22,7 +22,7 @@ public class GameSystemScript : MonoBehaviour
     // 外部から表示中かどうかを見たい場合のため用意
     public bool IsDisplay => isDisplay;
 
-    [SerializeField] string m_missionDescription = "ここにミッション内容を設定する";
+    [SerializeField] string m_missionDescription = "ミッション内容を設定する";
     private void Start()
     {
         // ボタンをアタッチしている場合は押したらトグルが呼ばれるようにする
@@ -61,7 +61,7 @@ public class GameSystemScript : MonoBehaviour
     //表示, 非表示のボタンを結局別で用意することになった場合のため、public
     public void ShowHowToText()
     {
-        howToPlayText.GetComponent<Text>().text = "[キーパッド]\n←↑→ 移動\nShift 走る\nSpace ジャンプ\nE 攻撃\n\n[ゲームパッド]\n左スティック 移動\n左スティック カメラ操作\n右スティック カメラ操作\nL2 走る\n☓ ジャンプ\n○ 攻撃";
+        howToPlayText.GetComponent<Text>().text = "[キーパッド]\n←↑→ 移動\nShift 走る\nSpace ジャンプ\nE 攻撃\n\n[ゲームパッド]\n左スティック 移動\n右スティック カメラ操作\nL2 走る\n☓ ジャンプ\n○ 攻撃";
         isDisplay = true;
     }
     public void HideHowToText()
@@ -96,7 +96,7 @@ public class GameSystemScript : MonoBehaviour
 
     public void ToGameMission2()
     {
-        SceneManager.LoadScene("GameMission2");
+        SceneManager.LoadScene("Mission2");
     }
 
     // public void StartGame()
