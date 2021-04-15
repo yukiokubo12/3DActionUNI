@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class ProcessPlayerAnimEvent : MonoBehaviour
 {
+    [SerializeField] Collider m_weapon = null;
 
     void Start() 
     {
-        GetComponent<BoxCollider>().enabled = false;
+        m_weapon.enabled = false;
     }
  
     public void AttackStart() 
     {
-        GetComponent<BoxCollider>().enabled = true;
+        m_weapon.enabled = true;
     }
  
     public void AttackEnd() 
     {
-        GetComponent<BoxCollider>().enabled = false;
+        m_weapon.enabled = false;
     }
 }

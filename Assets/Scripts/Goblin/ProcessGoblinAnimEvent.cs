@@ -4,24 +4,40 @@ using UnityEngine;
 
 public class ProcessGoblinAnimEvent : MonoBehaviour
 {
-    //private MoveGoblin goblin;
-    //[SerializeField] private CapsuleCollider capsuleCollider;
- 
+    [SerializeField] Collider m_goblinhand = null;
+
     void Start() 
     {
-        GetComponent<CapsuleCollider>().enabled = false;
+        m_goblinhand.enabled = false;
     }
  
     public void AttackStart() 
     {
-        GetComponent<CapsuleCollider>().enabled = true;
+        m_goblinhand.enabled = true;
     }
  
     public void AttackEnd() 
     {
-        GetComponent<CapsuleCollider>().enabled = false;
+        m_goblinhand.enabled = false;
     }
+
+    // void Start() 
+    // {
+    //     GetComponent<CapsuleCollider>().enabled = false;
+    // }
  
+    // public void AttackStart() 
+    // {
+    //     GetComponent<CapsuleCollider>().enabled = true;
+    // }
+ 
+    // public void AttackEnd() 
+    // {
+    //     GetComponent<CapsuleCollider>().enabled = false;
+    // }
+
+
+
     //public void StateEnd() 
     //{
     //    goblin.SetState(MoveGoblin.GoblinState.Freeze);

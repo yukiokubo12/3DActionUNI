@@ -46,7 +46,7 @@ public class MoveGoblin : MonoBehaviour
 
     GoblinStatus goblinStatus;
     private float mutekiFlag = 0;
-
+    
     [SerializeField] private float attackTime = 1f;
     public GameObject goblinHand;
 
@@ -62,7 +62,7 @@ public class MoveGoblin : MonoBehaviour
         elapsedTime = 0f;
         SetState(GoblinState.Walk);
         searchCharacter = GetComponentInParent<SearchCharacter>();
-        
+
         goblinStatus = GetComponent<GoblinStatus>();
     }
  
