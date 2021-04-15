@@ -177,14 +177,14 @@ public class MoveGoblin : MonoBehaviour
             velocity = Vector3.zero;
             animator.SetFloat("Speed", 0f);
             animator.SetTrigger("Attack");
-            goblinHand.GetComponent<ProcessGoblinAnimEvent>().AttackStart();
+            // goblinHand.GetComponent<ProcessGoblinAnimEvent>().AttackStart();
         } 
         else if (tempState == GoblinState.Freeze) 
         {
             elapsedTime = 0f;
             velocity = Vector3.zero;
             animator.SetFloat("Speed", 0f);
-            goblinHand.GetComponent<ProcessGoblinAnimEvent>().AttackEnd();
+            // goblinHand.GetComponent<ProcessGoblinAnimEvent>().AttackEnd();
         }
         else if(tempState == GoblinState.Damage)
         {
