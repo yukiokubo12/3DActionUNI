@@ -5,16 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class GameClearController : MonoBehaviour
 {
-    private GameObject[] goblinObjects;
+    // private GameObject[] goblinObjects;
  
-    void Update()
-    {
-        goblinObjects = GameObject.FindGameObjectsWithTag("Goblin");
+    // void Update()
+    // {
+    //     goblinObjects = GameObject.FindGameObjectsWithTag("Goblin");
 
-        //ゴブリン討伐数が３以上になればゲームクリアにしたい
-        if (goblinObjects.Length == 10)
-        {
-            SceneManager.LoadScene("GameClear");
-        }
-    }
+    //     //ゴブリン討伐数が３以上になればゲームクリアにしたい
+    //     if (goblinObjects.Length == 10)
+    //     {
+    //         SceneManager.LoadScene("GameClear");
+    //     }
+    // }
 }

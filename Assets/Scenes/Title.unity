@@ -347,7 +347,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2002495884}
+      - m_Target: {fileID: 1119182543}
         m_MethodName: ToGameScene1
         m_Mode: 1
         m_Arguments:
@@ -875,6 +875,7 @@ MonoBehaviour:
   missionText: {fileID: 0}
   timerText: {fileID: 0}
   m_missionDescription: "\u30DF\u30C3\u30B7\u30E7\u30F3\u5185\u5BB9\u3092\u8A2D\u5B9A\u3059\u308B"
+  fadeController: {fileID: 0}
 --- !u!4 &2002495885
 Transform:
   m_ObjectHideFlags: 0

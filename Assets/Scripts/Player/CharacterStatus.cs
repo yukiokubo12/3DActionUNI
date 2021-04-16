@@ -59,6 +59,12 @@ public class CharacterStatus : MonoBehaviour
 	public void Heal(int healAmount)
 	{
 		currentPlayerHp = currentPlayerHp + healAmount;
+		playerHPSlider.value = (float)currentPlayerHp / maxPlayerHp;
+		if(currentPlayerHp >= maxPlayerHp)
+		{
+			currentPlayerHp = maxPlayerHp;
+		}
+
 	}
 
 	void OnTriggerEnter(Collider other)

@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class HealItemController : MonoBehaviour
 {
-
     void OnTriggerEnter(Collider other)
 	{
         if(other.gameObject.tag == "Player")
         {
             var characterStatus = GameObject.Find("Player");
-            characterStatus.GetComponent<CharacterStatus>().Heal(20);
+            characterStatus.GetComponent<CharacterStatus>().Heal(5);
             Destroy(this.gameObject);
         }
     }

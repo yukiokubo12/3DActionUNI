@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GoblinDeathCount : MonoBehaviour
@@ -21,8 +22,12 @@ public class GoblinDeathCount : MonoBehaviour
     }
 
     public void CountGoblin(int addGoblin)
-    {    
-        this.goblinCount = addGoblin;
+    {   
+        this.goblinCount = goblinCount + addGoblin;
         this.goblinCountText.text = string.Format("{0} / 3", goblinCount);
+        if(goblinCount >= 3)
+        {
+            SceneManager.LoadScene("GameClear");
+        }
     }
 }

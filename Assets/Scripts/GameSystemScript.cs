@@ -24,7 +24,7 @@ public class GameSystemScript : MonoBehaviour
 
     [SerializeField] string m_missionDescription = "ミッション内容を設定する";
 
-    // public FadeController fadeController;
+    public FadeController fadeController;
 
     private void Start()
     {
@@ -102,31 +102,8 @@ public class GameSystemScript : MonoBehaviour
         SceneManager.LoadScene("Mission2");
     }
 
-    public void ToGameScene1()
-    {
-        SceneManager.LoadScene("GameScene 1");
-        // fadeController.GetComponent<FadeController>().StartFadeIn();
-    }
-
-    // public void StartGame()
+    // public void ToGameScene1()
     // {
-    //     SceneManager.LoadScene("Main");
-    // }
-    // public void ToTitle()
-    // {
-    //     SceneManager.LoadScene("Title");
-    // }
-    // public void ShowMainButton()
-    // {
-    //     this.toMainButton.gameObject.SetActive(true);
-    // }
-    // public void ShowTitleButton()
-    // {
-    //     this.toTitleButton.gameObject.SetActive(true);
-    // }
-    // public void ShowClearText()
-    // {
-    //     this.clearText.GetComponent<Text>().text = "Game Clear!!";
-    //     this.clearText.gameObject.SetActive(true);
+    //     SceneManager.LoadScene("GameScene 1");
     // }
 }
