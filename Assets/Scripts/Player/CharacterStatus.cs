@@ -7,7 +7,7 @@ public class CharacterStatus : MonoBehaviour
 	Animator animator;
 	// 体力.
 	// public int HP = 100;
-	public int maxPlayerHp = 100;
+	public int maxPlayerHp = 10;
 	private int currentPlayerHp;
 	
 	// 攻撃力.
@@ -35,7 +35,7 @@ public class CharacterStatus : MonoBehaviour
 	void Start()
 	{
 			animator = GetComponent<Animator>();
-			this.maxPlayerHp = 50;
+			this.maxPlayerHp = 10;
 			this.currentPlayerHp = this.maxPlayerHp;
 			this.playerHPSlider.value = 1;
 			isDead = false;

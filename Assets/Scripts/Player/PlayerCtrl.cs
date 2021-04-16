@@ -82,7 +82,11 @@ public class PlayerCtrl : MonoBehaviour
         {
             state =  MyState.Run;
         }
+        PlayerMove();
+    }
 
+    void PlayerMove()
+    {
         float v = Input.GetAxisRaw("Vertical");
         float h = Input.GetAxisRaw("Horizontal");
 
@@ -137,7 +141,6 @@ public class PlayerCtrl : MonoBehaviour
         {
             Walking();
         }
-
 
         // else if(state == MyState.Attack0)
         // {

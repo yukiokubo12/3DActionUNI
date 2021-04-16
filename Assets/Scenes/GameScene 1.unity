@@ -2029,7 +2029,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73adfa035113249e2a4ad142552797bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxPlayerHp: 50
+  maxPlayerHp: 10
   mutekiFlag: 0
   m_mutekiTime: 1
   playerHPSlider: {fileID: 124326169}
@@ -4083,12 +4083,6 @@ Transform:
   m_Father: {fileID: 859252044}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1588913110 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1359946941, guid: ea25298e2cf544e269531119adb25e38,
-    type: 3}
-  m_PrefabInstance: {fileID: 2000000553}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1616817915
 GameObject:
   m_ObjectHideFlags: 0
@@ -5448,7 +5442,7 @@ PrefabInstance:
     - target: {fileID: 1663773498, guid: ea25298e2cf544e269531119adb25e38, type: 3}
       propertyPath: SearchAreaCollider
       value: 
-      objectReference: {fileID: 1588913110}
+      objectReference: {fileID: 0}
     - target: {fileID: 4973628467536726431, guid: ea25298e2cf544e269531119adb25e38,
         type: 3}
       propertyPath: m_Enabled

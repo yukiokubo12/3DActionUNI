@@ -27,9 +27,6 @@ public class GoblinStatus : MonoBehaviour
     public GameObject HealItemPrefab;
 
 
-    public GameObject SearchAreaCollider;
-    SphereCollider sphereCollider;
-
 
     void Start()
     {
@@ -38,8 +35,6 @@ public class GoblinStatus : MonoBehaviour
         this.currentGoblinHp = this.maxGoblinHp;
         this.goblinHPSlider.value = 1;
         isDead = false;
-
-        sphereCollider.enabled = true;
     }
 
     void Update()
@@ -75,16 +70,18 @@ public class GoblinStatus : MonoBehaviour
                 GameObject hitEffect = Instantiate(hitEffectPrefab, this.hitEffectPos, Quaternion.identity);
             }
         }
+            GoblinDead();
+    }
+    public void GoblinDead()
+    {
         if(this.currentGoblinHp <= 0 && isDead == false)
         {
             animator.SetTrigger("Dead");
             Invoke("DestroyGoblin", 3);
             isDead = true;
-
-            //ここでサーチコライダーをオフにしたい。
-            sphereCollider.enabled = false;
         }
     }
+
     public void DestroyGoblin()
     {
         this.gameObject.SetActive(false);
