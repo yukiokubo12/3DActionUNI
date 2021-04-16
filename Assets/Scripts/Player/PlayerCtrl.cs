@@ -100,7 +100,10 @@ public class PlayerCtrl : MonoBehaviour
         if (moveDirection != Vector3.zero)
         {
             Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
-            this.transform.rotation = Quaternion.Lerp(this.transform.rotation, targetRotation, Time.deltaTime * m_rotateSpeed);
+            if(GetComponent<CharacterStatus>().isDead == false)
+            {
+                this.transform.rotation = Quaternion.Lerp(this.transform.rotation, targetRotation, Time.deltaTime * m_rotateSpeed);
+            }
         }
 
         // 重力の処理
@@ -115,6 +118,10 @@ public class PlayerCtrl : MonoBehaviour
         }
 
         // 移動
+        if(GetComponent<CharacterStatus>().isDead)
+        {
+            moveDirection = Vector3.zero;
+        }
         characterController.Move(moveDirection * Time.deltaTime);
     }
 

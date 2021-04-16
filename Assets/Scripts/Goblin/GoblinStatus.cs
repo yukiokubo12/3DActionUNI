@@ -26,8 +26,6 @@ public class GoblinStatus : MonoBehaviour
 
     public GameObject HealItemPrefab;
 
-
-
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -70,10 +68,6 @@ public class GoblinStatus : MonoBehaviour
                 GameObject hitEffect = Instantiate(hitEffectPrefab, this.hitEffectPos, Quaternion.identity);
             }
         }
-            GoblinDead();
-    }
-    public void GoblinDead()
-    {
         if(this.currentGoblinHp <= 0 && isDead == false)
         {
             animator.SetTrigger("Dead");
@@ -81,7 +75,7 @@ public class GoblinStatus : MonoBehaviour
             isDead = true;
         }
     }
-
+ 
     public void DestroyGoblin()
     {
         this.gameObject.SetActive(false);
