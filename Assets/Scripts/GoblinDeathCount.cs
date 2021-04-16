@@ -9,31 +9,20 @@ public class GoblinDeathCount : MonoBehaviour
     private int goblinCount = 0;
     public GameObject Goblin;
     GoblinStatus goblinStatus;
-    // private bool deadGoblin = false;
 
     void Start()
     {
         this.goblinCountText.text = string.Format("{0} / 3", goblinCount);
-        // goblinStatus.GetComponent<GoblinStatus>().DestroyGoblin();
     }
 
     void Update()
     {
-        // CountGoblin();
+        CountGoblin(0);
     }
 
-    // public void CountGoblin()
-    // {
-        // if(deadGoblin = true)
-        // {
-            // goblinStatus.DestroyGoblin();
-            // this.goblinCount++;
-        // }
-        
-        // if(goblinStatus.DestroyGoblin())
-        // {
-            // this.goblinCount++;
-        // }
-        // this.goblinCountText.text = string.Format("{0} / 3", goblinCount);
-    // }
+    public void CountGoblin(int addGoblin)
+    {    
+        this.goblinCount = addGoblin;
+        this.goblinCountText.text = string.Format("{0} / 3", goblinCount);
+    }
 }

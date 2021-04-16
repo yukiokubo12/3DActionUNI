@@ -29,6 +29,8 @@ public class CharacterStatus : MonoBehaviour
 
 	public bool isDead;
 
+	public GameObject gameOverText;
+
 
 	void Start()
 	{
@@ -52,7 +54,13 @@ public class CharacterStatus : MonoBehaviour
 							mutekiFlag = 0;
 					}
 			}
+			Heal(0);
 	}
+	public void Heal(int healAmount)
+	{
+		currentPlayerHp = currentPlayerHp + healAmount;
+	}
+
 	void OnTriggerEnter(Collider other)
 	{
 		if(other.gameObject.tag == "GoblinArm")
@@ -77,6 +85,7 @@ public class CharacterStatus : MonoBehaviour
 			{
 				animator.SetTrigger("Death");
 				isDead = true;
+				gameOverText.GetComponent<Text>().text = "Game Over";
 			}
 	}
 }

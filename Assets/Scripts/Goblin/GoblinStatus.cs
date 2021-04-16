@@ -24,8 +24,7 @@ public class GoblinStatus : MonoBehaviour
     [SerializeField] float m_mutekiTime = 1f;
     float m_mutekiTimer;
 
-    //敵id番号
-    // public int id;
+    public GameObject HealItemPrefab;
 
     void Start()
     {
@@ -72,12 +71,15 @@ public class GoblinStatus : MonoBehaviour
         if(this.currentGoblinHp <= 0 && isDead == false)
         {
             animator.SetTrigger("Dead");
-            DestroyGoblin();
+            Invoke("DestroyGoblin", 3);
             isDead = true;  
         }
     }
     public void DestroyGoblin()
     {
-        Destroy(this.gameObject, 3.0f);
+        this.gameObject.SetActive(false);
+        var goblinDeathCount = GameObject.Find("GoblinCountText");
+        goblinDeathCount.GetComponent<GoblinDeathCount>().CountGoblin(1);
+        GameObject healItem = Instantiate(HealItemPrefab, this.transform.position, Quaternion.identity);
     }
 }

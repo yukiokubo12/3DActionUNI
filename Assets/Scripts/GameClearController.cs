@@ -10,8 +10,9 @@ public class GameClearController : MonoBehaviour
     void Update()
     {
         goblinObjects = GameObject.FindGameObjectsWithTag("Goblin");
- 
-        if (goblinObjects.Length == 0)
+
+        //ゴブリン討伐数が３以上になればゲームクリアにしたい
+        if (goblinObjects.Length == 10)
         {
             SceneManager.LoadScene("GameClear");
         }

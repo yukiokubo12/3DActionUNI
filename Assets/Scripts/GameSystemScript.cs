@@ -23,6 +23,9 @@ public class GameSystemScript : MonoBehaviour
     public bool IsDisplay => isDisplay;
 
     [SerializeField] string m_missionDescription = "ミッション内容を設定する";
+
+    // public FadeController fadeController;
+
     private void Start()
     {
         // ボタンをアタッチしている場合は押したらトグルが呼ばれるようにする
@@ -97,6 +100,12 @@ public class GameSystemScript : MonoBehaviour
     public void ToGameMission2()
     {
         SceneManager.LoadScene("Mission2");
+    }
+
+    public void ToGameScene1()
+    {
+        SceneManager.LoadScene("GameScene 1");
+        // fadeController.GetComponent<FadeController>().StartFadeIn();
     }
 
     // public void StartGame()
