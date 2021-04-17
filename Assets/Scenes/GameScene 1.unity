@@ -731,8 +731,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalTime: 0
-  minute: 0
-  seconds: 5
+  minute: 3
+  seconds: 0
   gameOverText: {fileID: 413377529}
 --- !u!1 &228094889
 GameObject:
@@ -1873,7 +1873,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 578714642}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -51.9, y: 0, z: -46.8}
+  m_LocalPosition: {x: -51.9, y: 0, z: -14.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3506,6 +3506,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverText: {fileID: 0}
+  fadeController: {fileID: 2137151886}
 --- !u!65 &1231636763
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6153,7 +6154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFadeOut: 0
-  isFadeIn: 0
+  isFadeIn: 1
   changeSceneName: 
 --- !u!114 &2137151887
 MonoBehaviour:

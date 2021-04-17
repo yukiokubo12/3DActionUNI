@@ -35,7 +35,7 @@ public class CharacterStatus : MonoBehaviour
 	void Start()
 	{
 			animator = GetComponent<Animator>();
-			this.maxPlayerHp = 10;
+			this.maxPlayerHp = 30;
 			this.currentPlayerHp = this.maxPlayerHp;
 			this.playerHPSlider.value = 1;
 			isDead = false;
@@ -56,6 +56,7 @@ public class CharacterStatus : MonoBehaviour
 			}
 			Heal(0);
 	}
+	//回復アイテム拾ったときにHP回復
 	public void Heal(int healAmount)
 	{
 		currentPlayerHp = currentPlayerHp + healAmount;
@@ -83,18 +84,14 @@ public class CharacterStatus : MonoBehaviour
 			animator.SetTrigger("Death");
 			isDead = true;
 			gameOverText.GetComponent<Text>().text = "Game Over";
-
-			//GameOverテキストが呼ばれた数秒後に表示したい。
-			// SceneManager.LoadScene("Title");
-			Invoke("ToTitleScene", 4);
+			Invoke("ToTitleScene", 3);
 		}
 	}
 
 	void ToTitleScene()
 	{
-		// fadeController.needFadeIn = true;
 		fadeController.StartFadeOut();
-		SceneManager.LoadScene("Title");
+		fadeController.changeSceneName = "Title";
 	}
 
 
