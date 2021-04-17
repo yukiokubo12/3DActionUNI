@@ -19,19 +19,19 @@ public class SetGoblinPosition : MonoBehaviour
 	//ランダムな位置の作成
 	public void CreateRandomPosition() 
 	{
-		//ランダムなVector2の値を得る
+		//ランダムにVector2の値を取得
 		var randDestination = Random.insideUnitCircle * 8;
-		//現在地にランダムな位置を足して目的地とする
+		//現在地にランダムな位置を足して目的地に設定
 		SetDestination(startPosition + new Vector3(randDestination.x, 0, randDestination.y));
 	}
  
-	//目的地を設定する
+	//目的地を設定
 	public void SetDestination(Vector3 position) 
 	{
 		destination = position;
 	}
  
-	//目的地を取得する
+	//目的地を取得
 	public Vector3 GetDestination() 
 	{
 		return destination;

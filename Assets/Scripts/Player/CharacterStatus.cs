@@ -8,13 +8,9 @@ public class CharacterStatus : MonoBehaviour
 {	
 	Animator animator;
 	// 体力.
-	// public int HP = 100;
 	public int maxPlayerHp;
 	private int currentPlayerHp;
 	
-	// 攻撃力.
-	// public int power = 10;
-
 	private int damage;
 
 	//無敵時間作成
@@ -73,13 +69,28 @@ public class CharacterStatus : MonoBehaviour
 	{
 		if(other.gameObject.tag == "GoblinArm")
 		{
-			if(mutekiFlag == 0 && !isDead)
+			HitGoblinArm();
+		}
+		if(other.gameObject.tag == "WolfFace")
+		{
+			HitWolfFace();
+		}
+		
+		if(this.currentPlayerHp <= 0 && isDead == false || GetComponent<TimerScript>().totalTime <= 0f)
+		{
+			animator.SetTrigger("Death");
+			isDead = true;
+			gameOverText.GetComponent<Text>().text = "Game Over";
+			SceneManager.LoadScene("Title");
+		}
+	}
+	void HitGoblinArm()
+	{
+		if(mutekiFlag == 0 && !isDead)
 			{
-				// Debug.Log("無敵");
 				mutekiFlag = 1;
 				this.damage = 5;
 				this.currentPlayerHp -= damage;
-				// Debug.Log("ダメージ5");
 				animator.SetTrigger("Damage");
 
 				playerHPSlider.value = (float)currentPlayerHp / maxPlayerHp;
@@ -88,13 +99,21 @@ public class CharacterStatus : MonoBehaviour
 				this.transform.position = this.hitEffectPos;
 				GameObject hitEffect = Instantiate(hitEffectPrefab, this.hitEffectPos, Quaternion.identity);
 			}
-		}
-			else if(this.currentPlayerHp <= 0 && isDead == false || GetComponent<TimerScript>().totalTime <= 0f)
+	}
+	void HitWolfFace()
+	{
+		if(mutekiFlag == 0 && !isDead)
 			{
-				animator.SetTrigger("Death");
-				isDead = true;
-				gameOverText.GetComponent<Text>().text = "Game Over";
-				SceneManager.LoadScene("Title");
+				mutekiFlag = 1;
+				this.damage = 3;
+				this.currentPlayerHp -= damage;
+				animator.SetTrigger("Damage");
+
+				playerHPSlider.value = (float)currentPlayerHp / maxPlayerHp;
+				this.hitEffectPos = this.transform.position;
+				this.hitEffectPos.y += 1.8f;
+				this.transform.position = this.hitEffectPos;
+				GameObject hitEffect = Instantiate(hitEffectPrefab, this.hitEffectPos, Quaternion.identity);
 			}
 	}
 

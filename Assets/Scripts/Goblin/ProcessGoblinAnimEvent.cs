@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ProcessGoblinAnimEvent : MonoBehaviour
 {
+    //AnimationEventでコライダーのオンオフ制御
     [SerializeField] Collider m_goblinhand = null;
 
     void Start() 

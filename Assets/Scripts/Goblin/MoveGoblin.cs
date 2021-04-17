@@ -40,14 +40,17 @@ public class MoveGoblin : MonoBehaviour
     private GoblinState state;
     //プレイヤーTransform
     private Transform playerTransform;
-
+    
     private SearchCharacter searchCharacter;
     [SerializeField] private float freezeTime = 0.5f;
 
     GoblinStatus goblinStatus;
+    //無敵状態オンオフ用フラグ
     private float mutekiFlag = 0;
 
+    //攻撃時間制限
     [SerializeField] private float attackTime = 1f;
+
     public GameObject goblinHand;
 
 
@@ -65,8 +68,6 @@ public class MoveGoblin : MonoBehaviour
         elapsedTime = 0f;
         SetState(GoblinState.Walk);
         searchCharacter = GetComponentInParent<SearchCharacter>();
-        
-        goblinStatus = GetComponent<GoblinStatus>();
     }
  
     void Update () 
@@ -98,17 +99,16 @@ public class MoveGoblin : MonoBehaviour
     
             if (state == GoblinState.Walk) 
             {
-                //　目的地に到着したかどうかの判定
+                //目的地に到着したかどうかの判定
                 if (Vector3.Distance (transform.position, setGoblinPosition.GetDestination ()) < 0.7f) 
                 {
                     SetState(GoblinState.Wait);
-                    //animator.SetFloat ("Speed", 0.0f);
                 }
             } 
             else if (state == GoblinState.Chase) 
             {
-                //　攻撃する距離だったら攻撃
-                if (Vector3.Distance (transform.position, setGoblinPosition.GetDestination ()) < 1.5f) 
+                //攻撃する距離だったら攻撃
+                if (Vector3.Distance (transform.position, setGoblinPosition.GetDestination ()) < 1.4f) 
                 {
                     SetState(GoblinState.Attack);
                 }
@@ -148,7 +148,7 @@ public class MoveGoblin : MonoBehaviour
         goblinController.Move (velocity * Time.deltaTime);
     }
  
-    //敵キャラクターの状態変更メソッド
+    //敵キャラクターの状態変更
     public void SetState(GoblinState tempState, Transform targetObj = null) 
     {
         state = tempState;
@@ -161,9 +161,9 @@ public class MoveGoblin : MonoBehaviour
         } 
         else if (tempState == GoblinState.Chase) 
         {
-            //待機状態から追いかける場合もあるのでOff
+            //待機状態から追いかける場合もあるため
             arrived = false;
-            //追いかける対象をセット
+            //追いかける対象セット
             playerTransform = targetObj;
             animator.SetFloat("Speed", 3.0f);
             velocity = direction * runSpeed;
@@ -181,14 +181,12 @@ public class MoveGoblin : MonoBehaviour
             velocity = Vector3.zero;
             animator.SetFloat("Speed", 0f);
             animator.SetTrigger("Attack");
-            // goblinHand.GetComponent<ProcessGoblinAnimEvent>().AttackStart();
         } 
         else if (tempState == GoblinState.Freeze) 
         {
             elapsedTime = 0f;
             velocity = Vector3.zero;
             animator.SetFloat("Speed", 0f);
-            // goblinHand.GetComponent<ProcessGoblinAnimEvent>().AttackEnd();
         }
         else if(tempState == GoblinState.Damage)
         {
@@ -197,7 +195,7 @@ public class MoveGoblin : MonoBehaviour
             animator.SetTrigger("Damage");
         }
 }
-    //敵キャラクターの状態取得メソッド
+    //敵キャラクターの状態取得
     public GoblinState GetState() 
     {
         return state;

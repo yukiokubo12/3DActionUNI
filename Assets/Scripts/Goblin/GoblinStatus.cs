@@ -6,18 +6,21 @@ using UnityEngine.UI;
 public class GoblinStatus : MonoBehaviour 
 {
     private Animator animator;
+    //体力
     private int maxGoblinHp;
     public int currentGoblinHp;
+    //攻撃力
     private int attack = 5;
+
     public int damage;
-    private Vector3 hitEffectPos;
-
+    //死んでるかどうか
     private bool isDead;
-
 
     //HPスライダー管理
     public Slider goblinHPSlider;
+
     public GameObject hitEffectPrefab;
+    private Vector3 hitEffectPos;
 
     //無敵時間作成
     public float mutekiFlag = 0;
@@ -41,25 +44,26 @@ public class GoblinStatus : MonoBehaviour
         if(mutekiFlag == 1)
         {
             m_mutekiTimer += Time.deltaTime;
+            //Timerが上回れば無敵タイム終了
             if(m_mutekiTimer > m_mutekiTime)
             {
-                // Debug.Log("無敵解除");
                 m_mutekiTimer = 0f;
                 mutekiFlag = 0;
             }
         }
     }
+
     void OnTriggerEnter(Collider other)
     {
+        //プレイヤーの剣に当たったら
         if(other.gameObject.tag == "Sword")
         {
+            //無敵時間解除
             if(mutekiFlag == 0 && !isDead)
             {
-                // Debug.Log("無敵");
                 mutekiFlag = 1;
                 this.damage = 10;
                 this.currentGoblinHp -= damage;
-                // Debug.Log("ダメージ10");
                 animator.SetTrigger("Damage");
                 goblinHPSlider.value = (float)currentGoblinHp / maxGoblinHp;
                 this.hitEffectPos = this.transform.position;
@@ -68,6 +72,7 @@ public class GoblinStatus : MonoBehaviour
                 GameObject hitEffect = Instantiate(hitEffectPrefab, this.hitEffectPos, Quaternion.identity);
             }
         }
+        //HPが0以下になったら
         if(this.currentGoblinHp <= 0 && isDead == false)
         {
             animator.SetTrigger("Dead");
@@ -77,6 +82,7 @@ public class GoblinStatus : MonoBehaviour
         }
     }
  
+    //ゴブリン消滅させ、アイテム出す
     public void DestroyGoblin()
     {
         this.gameObject.SetActive(false);

@@ -7,6 +7,8 @@ TagManager:
   - Goblin
   - Sword
   - GoblinArm
+  - Wolf
+  - WolfFace
   layers:
   - Default
   - TransparentFX
