@@ -11,11 +11,12 @@ public class FadeController : MonoBehaviour
 	float red, green, blue, alfa;   //パネルの色、不透明度を管理
  
 	public bool isFadeOut = false;  //フェードアウト処理の開始、完了を管理するフラグ
-	public bool isFadeIn = false;   //フェードイン処理の開始、完了を管理するフラグ
+	public static bool isFadeIn = false;   //フェードイン処理の開始、完了を管理するフラグ
  
 	Image fadeImage;                //透明度を変更するパネルのイメージ
 
 	public string changeSceneName;
+
 
  
 	void Start () 
@@ -66,21 +67,6 @@ public class FadeController : MonoBehaviour
 			}
 		}
 	}
-
-
-	// IEnumerator StartFadeOut()
-	// {
-	// 	isFadeOut = true;
-	// 	img.gameObject.SetActive(true);
-	// 	fadeImage.enabled = true;  // a)パネルの表示をオンにする
-	// 	alfa += fadeSpeed;         // b)不透明度を徐々にあげる
-	// 	SetAlpha ();               // c)変更した透明度をパネルに反映する
-	// 	if(alfa >= 1)							 // d)完全に不透明になったら処理を抜ける
-	// 	{             
-	// 		isFadeOut = false;
-	// 	}
-	// 	img.gameObject.SetActive(false);
-	// }
  
 	void SetAlpha()
 	{
@@ -90,11 +76,8 @@ public class FadeController : MonoBehaviour
 	public void ToGameScene1()
 	{
 		isFadeOut = true;
+		isFadeIn = true;
 		changeSceneName = "GameScene 1";
 		// SceneManager.LoadScene("GameScene 1");
 	}
 }
-
-
-
-// Invoke("ToGameScene1", 5);

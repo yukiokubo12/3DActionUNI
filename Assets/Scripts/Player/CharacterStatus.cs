@@ -33,7 +33,7 @@ public class CharacterStatus : MonoBehaviour
 	void Start()
 	{
 			animator = GetComponent<Animator>();
-			this.maxPlayerHp = 20;
+			this.maxPlayerHp = 10;
 			this.currentPlayerHp = this.maxPlayerHp;
 			this.playerHPSlider.value = 1;
 			isDead = false;
@@ -75,7 +75,7 @@ public class CharacterStatus : MonoBehaviour
 		{
 			HitWolfFace();
 		}
-		
+
 		if(this.currentPlayerHp <= 0 && isDead == false || GetComponent<TimerScript>().totalTime <= 0f)
 		{
 			animator.SetTrigger("Death");

@@ -75,11 +75,11 @@ public class MoveGoblin : MonoBehaviour
         //見回りまたはキャラクターを追いかける状態
         if (state == GoblinState.Walk || state == GoblinState.Chase) 
         {
-            isMove = true;
+            // isMove = true;
             //キャラクターを追いかける状態であればキャラクターの目的地を再設定
             if (state == GoblinState.Chase) 
             {
-                // isMove = true;
+                isMove = true;
                 setGoblinPosition.SetDestination (playerTransform.position);
             }
             if (goblinController.isGrounded) 
