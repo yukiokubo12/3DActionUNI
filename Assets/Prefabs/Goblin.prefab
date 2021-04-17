@@ -25800,6 +25800,7 @@ MonoBehaviour:
   freezeTime: 0.5
   attackTime: 2.5
   goblinHand: {fileID: 526957738}
+  isMove: 0
 --- !u!114 &4973628467100587676
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -50,6 +50,9 @@ public class MoveGoblin : MonoBehaviour
     [SerializeField] private float attackTime = 1f;
     public GameObject goblinHand;
 
+
+    public bool isMove = true;
+
  
     void Start() 
     {
@@ -71,9 +74,11 @@ public class MoveGoblin : MonoBehaviour
         //見回りまたはキャラクターを追いかける状態
         if (state == GoblinState.Walk || state == GoblinState.Chase) 
         {
+            isMove = true;
             //キャラクターを追いかける状態であればキャラクターの目的地を再設定
             if (state == GoblinState.Chase) 
             {
+                // isMove = true;
                 setGoblinPosition.SetDestination (playerTransform.position);
             }
             if (goblinController.isGrounded) 

@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections;
+
 
 public class CharacterStatus : MonoBehaviour 
 {	
@@ -35,7 +37,7 @@ public class CharacterStatus : MonoBehaviour
 	void Start()
 	{
 			animator = GetComponent<Animator>();
-			this.maxPlayerHp = 100;
+			this.maxPlayerHp = 20;
 			this.currentPlayerHp = this.maxPlayerHp;
 			this.playerHPSlider.value = 1;
 			isDead = false;
@@ -87,11 +89,13 @@ public class CharacterStatus : MonoBehaviour
 				GameObject hitEffect = Instantiate(hitEffectPrefab, this.hitEffectPos, Quaternion.identity);
 			}
 		}
-			else if(this.currentPlayerHp <= 0 && isDead == false)
+			else if(this.currentPlayerHp <= 0 && isDead == false || GetComponent<TimerScript>().totalTime <= 0f)
 			{
 				animator.SetTrigger("Death");
 				isDead = true;
 				gameOverText.GetComponent<Text>().text = "Game Over";
+				SceneManager.LoadScene("Title");
 			}
 	}
+
 }

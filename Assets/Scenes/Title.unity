@@ -625,7 +625,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFadeOut: 0
-  isFadeIn: 0
+  isFadeIn: 1
+  changeSceneName: 
 --- !u!114 &1119182544
 MonoBehaviour:
   m_ObjectHideFlags: 0

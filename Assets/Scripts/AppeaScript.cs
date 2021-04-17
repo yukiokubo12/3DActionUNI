@@ -48,7 +48,7 @@ public class AppeaScript : MonoBehaviour
 	var randomRotationY = Random.value * 360f;
  
 	GameObject.Instantiate (Goblin, transform.position, Quaternion.Euler (0f, randomRotationY, 0f));
-    Debug.Log("ゴブリン出現");
+    // Debug.Log("ゴブリン出現");
 	numberOfEnemys++;
 	elapsedTime = 0f;
     }

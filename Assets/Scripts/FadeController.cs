@@ -14,8 +14,12 @@ public class FadeController : MonoBehaviour
 	public bool isFadeIn = false;   //フェードイン処理の開始、完了を管理するフラグ
  
 	Image fadeImage;                //透明度を変更するパネルのイメージ
+
+	public string changeSceneName;
+
  
-	void Start () {
+	void Start () 
+	{
 		fadeImage = GetComponent<Image> ();
 		red = fadeImage.color.r;
 		green = fadeImage.color.g;
@@ -23,7 +27,8 @@ public class FadeController : MonoBehaviour
 		alfa = fadeImage.color.a;
 	}
  
-	void Update () {
+	void Update () 
+	{
 		if(isFadeIn){
 			StartFadeIn ();
 		}
@@ -34,12 +39,14 @@ public class FadeController : MonoBehaviour
 		}
 	}
  
-	void StartFadeIn(){
+	void StartFadeIn()
+	{
 		alfa -= fadeSpeed;                //a)不透明度を徐々に下げる
 		SetAlpha ();                      //b)変更した不透明度パネルに反映する
-		if(alfa <= 0){                    //c)完全に透明になったら処理を抜ける
+		if(alfa <= 0)											//c)完全に透明になったら処理を抜ける
+		{                    
 			isFadeIn = false;             
-			fadeImage.enabled = false;    //d)パネルの表示をオフにする
+			fadeImage.enabled = false;      //d)パネルの表示をオフにする
 		}
 	}
  
@@ -48,12 +55,32 @@ public class FadeController : MonoBehaviour
 		fadeImage.enabled = true;  // a)パネルの表示をオンにする
 		alfa += fadeSpeed;         // b)不透明度を徐々にあげる
 		SetAlpha ();               // c)変更した透明度をパネルに反映する
-		if(alfa >= 1)
-		{             // d)完全に不透明になったら処理を抜ける
+		if(alfa >= 1)							 // d)完全に不透明になったら処理を抜ける
+		{             
 			isFadeOut = false;
+
+			if(changeSceneName != "")
+			{
+				Debug.Log(changeSceneName + "に遷移します");
+				SceneManager.LoadScene(changeSceneName);
+			}
 		}
-		ToGameScene1();
 	}
+
+
+	// IEnumerator StartFadeOut()
+	// {
+	// 	isFadeOut = true;
+	// 	img.gameObject.SetActive(true);
+	// 	fadeImage.enabled = true;  // a)パネルの表示をオンにする
+	// 	alfa += fadeSpeed;         // b)不透明度を徐々にあげる
+	// 	SetAlpha ();               // c)変更した透明度をパネルに反映する
+	// 	if(alfa >= 1)							 // d)完全に不透明になったら処理を抜ける
+	// 	{             
+	// 		isFadeOut = false;
+	// 	}
+	// 	img.gameObject.SetActive(false);
+	// }
  
 	void SetAlpha()
 	{
@@ -63,6 +90,11 @@ public class FadeController : MonoBehaviour
 	public void ToGameScene1()
 	{
 		isFadeOut = true;
-		SceneManager.LoadScene("GameScene 1");
+		changeSceneName = "GameScene 1";
+		// SceneManager.LoadScene("GameScene 1");
 	}
 }
+
+
+
+// Invoke("ToGameScene1", 5);

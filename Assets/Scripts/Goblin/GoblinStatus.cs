@@ -73,6 +73,7 @@ public class GoblinStatus : MonoBehaviour
             animator.SetTrigger("Dead");
             Invoke("DestroyGoblin", 3);
             isDead = true;
+            GetComponent<MoveGoblin>().isMove = false;
         }
     }
  
@@ -81,6 +82,9 @@ public class GoblinStatus : MonoBehaviour
         this.gameObject.SetActive(false);
         var goblinDeathCount = GameObject.Find("GoblinCountText");
         goblinDeathCount.GetComponent<GoblinDeathCount>().CountGoblin(1);
-        GameObject healItem = Instantiate(HealItemPrefab, this.transform.position, Quaternion.identity);
+        if(Random.Range(0, 2) == 0)
+        {
+            GameObject healItem = Instantiate(HealItemPrefab, this.transform.position, Quaternion.identity);
+        }
     }
 }
