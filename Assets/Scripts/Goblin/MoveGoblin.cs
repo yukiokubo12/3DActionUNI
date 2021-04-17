@@ -144,7 +144,7 @@ public class MoveGoblin : MonoBehaviour
         {
             if(GetComponent<GoblinStatus>().currentGoblinHp <= 0f)
             {
-                velocity = direction * 0f;
+                SetState(GoblinState.Dead);
             }
         }
         
@@ -197,6 +197,10 @@ public class MoveGoblin : MonoBehaviour
             velocity = Vector3.zero;
             animator.ResetTrigger("Attack");
             animator.SetTrigger("Damage");
+        }
+        else if(tempState == GoblinState.Dead)
+        {
+            velocity = Vector3.zero;
         }
 }
     //敵キャラクターの状態取得
