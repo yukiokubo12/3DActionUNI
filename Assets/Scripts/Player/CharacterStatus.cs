@@ -29,6 +29,8 @@ public class CharacterStatus : MonoBehaviour
 
 	public GameObject gameOverText;
 
+	public TimerScript timerScript;
+
 
 	void Start()
 	{

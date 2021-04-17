@@ -1574,7 +1574,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentWolfHp: 0
   damage: 0
-  wolfHPSlider: {fileID: 0}
   hitEffectPrefab: {fileID: 433408104471584020, guid: cba92e56a1ec346079f3263c2689037c,
     type: 3}
   mutekiFlag: 0
@@ -1639,7 +1638,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 480470, guid: dd7b214f231a42845a11a0745242ec75, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -42.5
+      value: -37.97
       objectReference: {fileID: 0}
     - target: {fileID: 480470, guid: dd7b214f231a42845a11a0745242ec75, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1647,7 +1646,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 480470, guid: dd7b214f231a42845a11a0745242ec75, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -27
+      value: 15.2
       objectReference: {fileID: 0}
     - target: {fileID: 480470, guid: dd7b214f231a42845a11a0745242ec75, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2386,6 +2385,7 @@ MonoBehaviour:
     type: 3}
   isDead: 0
   gameOverText: {fileID: 413377529}
+  timerScript: {fileID: 151625482}
 --- !u!114 &758574406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6152,6 +6152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFadeOut: 0
+  isFadeIn: 0
   changeSceneName: 
 --- !u!114 &2137151887
 MonoBehaviour:

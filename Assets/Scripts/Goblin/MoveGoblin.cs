@@ -11,6 +11,7 @@ public class MoveGoblin : MonoBehaviour
         Chase,
         Attack,
         Damage,
+        Dead,
         Freeze
     };
  
@@ -53,9 +54,6 @@ public class MoveGoblin : MonoBehaviour
 
     public GameObject goblinHand;
 
-
-    public bool isMove = true;
-
  
     void Start() 
     {
@@ -79,7 +77,6 @@ public class MoveGoblin : MonoBehaviour
             //キャラクターを追いかける状態であればキャラクターの目的地を再設定
             if (state == GoblinState.Chase) 
             {
-                isMove = true;
                 setGoblinPosition.SetDestination (playerTransform.position);
             }
             if (goblinController.isGrounded) 
@@ -141,6 +138,13 @@ public class MoveGoblin : MonoBehaviour
             if (elapsedTime > freezeTime) 
             {
                 SetState(GoblinState.Walk);
+            }
+        }
+        else if(state == GoblinState.Dead)
+        {
+            if(GetComponent<GoblinStatus>().currentGoblinHp <= 0f)
+            {
+                velocity = direction * 0f;
             }
         }
         

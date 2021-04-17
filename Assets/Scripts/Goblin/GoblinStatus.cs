@@ -78,7 +78,6 @@ public class GoblinStatus : MonoBehaviour
             animator.SetTrigger("Dead");
             Invoke("DestroyGoblin", 3);
             isDead = true;
-            GetComponent<MoveGoblin>().isMove = false;
         }
     }
  
