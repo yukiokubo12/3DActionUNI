@@ -17,7 +17,7 @@ public class WolfStatus : MonoBehaviour
     private bool isDead;
 
     //HPスライダー管理
-    public Slider wolfHPSlider;
+    // public Slider wolfHPSlider;
 
     public GameObject hitEffectPrefab;
     private Vector3 hitEffectPos;
@@ -34,7 +34,7 @@ public class WolfStatus : MonoBehaviour
         animator = GetComponent<Animator>();
         this.maxWolfHp = 30;
         this.currentWolfHp = this.maxWolfHp;
-        this.wolfHPSlider.value = 1;
+        // this.wolfHPSlider.value = 1;
         isDead = false;
     }
 
@@ -65,7 +65,7 @@ public class WolfStatus : MonoBehaviour
                 this.damage = 10;
                 this.currentWolfHp -= damage;
                 animator.SetTrigger("Damage");
-                wolfHPSlider.value = (float)currentWolfHp / maxWolfHp;
+                // wolfHPSlider.value = (float)currentWolfHp / maxWolfHp;
                 this.hitEffectPos = this.transform.position;
                 this.hitEffectPos.y += 1.8f;
                 this.transform.position = this.hitEffectPos;

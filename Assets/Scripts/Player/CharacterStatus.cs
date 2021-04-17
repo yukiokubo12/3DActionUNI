@@ -76,7 +76,7 @@ public class CharacterStatus : MonoBehaviour
 			HitWolfFace();
 		}
 
-		if(this.currentPlayerHp <= 0 && isDead == false || GetComponent<TimerScript>().totalTime <= 0f)
+		if(this.currentPlayerHp <= 0 && isDead == false)
 		{
 			animator.SetTrigger("Death");
 			isDead = true;
