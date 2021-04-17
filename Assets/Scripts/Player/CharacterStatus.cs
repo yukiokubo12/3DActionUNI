@@ -78,7 +78,7 @@ public class CharacterStatus : MonoBehaviour
 			HitWolfFace();
 		}
 
-		if(this.currentPlayerHp <= 0 && isDead == false)
+		if(this.currentPlayerHp <= 0 && isDead == false || timerScript.totalTime <= 0f)
 		{
 			animator.SetTrigger("Death");
 			isDead = true;
@@ -118,5 +118,4 @@ public class CharacterStatus : MonoBehaviour
 				GameObject hitEffect = Instantiate(hitEffectPrefab, this.hitEffectPos, Quaternion.identity);
 			}
 	}
-
 }

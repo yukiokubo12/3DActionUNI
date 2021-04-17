@@ -29,9 +29,12 @@ public class GoblinStatus : MonoBehaviour
 
     public GameObject HealItemPrefab;
 
+    MoveGoblin moveGoblin;
+
     void Start()
     {
         animator = GetComponent<Animator>();
+        moveGoblin = GetComponent<MoveGoblin>();
         this.maxGoblinHp = 30;
         this.currentGoblinHp = this.maxGoblinHp;
         this.goblinHPSlider.value = 1;
@@ -78,6 +81,7 @@ public class GoblinStatus : MonoBehaviour
             animator.SetTrigger("Dead");
             Invoke("DestroyGoblin", 3);
             isDead = true;
+            moveGoblin.SetState(MoveGoblin.GoblinState.Dead);
         }
     }
  
