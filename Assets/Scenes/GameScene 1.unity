@@ -2386,6 +2386,7 @@ MonoBehaviour:
   isDead: 0
   gameOverText: {fileID: 413377529}
   timerScript: {fileID: 151625482}
+  fadeController: {fileID: 2137151886}
 --- !u!114 &758574406
 MonoBehaviour:
   m_ObjectHideFlags: 0

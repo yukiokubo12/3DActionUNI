@@ -52,7 +52,7 @@ public class FadeController : MonoBehaviour
 		fadeImage.enabled = true;
 	}
 	
-	void StartFadeOut()
+	public void StartFadeOut()
 	{
 		alfa = 0.0f;
 		isFadeOut = true;

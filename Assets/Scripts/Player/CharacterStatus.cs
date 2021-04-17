@@ -30,7 +30,7 @@ public class CharacterStatus : MonoBehaviour
 	public GameObject gameOverText;
 
 	public TimerScript timerScript;
-
+  public FadeController fadeController;
 
 	void Start()
 	{
@@ -83,9 +83,21 @@ public class CharacterStatus : MonoBehaviour
 			animator.SetTrigger("Death");
 			isDead = true;
 			gameOverText.GetComponent<Text>().text = "Game Over";
-			SceneManager.LoadScene("Title");
+
+			//GameOverテキストが呼ばれた数秒後に表示したい。
+			// SceneManager.LoadScene("Title");
+			Invoke("ToTitleScene", 4);
 		}
 	}
+
+	void ToTitleScene()
+	{
+		// fadeController.needFadeIn = true;
+		fadeController.StartFadeOut();
+		SceneManager.LoadScene("Title");
+	}
+
+
 	void HitGoblinArm()
 	{
 		if(mutekiFlag == 0 && !isDead)
