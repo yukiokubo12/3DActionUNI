@@ -42,7 +42,7 @@ public class MoveGoblin : MonoBehaviour
     //プレイヤーTransform
     private Transform playerTransform;
     
-    private SearchCharacter searchCharacter;
+    // private SearchCharacter searchCharacter;
     [SerializeField] private float freezeTime = 0.5f;
 
     GoblinStatus goblinStatus;
@@ -65,7 +65,7 @@ public class MoveGoblin : MonoBehaviour
         arrived = false;
         elapsedTime = 0f;
         SetState(GoblinState.Walk);
-        searchCharacter = GetComponentInParent<SearchCharacter>();
+        // searchCharacter = GetComponentInParent<SearchCharacter>();
     }
  
     void Update () 
