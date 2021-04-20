@@ -296,7 +296,7 @@ GameObject:
   - component: {fileID: 1687960678185525289}
   - component: {fileID: 1687960678185525295}
   - component: {fileID: 1687960678185525294}
-  m_Layer: 14
+  m_Layer: 0
   m_Name: TrollAttackPoint
   m_TagString: TrollArm
   m_Icon: {fileID: 0}
