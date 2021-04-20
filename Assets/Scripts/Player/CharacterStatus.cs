@@ -78,6 +78,10 @@ public class CharacterStatus : MonoBehaviour
 		{
 			HitWolfFace();
 		}
+		if(other.gameObject.tag == "TrollArm")
+		{
+			HitTrollArm();
+		}
 
 		if(this.currentPlayerHp <= 0 && isDead == false || timerScript.totalTime <= 0f)
 		{
@@ -112,6 +116,22 @@ public class CharacterStatus : MonoBehaviour
 			}
 	}
 	void HitWolfFace()
+	{
+		if(mutekiFlag == 0 && !isDead)
+			{
+				mutekiFlag = 1;
+				this.damage = 3;
+				this.currentPlayerHp -= damage;
+				animator.SetTrigger("Damage");
+
+				playerHPSlider.value = (float)currentPlayerHp / maxPlayerHp;
+				this.hitEffectPos = this.transform.position;
+				this.hitEffectPos.y += 1.8f;
+				this.transform.position = this.hitEffectPos;
+				GameObject hitEffect = Instantiate(hitEffectPrefab, this.hitEffectPos, Quaternion.identity);
+			}
+	}
+	void HitTrollArm()
 	{
 		if(mutekiFlag == 0 && !isDead)
 			{

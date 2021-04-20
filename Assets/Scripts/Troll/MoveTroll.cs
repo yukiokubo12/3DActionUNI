@@ -21,9 +21,9 @@ public class MoveTroll : MonoBehaviour
     private Vector3 destination;
     //歩くスピード
     [SerializeField]
-    private float walkSpeed = 1.0f;
+    private float walkSpeed = 0.5f;
     [SerializeField]
-    private float runSpeed = 2.0f;
+    private float runSpeed = 1.5f;
     //速度
     private Vector3 velocity;
     //移動方向
@@ -34,7 +34,7 @@ public class MoveTroll : MonoBehaviour
     private SetTrollPosition setTrollPosition;
     //待ち時間
     [SerializeField]
-    private float waitTime = 5f;
+    private float waitTime = 2f;
     //経過時間
     private float elapsedTime;
     //敵の状態
@@ -42,7 +42,6 @@ public class MoveTroll : MonoBehaviour
     //プレイヤーTransform
     private Transform playerTransform;
     
-    // private SearchCharacter searchCharacter;
     [SerializeField] private float freezeTime = 0.5f;
 
     TrollStatus TrollStatus;
@@ -105,7 +104,7 @@ public class MoveTroll : MonoBehaviour
             else if (state == TrollState.Chase) 
             {
                 //攻撃する距離だったら攻撃
-                if (Vector3.Distance (transform.position, setTrollPosition.GetDestination ()) < 1.4f) 
+                if (Vector3.Distance (transform.position, setTrollPosition.GetDestination ()) < 3.0f) 
                 {
                     SetState(TrollState.Attack);
                 }
@@ -169,7 +168,7 @@ public class MoveTroll : MonoBehaviour
             arrived = false;
             //追いかける対象セット
             playerTransform = targetObj;
-            animator.SetFloat("Speed", 3.0f);
+            animator.SetFloat("Speed", 1.0f);
             velocity = direction * runSpeed;
         } 
         else if (tempState == TrollState.Wait) 

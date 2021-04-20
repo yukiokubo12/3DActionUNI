@@ -10,6 +10,8 @@ TagManager:
   - Wolf
   - WolfFace
   - BaseGround
+  - Troll
+  - TrollArm
   layers:
   - Default
   - TransparentFX
@@ -24,8 +26,8 @@ TagManager:
   - PlayerHit
   - EnemyAttack
   - PlayerAttack
-  - 
-  - 
+  - Player
+  - Troll
   - 
   - 
   - 
