@@ -31,8 +31,9 @@ public class GoblinStatus : MonoBehaviour
 
     MoveGoblin moveGoblin;
 
-    private AudioSource audioSource;
-    public AudioClip attackSound;
+    AudioSource audioSource;
+    public AudioClip attackSound; 
+    public AudioClip deadSound; 
 
     void Start()
     {
@@ -87,6 +88,7 @@ public class GoblinStatus : MonoBehaviour
             Invoke("DestroyGoblin", 3);
             isDead = true;
             moveGoblin.SetState(MoveGoblin.GoblinState.Dead);
+            audioSource.PlayOneShot(deadSound);
         }
     }
  

@@ -25835,6 +25835,7 @@ MonoBehaviour:
   HealItemPrefab: {fileID: 6559741032852497018, guid: 2841f1fca7157469db361a95018d4021,
     type: 3}
   attackSound: {fileID: 8300000, guid: f57e186ea2a0b485f8cb9b15cf19d7b9, type: 3}
+  deadSound: {fileID: 8300000, guid: bf508ebe4d4c343ad84c2113770f335c, type: 3}
 --- !u!114 &594374586
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -33,6 +33,7 @@ public class WolfStatus : MonoBehaviour
 
     private AudioSource audioSource;
     public AudioClip attackSound;
+    public AudioClip deadSound;
 
     void Start()
     {
@@ -88,6 +89,7 @@ public class WolfStatus : MonoBehaviour
             Invoke("DestroyWolf", 2);
             this.isDead = true;
             moveWolf.SetState(MoveWolf.WolfState.Dead);
+            audioSource.PlayOneShot(deadSound);
         }
     }
  

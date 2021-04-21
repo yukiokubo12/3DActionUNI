@@ -53,6 +53,10 @@ public class MoveTroll : MonoBehaviour
 
     public GameObject trollHand;
 
+    private AudioSource audioSource;
+    public AudioClip trollAttackSound;
+    
+
  
     void Start() 
     {
@@ -64,6 +68,7 @@ public class MoveTroll : MonoBehaviour
         arrived = false;
         elapsedTime = 0f;
         SetState(TrollState.Walk);
+        audioSource = GetComponent<AudioSource>();
         // searchCharacter = GetComponentInParent<SearchCharacter>();
     }
  
@@ -107,6 +112,7 @@ public class MoveTroll : MonoBehaviour
                 if (Vector3.Distance (transform.position, setTrollPosition.GetDestination ()) < 3.0f) 
                 {
                     SetState(TrollState.Attack);
+                    audioSource.PlayOneShot(trollAttackSound);
                 }
 		    }
 	    } 
