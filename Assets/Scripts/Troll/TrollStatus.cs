@@ -31,6 +31,10 @@ public class TrollStatus : MonoBehaviour
 
     MoveTroll moveTroll;
 
+    private AudioSource audioSource;
+    public AudioClip attackSound;
+    public AudioClip deadSound;
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -39,6 +43,7 @@ public class TrollStatus : MonoBehaviour
         this.currentTrollHp = this.maxTrollHp;
         this.trollHPSlider.value = 1;
         isDead = false;
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -73,6 +78,7 @@ public class TrollStatus : MonoBehaviour
                 this.hitEffectPos.y += 1.8f;
                 this.transform.position = this.hitEffectPos;
                 GameObject hitEffect = Instantiate(hitEffectPrefab, this.hitEffectPos, Quaternion.identity);
+                audioSource.PlayOneShot(attackSound);
             }
         }
         //HPが0以下になったら
@@ -82,6 +88,7 @@ public class TrollStatus : MonoBehaviour
             Invoke("DestroyTroll", 3);
             isDead = true;
             moveTroll.SetState(MoveTroll.TrollState.Dead);
+            audioSource.PlayOneShot(deadSound);
         }
     }
  

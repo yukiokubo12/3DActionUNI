@@ -31,6 +31,9 @@ public class GoblinStatus : MonoBehaviour
 
     MoveGoblin moveGoblin;
 
+    private AudioSource audioSource;
+    public AudioClip attackSound;
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -39,6 +42,7 @@ public class GoblinStatus : MonoBehaviour
         this.currentGoblinHp = this.maxGoblinHp;
         this.goblinHPSlider.value = 1;
         isDead = false;
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -73,6 +77,7 @@ public class GoblinStatus : MonoBehaviour
                 this.hitEffectPos.y += 1.8f;
                 this.transform.position = this.hitEffectPos;
                 GameObject hitEffect = Instantiate(hitEffectPrefab, this.hitEffectPos, Quaternion.identity);
+                audioSource.PlayOneShot(attackSound);
             }
         }
         //HPが0以下になったら

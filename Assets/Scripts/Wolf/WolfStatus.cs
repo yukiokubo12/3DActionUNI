@@ -31,6 +31,9 @@ public class WolfStatus : MonoBehaviour
 
     MoveWolf moveWolf;
 
+    private AudioSource audioSource;
+    public AudioClip attackSound;
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -39,6 +42,7 @@ public class WolfStatus : MonoBehaviour
         this.currentWolfHp = this.maxWolfHp;
         this.wolfHPSlider.value = 1;
         this.isDead = false;
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -73,6 +77,7 @@ public class WolfStatus : MonoBehaviour
                 this.hitEffectPos.y += 1.8f;
                 this.transform.position = this.hitEffectPos;
                 GameObject hitEffect = Instantiate(hitEffectPrefab, this.hitEffectPos, Quaternion.identity);
+                audioSource.PlayOneShot(attackSound);
             }
         }
         //HPが0以下になったら
