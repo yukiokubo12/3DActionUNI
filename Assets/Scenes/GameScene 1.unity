@@ -2220,7 +2220,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.1
+  m_Volume: 0.06
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2434,7 +2434,7 @@ MonoBehaviour:
   listAudioClips:
   - groundTypeTag: Ground
     audioClips:
-    - {fileID: 0}
+    - {fileID: 8300000, guid: 4477d53a3a60ea643b87fe82504aee67, type: 3}
   terrainLayerToTag:
   - BaseGround
   randomizePitch: 1
@@ -3376,7 +3376,7 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.05
-  m_Center: {x: -0.17, y: 0.08, z: 0}
+  m_Center: {x: -0.17, y: 0.09, z: 0}
 --- !u!1 &1180279259
 GameObject:
   m_ObjectHideFlags: 0
@@ -5327,7 +5327,7 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.05
-  m_Center: {x: -0.17, y: 0.08, z: 0}
+  m_Center: {x: -0.17, y: 0.09, z: 0}
 --- !u!1 &1861590647
 GameObject:
   m_ObjectHideFlags: 0
