@@ -53,11 +53,9 @@ public class MoveTroll : MonoBehaviour
 
     public GameObject trollHand;
 
-    private AudioSource audioSource;
-    public AudioClip trollAttackSound;
+    // private AudioSource audioSource;
+    // public AudioClip trollAttackSound;
     
-
- 
     void Start() 
     {
         trollController = GetComponent<CharacterController>();
@@ -68,8 +66,7 @@ public class MoveTroll : MonoBehaviour
         arrived = false;
         elapsedTime = 0f;
         SetState(TrollState.Walk);
-        audioSource = GetComponent<AudioSource>();
-        // searchCharacter = GetComponentInParent<SearchCharacter>();
+        // audioSource = GetComponent<AudioSource>();
     }
  
     void Update () 
@@ -112,7 +109,6 @@ public class MoveTroll : MonoBehaviour
                 if (Vector3.Distance (transform.position, setTrollPosition.GetDestination ()) < 3.0f) 
                 {
                     SetState(TrollState.Attack);
-                    audioSource.PlayOneShot(trollAttackSound);
                 }
 		    }
 	    } 
@@ -132,6 +128,7 @@ public class MoveTroll : MonoBehaviour
             elapsedTime += Time.deltaTime;
             if(elapsedTime > attackTime)
             {
+                // audioSource.PlayOneShot(trollAttackSound);
                 SetState(TrollState.Freeze);
             }
         }

@@ -1940,7 +1940,6 @@ MonoBehaviour:
   freezeTime: 0.5
   attackTime: 1.8
   trollHand: {fileID: 1687960678185525288}
-  trollAttackSound: {fileID: 8300000, guid: 65e7b2c31faaa41cbbb1bb1be600709c, type: 3}
 --- !u!82 &808937300
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1952,7 +1951,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.2
   m_Pitch: 1
   Loop: 0

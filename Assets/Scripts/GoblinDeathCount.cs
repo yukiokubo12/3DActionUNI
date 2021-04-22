@@ -11,6 +11,10 @@ public class GoblinDeathCount : MonoBehaviour
     public GameObject Goblin;
     GoblinStatus goblinStatus;
 
+    public FadeController fadeController;
+
+    public GameObject missionCompleteText;
+
     void Start()
     {
         this.goblinCountText.text = string.Format("{0} / 3", goblinCount);
@@ -27,7 +31,15 @@ public class GoblinDeathCount : MonoBehaviour
         this.goblinCountText.text = string.Format("{0} / 3", goblinCount);
         if(goblinCount >= 3)
         {
-            SceneManager.LoadScene("GameClear");
+            missionCompleteText.GetComponent<Text>().text = "Mission Complete";
+            Invoke("ToMission2", 2);
+            // ToMission2();
         }
     }
+
+    void ToMission2()
+	{
+		fadeController.StartFadeOut();
+		fadeController.changeSceneName = "Mission2";
+	}
 }
