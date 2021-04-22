@@ -40,6 +40,9 @@ public class PlayerCtrl : MonoBehaviour
     private float elapsedTime;
     [SerializeField] private float attackTime = 1f;
 
+    // AudioSource audioSource;
+	// public AudioClip runSound;
+
     void Start()
     {
         inputManager = FindObjectOfType<InputManager>();
@@ -48,6 +51,8 @@ public class PlayerCtrl : MonoBehaviour
         velocity = Vector3.zero;
 
         elapsedTime = 0;
+
+        // audioSource = GetComponent<AudioSource>();
     }
 
     void LateUpdate()
@@ -195,6 +200,7 @@ public class PlayerCtrl : MonoBehaviour
         runFlag = true;
         m_walkSpeed = 6.0f;
         animator.SetFloat("Speed", 6.0f);
+        // audioSource.PlayOneShot(runSound);
         }
         else
         {

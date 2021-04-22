@@ -12,6 +12,9 @@ public class CharaAnimation : MonoBehaviour
 
 	GameObject player;
 	PlayerCtrl playerCtrl;
+
+	// AudioSource audioSource;
+	// public AudioClip walkSound; 
 	
 	public bool IsAttacked()
 	{
@@ -39,6 +42,8 @@ public class CharaAnimation : MonoBehaviour
 		status = GetComponent<CharacterStatus>();
 		characterController = GetComponent<CharacterController>();
 		prePosition = transform.position;
+
+		// audioSource = GetComponent<AudioSource>();
 	}
 	
 	void Update ()
@@ -49,6 +54,7 @@ public class CharaAnimation : MonoBehaviour
 			float speedAnimeValue = delta_position.magnitude * 5000.0f;
 			Vector3 horizontalVelocity = characterController.velocity;
 			animator.SetFloat("Speed", horizontalVelocity.magnitude);
+			// audioSource.PlayOneShot(walkSound);
 		// }
 
 

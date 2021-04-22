@@ -32,6 +32,10 @@ public class CharacterStatus : MonoBehaviour
 	public TimerScript timerScript;
   public FadeController fadeController;
 
+	AudioSource audioSource;
+	public AudioClip goblinDamageSound; 
+	public AudioClip wolfDamageSound; 
+
 	void Start()
 	{
 			animator = GetComponent<Animator>();
@@ -39,6 +43,7 @@ public class CharacterStatus : MonoBehaviour
 			this.currentPlayerHp = this.maxPlayerHp;
 			this.playerHPSlider.value = 1;
 			isDead = false;
+			audioSource = GetComponent<AudioSource>();
 	}
 
 	void Update()
@@ -113,6 +118,7 @@ public class CharacterStatus : MonoBehaviour
 				this.hitEffectPos.y += 1.8f;
 				this.transform.position = this.hitEffectPos;
 				GameObject hitEffect = Instantiate(hitEffectPrefab, this.hitEffectPos, Quaternion.identity);
+				audioSource.PlayOneShot(goblinDamageSound);
 			}
 	}
 	void HitWolfFace()
@@ -129,6 +135,7 @@ public class CharacterStatus : MonoBehaviour
 				this.hitEffectPos.y += 1.8f;
 				this.transform.position = this.hitEffectPos;
 				GameObject hitEffect = Instantiate(hitEffectPrefab, this.hitEffectPos, Quaternion.identity);
+				audioSource.PlayOneShot(wolfDamageSound);
 			}
 	}
 	void HitTrollArm()
@@ -145,6 +152,7 @@ public class CharacterStatus : MonoBehaviour
 				this.hitEffectPos.y += 1.8f;
 				this.transform.position = this.hitEffectPos;
 				GameObject hitEffect = Instantiate(hitEffectPrefab, this.hitEffectPos, Quaternion.identity);
+				audioSource.PlayOneShot(goblinDamageSound);
 			}
 	}
 }

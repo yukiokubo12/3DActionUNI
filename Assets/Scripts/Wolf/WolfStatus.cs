@@ -35,6 +35,8 @@ public class WolfStatus : MonoBehaviour
     public AudioClip attackSound;
     public AudioClip deadSound;
 
+    public GameObject SearchAreaForWolf;
+
     void Start()
     {
         animator = GetComponent<Animator>();

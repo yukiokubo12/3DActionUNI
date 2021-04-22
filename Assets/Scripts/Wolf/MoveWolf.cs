@@ -53,10 +53,6 @@ public class MoveWolf : MonoBehaviour
     [SerializeField] private float attackTime = 1f;
 
     public GameObject wolfFace;
-
-
-    // public bool isMove = true;
-
  
     void Start() 
     {
@@ -68,7 +64,6 @@ public class MoveWolf : MonoBehaviour
         arrived = false;
         elapsedTime = 0f;
         SetState(WolfState.Walk);
-        // searchCharacter = GetComponentInParent<SearchCharacter>();
     }
  
     void Update () 
