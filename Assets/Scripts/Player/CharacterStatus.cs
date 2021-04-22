@@ -35,6 +35,7 @@ public class CharacterStatus : MonoBehaviour
 	AudioSource audioSource;
 	public AudioClip goblinDamageSound; 
 	public AudioClip wolfDamageSound; 
+	public AudioClip gameOverSound; 
 
 	void Start()
 	{
@@ -93,6 +94,7 @@ public class CharacterStatus : MonoBehaviour
 			animator.SetTrigger("Death");
 			isDead = true;
 			gameOverText.GetComponent<Text>().text = "Game Over";
+			audioSource.PlayOneShot(gameOverSound);
 			Invoke("ToTitleScene", 3);
 		}
 	}
@@ -143,7 +145,7 @@ public class CharacterStatus : MonoBehaviour
 		if(mutekiFlag == 0 && !isDead)
 			{
 				mutekiFlag = 1;
-				this.damage = 3;
+				this.damage = 15;
 				this.currentPlayerHp -= damage;
 				animator.SetTrigger("Damage");
 

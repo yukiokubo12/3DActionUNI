@@ -17,11 +17,15 @@ public class GoblinDeathCount : MonoBehaviour
 
     public bool isMissionComplete;
 
+    AudioSource audioSource;
+	public AudioClip missionCompleteSound; 
+
     void Start()
     {
         this.goblinCountText.text = string.Format("{0} / 3", goblinCount);
 
         isMissionComplete = false;
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -37,6 +41,7 @@ public class GoblinDeathCount : MonoBehaviour
         {
             isMissionComplete = true;
             missionCompleteText.GetComponent<Text>().text = "Mission Complete";
+            audioSource.PlayOneShot(missionCompleteSound);
             Invoke("ToMission2", 3);
             // ToMission2();
             // SceneManager.LoadScene("Mission2");
