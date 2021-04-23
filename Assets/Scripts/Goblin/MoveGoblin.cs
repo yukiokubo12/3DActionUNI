@@ -101,7 +101,7 @@ public class MoveGoblin : MonoBehaviour
             else if (state == GoblinState.Chase) 
             {
                 //攻撃する距離だったら攻撃
-                if (Vector3.Distance (transform.position, setGoblinPosition.GetDestination ()) < 1.4f) 
+                if (Vector3.Distance (transform.position, setGoblinPosition.GetDestination ()) < 1.0f) 
                 {
                     SetState(GoblinState.Attack);
                 }

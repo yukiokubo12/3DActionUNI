@@ -771,7 +771,6 @@ MonoBehaviour:
     type: 3}
   attackSound: {fileID: 8300000, guid: f57e186ea2a0b485f8cb9b15cf19d7b9, type: 3}
   deadSound: {fileID: 8300000, guid: 6ac705bab72d4409e89b7d1f4c5e3c95, type: 3}
-  SearchAreaForWolf: {fileID: 7585623103491412264}
 --- !u!82 &866267891
 AudioSource:
   m_ObjectHideFlags: 0
