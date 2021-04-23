@@ -11,9 +11,9 @@ public class FootstepSEPlayer : MonoBehaviour
     public string groundTypeTag;
     public AudioClip[] audioClips;
   }
-  // 足音の種類毎にタグ名とオーディオクリップを登録する
+  //足音の種類毎にタグ名とオーディオクリップを登録
   [SerializeField] List<AudioClips> listAudioClips = new List<AudioClips>();
-  // Terrain Layersと足音判定用タグの対応関係を記入する
+  //Terrain Layersと足音判定用タグの対応関係を記入
   [SerializeField] string[] terrainLayerToTag;
   [SerializeField] bool randomizePitch = true;
   [SerializeField] float pitchRange = 0.1f;
@@ -27,7 +27,6 @@ public class FootstepSEPlayer : MonoBehaviour
 
   private void Awake()
   {
-    // アタッチしたオーディオソースのうち1番目を使用する
     source = GetComponents<AudioSource>()[0];
 
     for(int i=0; i<listAudioClips.Count(); ++i)
@@ -36,42 +35,37 @@ public class FootstepSEPlayer : MonoBehaviour
 
   private void Start()
   {
-    // Scene内のTerrainからデータを取得
+    //Scene内のTerrainからデータを取得
     t = Terrain.activeTerrain;
     tData = t.terrainData;
   }
 
   public void RelayedTrigger(Collider other)
   {
-    // あらかじめGameObjectに付けておいた足音判定用のタグを取得する
+    //GameObjectに付けた足音判定用のタグを取得
     if(tagToIndex.ContainsKey(other.gameObject.tag))
       groundIndex = tagToIndex[other.gameObject.tag];
 
     if(other.gameObject.GetInstanceID() == t.gameObject.GetInstanceID())
     {
-      // Terrainから現在地のAlphamapを取得する
+      //Terrainから現在地のAlphamapを取得
       Vector3 position = transform.position - t.transform.position;
       int offsetX = (int)(tData.alphamapWidth * position.x / tData.size.x);
       int offsetZ = (int)(tData.alphamapHeight * position.z / tData.size.z);
       float[,,] alphamaps = tData.GetAlphamaps(offsetX, offsetZ, 1, 1);
-
-      // Alphamap中で成分が最大のTerrainLayerを探す
+      //Alphamap中で成分が最大のTerrainLayerを探す
       float[] weights = alphamaps.Cast<float>().ToArray();
       int terrainLayer = System.Array.IndexOf(weights, weights.Max());
       groundIndex = tagToIndex[terrainLayerToTag[terrainLayer]];
     }
-    // Debug.Log(groundIndex);
   }
 
   public void PlayFootstepSE()
   {
-    // groundIndexで呼び出すオーディオクリップを変える
+    //groundIndexで呼び出すオーディオクリップを変える
     AudioClip[] clips = listAudioClips[groundIndex].audioClips;
-
     if (randomizePitch)
       source.pitch = 1.0f + Random.Range(-pitchRange, pitchRange);
-
-    source.PlayOneShot(clips[Random.Range(0, clips.Length)]);
+      source.PlayOneShot(clips[Random.Range(0, clips.Length)]);
   }
-
 }

@@ -12,12 +12,13 @@ public class AppeaScript : MonoBehaviour
 	[SerializeField] int maxNumOfEnemys;
 	//今何人の敵を出現させたか（総数）
 	private int numberOfEnemys;
-	//待ち時間計測フィールド
+	//待ち時間計測
 	private float elapsedTime;
-
+    //ゴブリン追加
     public GameObject Goblin;
- 
-	void Start () {
+
+	void Start () 
+    {
 		numberOfEnemys = 0;
 		elapsedTime = 0f;
 	}
@@ -25,7 +26,8 @@ public class AppeaScript : MonoBehaviour
     void Update () 
     {
         //出現する最大数を超えてたら出現しない
-        if (numberOfEnemys >= maxNumOfEnemys) {
+        if (numberOfEnemys >= maxNumOfEnemys) 
+        {
             return;
         }
         //経過時間を足す
@@ -35,20 +37,19 @@ public class AppeaScript : MonoBehaviour
         if (elapsedTime > appearNextTime) 
         {
             elapsedTime = 0f;
-    
             AppearEnemy ();
         }
     }
-    //敵出現メソッド
+
+    //敵出現
     void AppearEnemy() 
     {
-	//出現させる敵をランダムに選ぶ
+	//出現させる敵ランダムに選ぶ
 	var randomValue = Random.Range (0, enemys.Length);
-	//敵の向きをランダムに決定
+	//敵の向きランダムに決定
 	var randomRotationY = Random.value * 360f;
- 
+    //ゴブリン生成
 	GameObject.Instantiate (Goblin, transform.position, Quaternion.Euler (0f, randomRotationY, 0f));
-    // Debug.Log("ゴブリン出現");
 	numberOfEnemys++;
 	elapsedTime = 0f;
     }

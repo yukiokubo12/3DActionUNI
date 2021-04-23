@@ -6,17 +6,19 @@ using UnityEngine.UI;
 
 public class FadeController : MonoBehaviour 
 {
- 
-	float fadeSpeed = 0.02f;        //透明度が変わるスピードを管理
-	float red, green, blue, alfa;   //パネルの色、不透明度を管理
- 
-	public bool isFadeOut = false;  //フェードアウト処理の開始、完了を管理するフラグ
-	public bool isFadeIn = false;   //フェードイン処理の開始、完了を管理するフラグ
-	
-	public static bool needFadeIn = false; //次シーンでフェードインが必要か
- 
-	Image fadeImage;                //透明度を変更するパネルのイメージ
-
+	//透明度が変わるスピードを管理
+	float fadeSpeed = 0.02f;        
+	//パネルの色、不透明度を管理
+	float red, green, blue, alfa;   
+  //フェードアウト処理の開始、完了を管理フラグ
+	public bool isFadeOut = false;  
+	//フェードイン処理の開始、完了を管理フラグ
+	public bool isFadeIn = false;   
+	//次シーンでフェードインが必要かどうか
+	public static bool needFadeIn = false; 
+	//透明度を変更するパネルのイメージ
+	Image fadeImage;
+	//シーン名変更
 	public string changeSceneName;
  
 	void Start () 
@@ -26,16 +28,17 @@ public class FadeController : MonoBehaviour
 		green = fadeImage.color.g;
 		blue = fadeImage.color.b;
 		alfa = fadeImage.color.a;
-		if(needFadeIn){
+		if(needFadeIn)
+		{
 			needFadeIn = false;
 			StartFadeIn();
-			Debug.Log("needFadeIn");
 		}
 	}
  
 	void Update () 
 	{
-		if(isFadeIn){
+		if(isFadeIn)
+		{
 			UpdateFadeIn ();
 		}
  
@@ -61,27 +64,26 @@ public class FadeController : MonoBehaviour
  
 	void UpdateFadeIn()
 	{
-		alfa -= fadeSpeed;                //a)不透明度を徐々に下げる
-		SetAlpha ();                      //b)変更した不透明度パネルに反映する
-		if(alfa <= 0)											//c)完全に透明になったら処理を抜ける
+		alfa -= fadeSpeed;                
+		SetAlpha ();                      
+		if(alfa <= 0)											
 		{                    
 			isFadeIn = false;             
-			fadeImage.enabled = false;      //d)パネルの表示をオフにする
+			fadeImage.enabled = false;      
 		}
 	}
  
 	void UpdateFadeOut()
 	{
-		fadeImage.enabled = true;  // a)パネルの表示をオンにする
-		alfa += fadeSpeed;         // b)不透明度を徐々にあげる
-		SetAlpha ();               // c)変更した透明度をパネルに反映する
-		if(alfa >= 1)							 // d)完全に不透明になったら処理を抜ける
+		fadeImage.enabled = true;  
+		alfa += fadeSpeed;         
+		SetAlpha ();               
+		if(alfa >= 1)							 
 		{             
 			isFadeOut = false;
 
 			if(changeSceneName != "")
 			{
-				Debug.Log(changeSceneName + "に遷移します");
 				needFadeIn = true;
 				SceneManager.LoadScene(changeSceneName);
 			}
@@ -97,6 +99,5 @@ public class FadeController : MonoBehaviour
 	{
 		StartFadeOut();
 		changeSceneName = "GameScene 1";
-		// SceneManager.LoadScene("GameScene 1");
 	}
 }

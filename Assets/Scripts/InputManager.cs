@@ -8,7 +8,6 @@ public class InputManager : MonoBehaviour
 	Vector2 delta = Vector2.zero;
 	bool moved = false;
 	Animator animator;
-
 	bool jump = true;
 	bool run = true;
 
@@ -19,34 +18,32 @@ public class InputManager : MonoBehaviour
 		
 	void Update()
 	{		
-		// スライド開始地点.
+		//スライド開始地点
 		if (Input.GetButtonDown("Fire1"))
 			slideStartPosition = GetCursorPosition();
 
-		// 画面の１割以上移動させたらスライド開始と判断する.
-		if (Input.GetButton("Fire1")) {
+		//画面の１割以上移動させたらスライド開始と判断する
+		if (Input.GetButton("Fire1")) 
+		{
 			if (Vector2.Distance(slideStartPosition,GetCursorPosition()) >= (Screen.width * 0.1f))
 				moved = true;
 		}
 		
-		// スライド操作が終了したか.
+		//スライド操作が終了したか
 		if (!Input.GetButtonUp("Fire1") && !Input.GetButton("Fire1"))
-			moved = false; // スライドは終わった.
+			moved = false; //スライドは終わった
 		
-		// 移動量を求める.
+		// 移動量を求める
 		if (moved)
 			delta = GetCursorPosition() - prevPosition;
 		else
 			delta = Vector2.zero;
 		
-		// カーソル位置を更新.
+		//カーソル位置を更新
 		prevPosition = GetCursorPosition();
-
-
-
 	}
 	
-	// クリックされたか.
+	//クリックされたか
 	public bool Clicked()
 	{
 		if (!moved && Input.GetButtonUp("Fire1"))
@@ -55,13 +52,13 @@ public class InputManager : MonoBehaviour
 			return false;
 	}	
 	
-	// スライド時のカーソルの移動量.
+	//スライド時のカーソルの移動量
 	public Vector2 GetDeltaPosition()
 	{
 		return delta;
 	}
 	
-	// スライド中か.
+	//スライド中か
 	public bool Moved()
 	{
 		return moved;
@@ -80,7 +77,8 @@ public class InputManager : MonoBehaviour
 			moved = true;
 		}
 	}
-	//ジャンプボタン
+
+	//ジャンプ
 	public bool JumpButton()
 	{
 		if(Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Jump"))
@@ -89,6 +87,8 @@ public class InputManager : MonoBehaviour
 		}
 		return false;
 	}
+
+	//走る
 	public bool RunButton()
 	{
 		if(Input.GetKey(KeyCode.LeftShift) || Input.GetButton("Run"))
@@ -98,6 +98,7 @@ public class InputManager : MonoBehaviour
 		return false;
 	}
 
+	//攻撃
 	public bool Attack0Button()
 	{
 		if(Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Attack0"))
@@ -106,5 +107,4 @@ public class InputManager : MonoBehaviour
 		}
 		return false;
 	}
-	
 }

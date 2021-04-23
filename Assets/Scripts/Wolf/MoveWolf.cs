@@ -15,15 +15,11 @@ public class MoveWolf : MonoBehaviour
         Freeze
     };
  
-    private CharacterController wolfController;
-    private Animator animator;
     //目的地
     private Vector3 destination;
     //歩く走るスピード
-    [SerializeField]
-    private float walkSpeed = 1.0f;
-    [SerializeField]
-    private float runSpeed = 4.0f;
+    [SerializeField] private float walkSpeed = 1.0f;
+    [SerializeField] private float runSpeed = 4.0f;
     //速度
     private Vector3 velocity;
     //移動方向
@@ -41,17 +37,18 @@ public class MoveWolf : MonoBehaviour
     private WolfState state;
     //プレイヤーTransform
     private Transform playerTransform;
-    
+    //止まる時間
     [SerializeField] private float freezeTime = 0.5f;
-
-    WolfStatus wolfStatus;
     //無敵状態オンオフ用フラグ
     private float mutekiFlag = 0;
-
     //攻撃時間制限
     [SerializeField] private float attackTime = 1f;
-
+    //ウルフアタックポイント（コライダー付いてるところ）
     public GameObject wolfFace;
+
+    private Animator animator;
+    private CharacterController wolfController;
+    WolfStatus wolfStatus;
  
     void Start() 
     {
@@ -143,10 +140,8 @@ public class MoveWolf : MonoBehaviour
                 SetState(WolfState.Dead);
             }
         }
-        
         velocity.y += Physics.gravity.y * Time.deltaTime;
         wolfController.Move (velocity * Time.deltaTime);
-        // Debug.Log(state);
     }
  
     //敵キャラクターの状態変更
@@ -199,7 +194,7 @@ public class MoveWolf : MonoBehaviour
         {
             velocity = Vector3.zero;
         }
-}
+    }
     //敵キャラクターの状態取得
     public WolfState GetState() 
     {

@@ -15,7 +15,7 @@ public class SearchCharacterForWolf : MonoBehaviour
  
     void OnTriggerStay(Collider col) 
     {
-        //プレイヤーを発見
+        //プレイヤーを発見、追いかける
         if (col.tag == "Player") 
         {
             //敵（自分）の状態を取得

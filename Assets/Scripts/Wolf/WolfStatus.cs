@@ -5,35 +5,30 @@ using UnityEngine.UI;
 
 public class WolfStatus : MonoBehaviour
 {
-    private Animator animator;
     //体力
     private int maxWolfHp;
     public int currentWolfHp;
-
     public int damage;
     //死んでるかどうか
     private bool isDead;
-
     //HPスライダー管理
     public Slider wolfHPSlider;
-
+    //血エフェクト
     public GameObject hitEffectPrefab;
     private Vector3 hitEffectPos;
-
     //無敵時間作成
     public float mutekiFlag = 0;
     [SerializeField] float m_mutekiTime = 1.0f;
     float m_mutekiTimer;
-
+    //回復アイテム
     public GameObject HealItemPrefab;
-
-    MoveWolf moveWolf;
-
+    //サウンド
     private AudioSource audioSource;
     public AudioClip attackSound;
     public AudioClip deadSound;
 
-    public GameObject SearchAreaForWolf;
+    MoveWolf moveWolf;
+    private Animator animator;
 
     void Start()
     {
@@ -63,7 +58,7 @@ public class WolfStatus : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        //プレイヤーの剣に当たったら
+        //プレイヤーの剣に当たったらダメージ受ける
         if(other.gameObject.tag == "Sword")
         {
             //無敵時間解除
@@ -81,11 +76,10 @@ public class WolfStatus : MonoBehaviour
                 audioSource.PlayOneShot(attackSound);
             }
         }
-        //HPが0以下になったら
+        //HPが0以下になったら死亡
         if(this.currentWolfHp <= 0 && this.isDead == false)
         {
             animator.SetTrigger("Dead");
-            Debug.Log("ウルフ死亡アニメーション");
             Invoke("DestroyWolf", 2);
             this.isDead = true;
             moveWolf.SetState(MoveWolf.WolfState.Dead);
@@ -98,7 +92,6 @@ public class WolfStatus : MonoBehaviour
     {
         this.gameObject.SetActive(false);
         var wolfDeathCount = GameObject.Find("WolfCountText");
-        // wolfDeathCount.GetComponent<WolfDeathCount>().CountWolf(1);
         if(Random.Range(0, 2) == 0)
         {
             GameObject healItem = Instantiate(HealItemPrefab, this.transform.position, Quaternion.identity);

@@ -14,52 +14,34 @@ public class PlayerCtrl : MonoBehaviour
         Normal
     };
 
-    private MyState state;
+    //プレイヤー移動
     private Vector3 velocity;
-    private Animator animator;
-
-
     const float RayCastMaxDistance = 100.0f;
     InputManager inputManager;
     [SerializeField] float m_walkSpeed = 3f;
     [SerializeField] float m_rotateSpeed = 10f;
-    CharacterController characterController= null;
     float m_verticalVelocity = 0f;
-
-    // [SerializeField] private float jumpPower = 5f;
     private Vector3 moveDirection;
-
     //走る処理
     [SerializeField] float m_runSpeed = 6.0f;
     private bool runFlag = false;
-
-    // AttackWolf attackWolf;
-
-    public GameObject playerSword;
-
+    //攻撃時間制限
     private float elapsedTime;
     [SerializeField] private float attackTime = 1f;
+    //プレイヤー攻撃ポイント（コライダーつけているところ）
+    public GameObject playerSword;
 
-    // AudioSource audioSource;
-	// public AudioClip runSound;
+    CharacterController characterController = null;
+    private MyState state;
+    private Animator animator;
 
     void Start()
     {
-        inputManager = FindObjectOfType<InputManager>();
         characterController = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
+        inputManager = FindObjectOfType<InputManager>();
         velocity = Vector3.zero;
-
         elapsedTime = 0;
-
-        // audioSource = GetComponent<AudioSource>();
-    }
-
-    void LateUpdate()
-    {
-        animator.SetBool("Jump", false);
-        // animator.SetBool("Attack", false);
-        state = MyState.Idle;
     }
 
     void Update()
@@ -71,11 +53,6 @@ public class PlayerCtrl : MonoBehaviour
             Running();
             Jumping();
             Attacking0();
-        }
-        //攻撃の場合
-        else if(state == MyState.Attack0)
-        {
-            // Attacking0();
         }
         //ジャンプ状態の場合
         else if(state == MyState.Jump)
@@ -90,6 +67,13 @@ public class PlayerCtrl : MonoBehaviour
         PlayerMove();
     }
 
+    void LateUpdate()
+    {
+        animator.SetBool("Jump", false);
+        state = MyState.Idle;
+    }
+
+    //プレイヤー移動
     void PlayerMove()
     {
         float v = Input.GetAxisRaw("Vertical");
@@ -153,20 +137,9 @@ public class PlayerCtrl : MonoBehaviour
         {
             Walking();
         }
-
-        // else if(state == MyState.Attack0)
-        // {
-        //     elapsedTime = 0f;
-        //     animator.SetFloat("Speed", 0f);
-        //     animator.SetBool("Attack", true);
-        //     state = MyState.Attack0;
-        // }
-        // else if(state == MyState.Idle)
-        // {
-        //     elapsedTime = 0f;
-        //     animator.SetFloat("Speed", 0f);
-        // }
     }
+
+    //歩いているとき
     void Walking()
     {
         if (inputManager.Clicked())
@@ -174,34 +147,32 @@ public class PlayerCtrl : MonoBehaviour
             Vector2 clickPos = inputManager.GetCursorPosition();
             // RayCastで対象物を調べる.
             Ray ray = Camera.main.ScreenPointToRay(clickPos);
-            RaycastHit hitInfo;
-
-            // if (Physics.Raycast(ray, out hitInfo, RayCastMaxDistance, 1 << LayerMask.NameToLayer("Ground")))
-            // {
-            //     SendMessage("SetDestination", hitInfo.point);
-            // }
+            // RaycastHit hitInfo;
         }
     }
 
+    //ジャンプのとき
     public void Jumping()
     {
         if(inputManager.JumpButton())
         {
             animator.SetTrigger("Jump");
             state = MyState.Jump;
-            // velocity.y = jumpPower;
         }
     }
+
+    //走るとき
     public void Running()
     {
+        //走るボタンが押されたら、スピードとアニメーション変化
         if(inputManager.RunButton())
         {
         state = MyState.Run;
         runFlag = true;
         m_walkSpeed = 6.0f;
         animator.SetFloat("Speed", 6.0f);
-        // audioSource.PlayOneShot(runSound);
         }
+        //それ以外は歩くスピードで
         else
         {
             runFlag = false;
@@ -209,6 +180,7 @@ public class PlayerCtrl : MonoBehaviour
         }
     }
 
+    //攻撃のとき
     public void Attacking0()
     {
         if(inputManager.Attack0Button())
@@ -221,17 +193,6 @@ public class PlayerCtrl : MonoBehaviour
         {
             animator.SetBool("Attack0", false);
         }
-    }
-
-    public void TakeDamage(Transform enemyTransform) 
-    {
-        // if(AttackWolf.m_anim.SetTrigger("AttackTrigger"))
-        // {
-            state = MyState.Damage;
-            velocity = Vector3.zero;
-            animator.SetTrigger("Damage");
-        // }
-    //	characterController.Move (enemyTransform.forward * 0.5f);
     }
 }
 

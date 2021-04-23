@@ -5,43 +5,38 @@ using UnityEngine.UI;
 
 public class TrollStatus : MonoBehaviour
 {
-    private Animator animator;
     //体力
     private int maxTrollHp;
     public int currentTrollHp;
-
     public int damage;
     //死んでるかどうか
     private bool isDead;
-
     //HPスライダー管理
     public Slider trollHPSlider;
-
+    //血エフェクト
     public GameObject hitEffectPrefab;
     private Vector3 hitEffectPos;
-
     //無敵時間作成
     public float mutekiFlag = 0;
     [SerializeField] float m_mutekiTime = 1f;
     float m_mutekiTimer;
-
-    // public GameObject HealItemPrefab;
-
-    MoveTroll moveTroll;
-
+    //サウンド
     private AudioSource audioSource;
     public AudioClip attackSound;
     public AudioClip deadSound;
+
+    MoveTroll moveTroll;
+    private Animator animator;
 
     void Start()
     {
         animator = GetComponent<Animator>();
         moveTroll = GetComponent<MoveTroll>();
+        audioSource = GetComponent<AudioSource>();
         this.maxTrollHp = 150;
         this.currentTrollHp = this.maxTrollHp;
         this.trollHPSlider.value = 1;
         isDead = false;
-        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -61,7 +56,7 @@ public class TrollStatus : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        //プレイヤーの剣に当たったら
+        //プレイヤーの剣に当たったらダメージ受ける
         if(other.gameObject.tag == "Sword")
         {
             //無敵時間解除
@@ -79,7 +74,7 @@ public class TrollStatus : MonoBehaviour
                 audioSource.PlayOneShot(attackSound);
             }
         }
-        //HPが0以下になったら
+        //HPが0以下になったら倒れる
         if(this.currentTrollHp <= 0 && isDead == false)
         {
             animator.SetTrigger("Dead");
@@ -90,15 +85,10 @@ public class TrollStatus : MonoBehaviour
         }
     }
  
-    //ゴブリン消滅させ、アイテム出す
+    //ゴブリン消滅
     public void DestroyTroll()
     {
         this.gameObject.SetActive(false);
         var tollDeathCount = GameObject.Find("TrollCountText");
-        // trollDeathCount.GetComponent<TrollDeathCount>().CountTroll(1);
-        if(Random.Range(0, 2) == 0)
-        {
-            // GameObject healItem = Instantiate(HealItemPrefab, this.transform.position, Quaternion.identity);
-        }
     }
 }

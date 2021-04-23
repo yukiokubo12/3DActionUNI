@@ -14,16 +14,14 @@ public class MoveGoblin : MonoBehaviour
         Dead,
         Freeze
     };
- 
+    
+    //キャラクターコントローラー
     private CharacterController goblinController;
-    private Animator animator;
     //目的地
     private Vector3 destination;
     //歩くスピード
-    [SerializeField]
-    private float walkSpeed = 1.0f;
-    [SerializeField]
-    private float runSpeed = 2.0f;
+    [SerializeField] private float walkSpeed = 1.0f;
+    [SerializeField] private float runSpeed = 2.0f;
     //速度
     private Vector3 velocity;
     //移動方向
@@ -32,28 +30,25 @@ public class MoveGoblin : MonoBehaviour
     private bool arrived;
     //setGoblinPositionスクリプト
     private SetGoblinPosition setGoblinPosition;
-    //待ち時間
-    [SerializeField]
-    private float waitTime = 5f;
+    //攻撃待ち時間
+    [SerializeField] private float waitTime = 5f;
     //経過時間
     private float elapsedTime;
     //敵の状態
     private GoblinState state;
     //プレイヤーTransform
     private Transform playerTransform;
-    
-    // private SearchCharacter searchCharacter;
+    //止まる時間
     [SerializeField] private float freezeTime = 0.5f;
-
-    GoblinStatus goblinStatus;
     //無敵状態オンオフ用フラグ
     private float mutekiFlag = 0;
-
     //攻撃時間制限
     [SerializeField] private float attackTime = 1f;
-
+    //攻撃ポイント（コライダー付いてるところ）
     public GameObject goblinHand;
 
+    GoblinStatus goblinStatus;
+    private Animator animator;
  
     void Start() 
     {
@@ -65,7 +60,6 @@ public class MoveGoblin : MonoBehaviour
         arrived = false;
         elapsedTime = 0f;
         SetState(GoblinState.Walk);
-        // searchCharacter = GetComponentInParent<SearchCharacter>();
     }
  
     void Update () 
@@ -73,21 +67,23 @@ public class MoveGoblin : MonoBehaviour
         //見回りまたはキャラクターを追いかける状態
         if (state == GoblinState.Walk || state == GoblinState.Chase) 
         {
-            // isMove = true;
             //キャラクターを追いかける状態であればキャラクターの目的地を再設定
             if (state == GoblinState.Chase) 
             {
                 setGoblinPosition.SetDestination (playerTransform.position);
             }
+            //地面と接触している状態
             if (goblinController.isGrounded) 
             {
                 velocity = Vector3.zero;
                 direction = (setGoblinPosition.GetDestination () - transform.position).normalized;
                 transform.LookAt (new Vector3 (setGoblinPosition.GetDestination ().x, transform.position.y, setGoblinPosition.GetDestination ().z));
+                //歩行状態
                 if(state == GoblinState.Walk)
                 {
                     velocity = direction * walkSpeed;
                 }
+                //走行状態
                 else
                 {
                     velocity = direction * runSpeed;
@@ -115,7 +111,7 @@ public class MoveGoblin : MonoBehaviour
         else if (state == GoblinState.Wait) 
         {
             elapsedTime += Time.deltaTime;
-    
+
             //待ち時間を越えたら次の目的地を設定
             if (elapsedTime > waitTime) 
             {
@@ -147,7 +143,6 @@ public class MoveGoblin : MonoBehaviour
                 SetState(GoblinState.Dead);
             }
         }
-        
         velocity.y += Physics.gravity.y * Time.deltaTime;
         goblinController.Move (velocity * Time.deltaTime);
     }
@@ -202,7 +197,7 @@ public class MoveGoblin : MonoBehaviour
         {
             velocity = Vector3.zero;
         }
-}
+    }
     //敵キャラクターの状態取得
     public GoblinState GetState() 
     {

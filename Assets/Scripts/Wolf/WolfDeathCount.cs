@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class WolfDeathCount : MonoBehaviour
 {
+    //ウルフが死んだ数数える（必要あればつかう）
     public Text wolfCountText;
     private int wolfCount = 0;
     public GameObject wolf;

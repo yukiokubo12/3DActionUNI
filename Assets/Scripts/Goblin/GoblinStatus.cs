@@ -9,39 +9,36 @@ public class GoblinStatus : MonoBehaviour
     //体力
     private int maxGoblinHp;
     public int currentGoblinHp;
-
     public int damage;
     //死んでるかどうか
     private bool isDead;
-
     //HPスライダー管理
     public Slider goblinHPSlider;
-
+    //血エフェクト
     public GameObject hitEffectPrefab;
     private Vector3 hitEffectPos;
-
     //無敵時間作成
     public float mutekiFlag = 0;
     [SerializeField] float m_mutekiTime = 1f;
     float m_mutekiTimer;
-
+    //回復アイテム
     public GameObject HealItemPrefab;
-
-    MoveGoblin moveGoblin;
-
+    //サウンド
     AudioSource audioSource;
     public AudioClip attackSound; 
     public AudioClip deadSound; 
+
+    MoveGoblin moveGoblin;
 
     void Start()
     {
         animator = GetComponent<Animator>();
         moveGoblin = GetComponent<MoveGoblin>();
+        audioSource = GetComponent<AudioSource>();
         this.maxGoblinHp = 30;
         this.currentGoblinHp = this.maxGoblinHp;
         this.goblinHPSlider.value = 1;
         isDead = false;
-        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -64,7 +61,7 @@ public class GoblinStatus : MonoBehaviour
         //プレイヤーの剣に当たったら
         if(other.gameObject.tag == "Sword")
         {
-            //無敵時間解除
+            //無敵時間解除、ダメージくらう
             if(mutekiFlag == 0 && !isDead)
             {
                 mutekiFlag = 1;
@@ -79,7 +76,7 @@ public class GoblinStatus : MonoBehaviour
                 audioSource.PlayOneShot(attackSound);
             }
         }
-        //HPが0以下になったら
+        //HPが0以下になったら倒れる
         if(this.currentGoblinHp <= 0 && isDead == false)
         {
             animator.SetTrigger("Dead");

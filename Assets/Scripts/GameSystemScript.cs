@@ -6,32 +6,26 @@ using UnityEngine.SceneManagement;
 
 public class GameSystemScript : MonoBehaviour
 {
-
-    public Button nextMissionButton;
-    public Text clearText;
-
-    // ボタンをインスペクタからアタッチする場合
+    //操作説明ボタン、テキスト
     public Button howToPlayButton;
     public GameObject howToPlayText;
-
+    //ミッション説明ボタン、テキスト
     public Button missionButton;
     public GameObject missionText;
+    //ミッション用タイマー
     public GameObject timerText;
     // 表示中かどうかのステート
     private bool isDisplay = false;
     // 外部から表示中かどうかを見たい場合のため用意
     public bool IsDisplay => isDisplay;
-
+    //ミッション内容をシーンによって変更
     [SerializeField] string m_missionDescription = "ミッション内容を設定する";
-
-    public FadeController fadeController;
 
     private void Start()
     {
         // ボタンをアタッチしている場合は押したらトグルが呼ばれるようにする
         howToPlayButton?.onClick.AddListener(ToggleHowToText);
         missionButton?.onClick.AddListener(ToggleMissionText);
-        
     }
     // ボタンが押された際に呼ばれる
     public void ToggleHowToText()
@@ -61,49 +55,45 @@ public class GameSystemScript : MonoBehaviour
             ShowTimerText();
         }
     }
-    //表示, 非表示のボタンを結局別で用意することになった場合のため、public
+
+    //操作説明テキスト表示
     public void ShowHowToText()
     {
         howToPlayText.GetComponent<Text>().text = "[キーパッド]\n←↑→ 移動\nShift 走る\nSpace ジャンプ\nE 攻撃\n\n[ゲームパッド]\n左スティック 移動\n右スティック カメラ操作\nL2 走る\n☓ ジャンプ\n○ 攻撃";
         isDisplay = true;
     }
+
+    //操作説明テキスト非表示
     public void HideHowToText()
     {
-       // 非表示時中は何も入れない
        howToPlayText.GetComponent<Text>().text = "";
        isDisplay = false;
     }
+
+    //ミッションテキスト表示
     public void ShowMissionText()
     {
-        // missionText.GetComponent<Text>().text = "敵を５体倒せ";
         missionText.GetComponent<Text>().text = m_missionDescription;
-        // missionText.GetComponent<Text>().text = "3分以内にゴブリンを５体倒せ";
         isDisplay = true;
     }
+
+    //ミッションテキスト非表示
     public void HideMissionText()
     {
-       // 非表示時中は何も入れない
        missionText.GetComponent<Text>().text = "";
        isDisplay = false;
     }
+
+    //ミッション用タイマー表示
     public void ShowTimerText()
     {
         timerText.GetComponent<Text>();
         isDisplay = true;
     }
-    // public void HideTimerText()
-    // {
-    //    timerText.GetComponent<Text>().text = "";
-    //    isDisplay = false;
-    // }
 
+    //ミッション２シーンへ遷移
     public void ToGameMission2()
     {
         SceneManager.LoadScene("Mission2");
     }
-
-    // public void ToGameScene1()
-    // {
-    //     SceneManager.LoadScene("GameScene 1");
-    // }
 }

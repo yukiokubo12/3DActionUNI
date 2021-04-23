@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//コライダーオンオフで攻撃制御
 public class ProcessCharaAnimEvent : MonoBehaviour
 {
     private PlayerCtrl playerCtrl;

@@ -15,15 +15,11 @@ public class MoveTroll : MonoBehaviour
         Freeze
     };
  
-    private CharacterController trollController;
-    private Animator animator;
     //目的地
     private Vector3 destination;
     //歩くスピード
-    [SerializeField]
-    private float walkSpeed = 0.5f;
-    [SerializeField]
-    private float runSpeed = 1.5f;
+    [SerializeField] private float walkSpeed = 0.5f;
+    [SerializeField] private float runSpeed = 1.5f;
     //速度
     private Vector3 velocity;
     //移動方向
@@ -33,29 +29,26 @@ public class MoveTroll : MonoBehaviour
     //setTrollPositionスクリプト
     private SetTrollPosition setTrollPosition;
     //待ち時間
-    [SerializeField]
-    private float waitTime = 2f;
+    [SerializeField] private float waitTime = 2f;
     //経過時間
     private float elapsedTime;
     //敵の状態
     private TrollState state;
     //プレイヤーTransform
     private Transform playerTransform;
-    
+    //止まる時間
     [SerializeField] private float freezeTime = 0.5f;
-
-    TrollStatus TrollStatus;
     //無敵状態オンオフ用フラグ
     private float mutekiFlag = 0;
-
     //攻撃時間制限
     [SerializeField] private float attackTime = 1f;
-
+    //トロールアタックポイント（コライダーついてるところ）
     public GameObject trollHand;
 
-    // private AudioSource audioSource;
-    // public AudioClip trollAttackSound;
-    
+    private Animator animator;
+    private CharacterController trollController;
+    TrollStatus TrollStatus;
+
     void Start() 
     {
         trollController = GetComponent<CharacterController>();
@@ -66,7 +59,6 @@ public class MoveTroll : MonoBehaviour
         arrived = false;
         elapsedTime = 0f;
         SetState(TrollState.Walk);
-        // audioSource = GetComponent<AudioSource>();
     }
  
     void Update () 
@@ -74,12 +66,12 @@ public class MoveTroll : MonoBehaviour
         //見回りまたはキャラクターを追いかける状態
         if (state == TrollState.Walk || state == TrollState.Chase) 
         {
-            // isMove = true;
             //キャラクターを追いかける状態であればキャラクターの目的地を再設定
             if (state == TrollState.Chase) 
             {
                 setTrollPosition.SetDestination (playerTransform.position);
             }
+            //地面ついてる状態
             if (trollController.isGrounded) 
             {
                 velocity = Vector3.zero;
@@ -128,7 +120,6 @@ public class MoveTroll : MonoBehaviour
             elapsedTime += Time.deltaTime;
             if(elapsedTime > attackTime)
             {
-                // audioSource.PlayOneShot(trollAttackSound);
                 SetState(TrollState.Freeze);
             }
         }
@@ -149,7 +140,6 @@ public class MoveTroll : MonoBehaviour
                 SetState(TrollState.Dead);
             }
         }
-        
         velocity.y += Physics.gravity.y * Time.deltaTime;
         trollController.Move (velocity * Time.deltaTime);
     }
@@ -204,7 +194,7 @@ public class MoveTroll : MonoBehaviour
         {
             velocity = Vector3.zero;
         }
-}
+    }
     //敵キャラクターの状態取得
     public TrollState GetState() 
     {

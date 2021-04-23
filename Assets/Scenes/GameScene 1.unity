@@ -1388,7 +1388,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 435318407}
-  m_LocalRotation: {x: 0.13860871, y: 0.52920675, z: -0.08811722, w: 0.83244413}
+  m_LocalRotation: {x: 0.1386087, y: 0.5292067, z: -0.08811721, w: 0.8324442}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2407,8 +2407,8 @@ MonoBehaviour:
   m_walkSpeed: 3
   m_rotateSpeed: 10
   m_runSpeed: 6
-  playerSword: {fileID: 1635558946}
   attackTime: 2
+  playerSword: {fileID: 1635558946}
 --- !u!114 &758574414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2448,12 +2448,12 @@ MonoBehaviour:
   hitEffectPrefab: {fileID: 100006, guid: bc015426619ef584fbdac5a0359c7a98, type: 3}
   healEffectPrefab: {fileID: 100010, guid: 2f18c32efccdebe42b56f6de27c8c92e, type: 3}
   isDead: 0
-  gameOverText: {fileID: 413377529}
-  timerScript: {fileID: 151625482}
-  fadeController: {fileID: 2137151886}
   goblinDamageSound: {fileID: 8300000, guid: 97b3dd14e9b874770b779343c942c08c, type: 3}
   wolfDamageSound: {fileID: 8300000, guid: 6238dc39135a1431eb8fa5d0b3794336, type: 3}
   gameOverSound: {fileID: 8300000, guid: 7d65b5015645e4749b8e4a3005ebc042, type: 3}
+  gameOverText: {fileID: 413377529}
+  timerScript: {fileID: 151625482}
+  fadeController: {fileID: 2137151886}
 --- !u!114 &758574416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4988,7 +4988,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1674905815}
-  - component: {fileID: 1674905814}
   m_Layer: 0
   m_Name: Camera Switcher
   m_TagString: Untagged
@@ -4996,22 +4995,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1674905814
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1674905813}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 576e7fb1bd5be37488edb04f1533328a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_switchButton: Cancel
-  m_virtualCameras:
-  - {fileID: 1956291120}
-  - {fileID: 0}
 --- !u!4 &1674905815
 Transform:
   m_ObjectHideFlags: 0
@@ -5055,15 +5038,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90e2aa570dd494b8ebb474047a41ed81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextMissionButton: {fileID: 0}
-  clearText: {fileID: 0}
   howToPlayButton: {fileID: 1103484452}
   howToPlayText: {fileID: 1517814381}
   missionButton: {fileID: 1476253057}
   missionText: {fileID: 328315705}
   timerText: {fileID: 151625478}
   m_missionDescription: "3\u5206\u4EE5\u5185\u306B\u30B4\u30D6\u30EA\u30F3\u3092\uFF13\u4F53\u5012\u305B"
-  fadeController: {fileID: 0}
 --- !u!4 &1691826723
 Transform:
   m_ObjectHideFlags: 0
@@ -5532,7 +5512,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 0/3
+  m_Text: 
 --- !u!222 &1892644527
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5554,7 +5534,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goblinCountText: {fileID: 1892644526}
-  Goblin: {fileID: 0}
   fadeController: {fileID: 2137151886}
   missionCompleteText: {fileID: 1343728459}
   isMissionComplete: 0
