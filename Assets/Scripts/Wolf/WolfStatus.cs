@@ -9,8 +9,6 @@ public class WolfStatus : MonoBehaviour
     //体力
     private int maxWolfHp;
     public int currentWolfHp;
-    //攻撃力
-    private int attack = 5;
 
     public int damage;
     //死んでるかどうか

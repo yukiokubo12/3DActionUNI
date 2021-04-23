@@ -12,6 +12,7 @@ TagManager:
   - BaseGround
   - Troll
   - TrollArm
+  - HealItem
   layers:
   - Default
   - TransparentFX

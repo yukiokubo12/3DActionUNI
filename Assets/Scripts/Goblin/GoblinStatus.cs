@@ -9,8 +9,6 @@ public class GoblinStatus : MonoBehaviour
     //体力
     private int maxGoblinHp;
     public int currentGoblinHp;
-    //攻撃力
-    private int attack = 5;
 
     public int damage;
     //死んでるかどうか

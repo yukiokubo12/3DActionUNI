@@ -25828,8 +25828,7 @@ MonoBehaviour:
   currentGoblinHp: 0
   damage: 0
   goblinHPSlider: {fileID: 1820560616}
-  hitEffectPrefab: {fileID: 433408104471584020, guid: cba92e56a1ec346079f3263c2689037c,
-    type: 3}
+  hitEffectPrefab: {fileID: 100006, guid: bc015426619ef584fbdac5a0359c7a98, type: 3}
   mutekiFlag: 0
   m_mutekiTime: 1
   HealItemPrefab: {fileID: 6559741032852497018, guid: 2841f1fca7157469db361a95018d4021,

@@ -9,8 +9,6 @@ public class TrollStatus : MonoBehaviour
     //体力
     private int maxTrollHp;
     public int currentTrollHp;
-    //攻撃力
-    private int attack = 5;
 
     public int damage;
     //死んでるかどうか
@@ -27,7 +25,7 @@ public class TrollStatus : MonoBehaviour
     [SerializeField] float m_mutekiTime = 1f;
     float m_mutekiTimer;
 
-    public GameObject HealItemPrefab;
+    // public GameObject HealItemPrefab;
 
     MoveTroll moveTroll;
 
@@ -39,7 +37,7 @@ public class TrollStatus : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         moveTroll = GetComponent<MoveTroll>();
-        this.maxTrollHp = 30;
+        this.maxTrollHp = 150;
         this.currentTrollHp = this.maxTrollHp;
         this.trollHPSlider.value = 1;
         isDead = false;
@@ -100,7 +98,7 @@ public class TrollStatus : MonoBehaviour
         // trollDeathCount.GetComponent<TrollDeathCount>().CountTroll(1);
         if(Random.Range(0, 2) == 0)
         {
-            GameObject healItem = Instantiate(HealItemPrefab, this.transform.position, Quaternion.identity);
+            // GameObject healItem = Instantiate(HealItemPrefab, this.transform.position, Quaternion.identity);
         }
     }
 }

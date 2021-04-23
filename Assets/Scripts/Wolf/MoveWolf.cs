@@ -19,11 +19,11 @@ public class MoveWolf : MonoBehaviour
     private Animator animator;
     //目的地
     private Vector3 destination;
-    //歩くスピード
+    //歩く走るスピード
     [SerializeField]
     private float walkSpeed = 1.0f;
     [SerializeField]
-    private float runSpeed = 2.0f;
+    private float runSpeed = 4.0f;
     //速度
     private Vector3 velocity;
     //移動方向
@@ -34,7 +34,7 @@ public class MoveWolf : MonoBehaviour
     private SetWolfPosition setWolfPosition;
     //待ち時間
     [SerializeField]
-    private float waitTime = 5f;
+    private float waitTime = 2.5f;
     //経過時間
     private float elapsedTime;
     //敵の状態
@@ -42,7 +42,6 @@ public class MoveWolf : MonoBehaviour
     //プレイヤーTransform
     private Transform playerTransform;
     
-    // private SearchCharacter searchCharacter;
     [SerializeField] private float freezeTime = 0.5f;
 
     WolfStatus wolfStatus;

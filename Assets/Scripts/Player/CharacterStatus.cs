@@ -20,7 +20,9 @@ public class CharacterStatus : MonoBehaviour
 
 	//HPスライダー管理
 	public Slider playerHPSlider;
+
 	public GameObject hitEffectPrefab;
+	public GameObject healEffectPrefab;
 
 	//エフェクト位置管理
 	private Vector3 hitEffectPos;
@@ -40,7 +42,7 @@ public class CharacterStatus : MonoBehaviour
 	void Start()
 	{
 			animator = GetComponent<Animator>();
-			this.maxPlayerHp = 30;
+			this.maxPlayerHp = 50;
 			this.currentPlayerHp = this.maxPlayerHp;
 			this.playerHPSlider.value = 1;
 			isDead = false;
@@ -88,6 +90,10 @@ public class CharacterStatus : MonoBehaviour
 		{
 			HitTrollArm();
 		}
+		if(other.gameObject.tag == "HealItem")
+		{
+			GameObject healEffect = Instantiate(healEffectPrefab, this.transform.position, Quaternion.identity);
+		}
 
 		if(this.currentPlayerHp <= 0 && isDead == false || timerScript.totalTime <= 0f)
 		{
@@ -111,7 +117,7 @@ public class CharacterStatus : MonoBehaviour
 		if(mutekiFlag == 0 && !isDead)
 			{
 				mutekiFlag = 1;
-				this.damage = 5;
+				this.damage = 8;
 				this.currentPlayerHp -= damage;
 				animator.SetTrigger("Damage");
 
@@ -128,7 +134,7 @@ public class CharacterStatus : MonoBehaviour
 		if(mutekiFlag == 0 && !isDead)
 			{
 				mutekiFlag = 1;
-				this.damage = 3;
+				this.damage = 5;
 				this.currentPlayerHp -= damage;
 				animator.SetTrigger("Damage");
 

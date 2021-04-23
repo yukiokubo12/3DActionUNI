@@ -1851,8 +1851,8 @@ CharacterController:
   serializedVersion: 2
   m_Height: 22.68
   m_Radius: 5.2
-  m_SlopeLimit: 0
-  m_StepOffset: 0.001
+  m_SlopeLimit: 5
+  m_StepOffset: 0.1
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 11.35, z: 0}
@@ -1903,11 +1903,9 @@ MonoBehaviour:
   currentTrollHp: 0
   damage: 0
   trollHPSlider: {fileID: 1687960678128443533}
-  hitEffectPrefab: {fileID: 433408104471584020, guid: cba92e56a1ec346079f3263c2689037c,
-    type: 3}
+  hitEffectPrefab: {fileID: 100006, guid: bc015426619ef584fbdac5a0359c7a98, type: 3}
   mutekiFlag: 0
   m_mutekiTime: 1
-  HealItemPrefab: {fileID: 0}
   attackSound: {fileID: 8300000, guid: f57e186ea2a0b485f8cb9b15cf19d7b9, type: 3}
   deadSound: {fileID: 8300000, guid: 57557a5f2f75943b099c60613cf8a802, type: 3}
 --- !u!114 &1687960677498330381
