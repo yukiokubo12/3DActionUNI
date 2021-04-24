@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class GoblinStatus : MonoBehaviour 
 {
-    private Animator animator;
     //体力
     private int maxGoblinHp;
     public int currentGoblinHp;
@@ -29,6 +28,7 @@ public class GoblinStatus : MonoBehaviour
     public AudioClip deadSound; 
 
     MoveGoblin moveGoblin;
+    private Animator animator;
 
     void Start()
     {

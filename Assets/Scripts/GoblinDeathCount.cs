@@ -8,7 +8,7 @@ public class GoblinDeathCount : MonoBehaviour
 {
     //倒したゴブリンの数表示
     public Text goblinCountText;
-    private int goblinCount = 0;
+    public int goblinCount = 0;
 
     GoblinStatus goblinStatus;
     public FadeController fadeController;
@@ -18,6 +18,8 @@ public class GoblinDeathCount : MonoBehaviour
     //ミッション達成サウンド
     AudioSource audioSource;
 	public AudioClip missionCompleteSound; 
+
+    private GameObject[] wolf;
 
     void Start()
     {
@@ -36,8 +38,9 @@ public class GoblinDeathCount : MonoBehaviour
     {   
         this.goblinCount = goblinCount + addGoblin;
         this.goblinCountText.text = string.Format("{0} / 3", goblinCount);
+        wolf = GameObject.FindGameObjectsWithTag("Wolf");
         //倒したゴブリンの数3以上なら次のミッションへ遷移
-        if(goblinCount >= 3 && isMissionComplete == false)
+        if(goblinCount >= 3 && wolf.Length == 0 && isMissionComplete == false)
         {
             isMissionComplete = true;
             missionCompleteText.GetComponent<Text>().text = "Mission Complete";

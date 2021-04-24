@@ -24,6 +24,7 @@ public class TrollStatus : MonoBehaviour
     private AudioSource audioSource;
     public AudioClip attackSound;
     public AudioClip deadSound;
+    // public AudioClip vsTrollSound;
 
     MoveTroll moveTroll;
     private Animator animator;
@@ -33,7 +34,7 @@ public class TrollStatus : MonoBehaviour
         animator = GetComponent<Animator>();
         moveTroll = GetComponent<MoveTroll>();
         audioSource = GetComponent<AudioSource>();
-        this.maxTrollHp = 150;
+        this.maxTrollHp = 30;
         this.currentTrollHp = this.maxTrollHp;
         this.trollHPSlider.value = 1;
         isDead = false;
@@ -89,6 +90,7 @@ public class TrollStatus : MonoBehaviour
     public void DestroyTroll()
     {
         this.gameObject.SetActive(false);
-        var tollDeathCount = GameObject.Find("TrollCountText");
+        var trollDeathCount = GameObject.Find("TrollCountText");
+        trollDeathCount.GetComponent<TrollDeathCount>().CountTroll(1);
     }
 }

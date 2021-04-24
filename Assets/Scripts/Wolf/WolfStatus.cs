@@ -92,6 +92,7 @@ public class WolfStatus : MonoBehaviour
     {
         this.gameObject.SetActive(false);
         var wolfDeathCount = GameObject.Find("WolfCountText");
+        wolfDeathCount.GetComponent<WolfDeathCount>().CountWolf(1);
         if(Random.Range(0, 2) == 0)
         {
             GameObject healItem = Instantiate(HealItemPrefab, this.transform.position, Quaternion.identity);
