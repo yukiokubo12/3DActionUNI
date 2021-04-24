@@ -2711,14 +2711,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 808937300, guid: c32b82897cb9c4161ace400facf6ab2e, type: 3}
-      propertyPath: Loop
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 808937300, guid: c32b82897cb9c4161ace400facf6ab2e, type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 50aa63c8da976411e8c736147f6311a4, type: 3}
     - target: {fileID: 1687960677568995855, guid: c32b82897cb9c4161ace400facf6ab2e,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -2728,11 +2720,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1687960678581217258, guid: c32b82897cb9c4161ace400facf6ab2e,
-        type: 3}
-      propertyPath: m_CollisionDetection
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1687960678586386274, guid: c32b82897cb9c4161ace400facf6ab2e,
         type: 3}
@@ -2796,25 +2783,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c32b82897cb9c4161ace400facf6ab2e, type: 3}
---- !u!1 &926950269 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1687960678586386274, guid: c32b82897cb9c4161ace400facf6ab2e,
-    type: 3}
-  m_PrefabInstance: {fileID: 926950268}
-  m_PrefabAsset: {fileID: 0}
---- !u!135 &926950270
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 926950269}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 209.1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &931696851
 GameObject:
   m_ObjectHideFlags: 0

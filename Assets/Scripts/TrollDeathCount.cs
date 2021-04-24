@@ -41,15 +41,15 @@ public class TrollDeathCount : MonoBehaviour
             isMission3Complete = true;
             missionCompleteText.GetComponent<Text>().text = "Mission Complete";
             audioSource.PlayOneShot(missionCompleteSound);
-            Invoke("ToTitle", 3);
+            Invoke("ToEnd", 3);
         }
     }
 
-    //ミッション3へ遷移
-    void ToTitle()
+    //エンドシーンへ遷移
+    void ToEnd()
 	{
 		fadeController.StartFadeOut();
-		fadeController.changeSceneName = "Title";
+		fadeController.changeSceneName = "End";
 	}
 }
 

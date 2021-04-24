@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Mission3.unity
     guid: b0d66e6efd6ed41fc83edd2ba5896b42
+  - enabled: 1
+    path: Assets/Scenes/End.unity
+    guid: 3722d555326e84946b9d1e51dccc5647
   m_configObjects: {}
