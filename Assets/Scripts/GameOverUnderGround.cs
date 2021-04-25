@@ -18,11 +18,21 @@ public class GameOverUnderGround : MonoBehaviour
             gameOverText.GetComponent<Text>().text = "Game Over";
             Invoke("ToTitleScene", 3);
         }
+        if(other.gameObject.tag == "Troll")
+        {
+            gameOverText.GetComponent<Text>().text = "Mission Complete";
+            Invoke("ToEndScene", 3);
+        }
     }
     //タイトルシーンへ遷移
     void ToTitleScene()
 	{
 		fadeController.StartFadeOut();
 		fadeController.changeSceneName = "Title";
+	}
+    void ToEndScene()
+	{
+		fadeController.StartFadeOut();
+		fadeController.changeSceneName = "End";
 	}
 }

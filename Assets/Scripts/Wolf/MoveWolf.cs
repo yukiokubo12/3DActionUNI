@@ -19,7 +19,7 @@ public class MoveWolf : MonoBehaviour
     private Vector3 destination;
     //歩く走るスピード
     [SerializeField] private float walkSpeed = 1.0f;
-    [SerializeField] private float runSpeed = 4.0f;
+    [SerializeField] private float runSpeed = 3.0f;
     //速度
     private Vector3 velocity;
     //移動方向
@@ -98,7 +98,7 @@ public class MoveWolf : MonoBehaviour
             else if (state == WolfState.Chase) 
             {
                 //攻撃する距離だったら攻撃
-                if (Vector3.Distance (transform.position, setWolfPosition.GetDestination ()) < 1.5f) 
+                if (Vector3.Distance (transform.position, setWolfPosition.GetDestination ()) < 0.9f) 
                 {
                     SetState(WolfState.Attack);
                 }
@@ -131,6 +131,7 @@ public class MoveWolf : MonoBehaviour
             if (elapsedTime > freezeTime) 
             {
                 SetState(WolfState.Walk);
+                SetState(WolfState.Attack);
             }
         }
         else if(state == WolfState.Dead)

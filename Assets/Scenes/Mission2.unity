@@ -1275,6 +1275,53 @@ Transform:
   m_Father: {fileID: 22228099}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &466851958
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 466851960}
+  - component: {fileID: 466851959}
+  m_Layer: 0
+  m_Name: Appearance (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &466851959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466851958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1d52ce705f5c464fb223194ef1a763c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemys: []
+  appearNextTime: 15
+  maxNumOfEnemys: 4
+  Wolf: {fileID: 7585623103498274333, guid: 09018dc067ffa40d9a8fa956fad5838d, type: 3}
+--- !u!4 &466851960
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466851958}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -61.46, y: 0.5, z: 40.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &467275571
 GameObject:
   m_ObjectHideFlags: 0
@@ -1629,7 +1676,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 0 / 4
+  m_Text: 0 / 3
 --- !u!222 &564645075
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1651,11 +1698,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wolfCountText: {fileID: 564645074}
-  fadeController: {fileID: 2137151886}
-  missionCompleteText: {fileID: 1343728459}
   isMission2Complete: 0
+  missionCompleteText: {fileID: 1343728459}
   missionCompleteSound: {fileID: 8300000, guid: 529eee2a596514e1eb8375a002fa83a2,
     type: 3}
+  fadeController: {fileID: 2137151886}
 --- !u!1 &578714642
 GameObject:
   m_ObjectHideFlags: 0
@@ -1686,9 +1733,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemys: []
-  appearNextTime: 10
+  appearNextTime: 13
   maxNumOfEnemys: 2
-  Goblin: {fileID: 4973628467540234803, guid: ea25298e2cf544e269531119adb25e38, type: 3}
+  Goblin: {fileID: 4973628467540234803, guid: e2ea25319fed042c19744abddfc48aa7, type: 3}
 --- !u!4 &578714644
 Transform:
   m_ObjectHideFlags: 0
@@ -1697,7 +1744,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 578714642}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -39.56, y: 0, z: 48.94}
+  m_LocalPosition: {x: -65.42, y: 0.5, z: 59.46}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2304,7 +2351,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 122
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!95 &758574410
 Animator:
   serializedVersion: 3
@@ -2629,8 +2676,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemys: []
-  appearNextTime: 10
-  maxNumOfEnemys: 2
+  appearNextTime: 1
+  maxNumOfEnemys: 1
   Wolf: {fileID: 7585623103498274333, guid: 09018dc067ffa40d9a8fa956fad5838d, type: 3}
 --- !u!4 &799914284
 Transform:
@@ -2640,7 +2687,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 799914282}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -41, y: 0, z: 44.7}
+  m_LocalPosition: {x: -23.7, y: 0, z: 55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3361,8 +3408,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemys: []
-  appearNextTime: 15
-  maxNumOfEnemys: 5
+  appearNextTime: 10
+  maxNumOfEnemys: 2
   Wolf: {fileID: 7585623103498274333, guid: 09018dc067ffa40d9a8fa956fad5838d, type: 3}
 --- !u!4 &1180279261
 Transform:
@@ -3372,7 +3419,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1180279259}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -60.4, y: 0.9, z: 40.8}
+  m_LocalPosition: {x: -45.31, y: 0.5, z: 24.97}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3484,7 +3531,7 @@ Transform:
   m_LocalScale: {x: 250, y: 1, z: 250}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1234084290
 GameObject:
@@ -4937,7 +4984,7 @@ MonoBehaviour:
   missionButton: {fileID: 1476253057}
   missionText: {fileID: 328315705}
   timerText: {fileID: 151625478}
-  m_missionDescription: "1\u5206\u4EE5\u5185\u306B\u30A6\u30EB\u30D54\u5339\u5012\u305B"
+  m_missionDescription: "1\u5206\u4EE5\u5185\u306B\u30A6\u30EB\u30D53\u5339\u5012\u305B"
 --- !u!4 &1691826723
 Transform:
   m_ObjectHideFlags: 0

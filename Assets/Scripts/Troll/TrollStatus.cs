@@ -34,7 +34,7 @@ public class TrollStatus : MonoBehaviour
         animator = GetComponent<Animator>();
         moveTroll = GetComponent<MoveTroll>();
         audioSource = GetComponent<AudioSource>();
-        this.maxTrollHp = 30;
+        this.maxTrollHp = 120;
         this.currentTrollHp = this.maxTrollHp;
         this.trollHPSlider.value = 1;
         isDead = false;

@@ -20,7 +20,7 @@ public class WolfDeathCount : MonoBehaviour
 
     void Start()
     {
-        this.wolfCountText.text = string.Format("{0} / 4", wolfCount);
+        this.wolfCountText.text = string.Format("{0} / 3", wolfCount);
         isMission2Complete = false;
         audioSource = GetComponent<AudioSource>();
     }
@@ -34,9 +34,9 @@ public class WolfDeathCount : MonoBehaviour
     public void CountWolf(int addWolf)
     {   
         this.wolfCount = wolfCount + addWolf;
-        this.wolfCountText.text = string.Format("{0} / 4", wolfCount);
+        this.wolfCountText.text = string.Format("{0} / 3", wolfCount);
         //倒したウルフの数4以上なら次のミッションへ遷移
-        if(wolfCount >= 4 && isMission2Complete == false)
+        if(wolfCount >= 3 && isMission2Complete == false)
         {
             isMission2Complete = true;
             missionCompleteText.GetComponent<Text>().text = "Mission Complete";
