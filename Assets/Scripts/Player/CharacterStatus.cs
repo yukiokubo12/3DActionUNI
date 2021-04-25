@@ -3,7 +3,6 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections;
 
-
 public class CharacterStatus : MonoBehaviour 
 {	
 	// 体力.

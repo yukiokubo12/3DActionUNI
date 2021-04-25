@@ -22,8 +22,7 @@ public class PlayerCtrl : MonoBehaviour
     [SerializeField] float m_rotateSpeed = 10f;
     float m_verticalVelocity = 0f;
     private Vector3 moveDirection;
-    //走る処理
-    [SerializeField] float m_runSpeed = 6.0f;
+    //走ってるかどうか
     private bool runFlag = false;
     //攻撃時間制限
     private float elapsedTime;

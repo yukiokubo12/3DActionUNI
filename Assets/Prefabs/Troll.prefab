@@ -1904,7 +1904,7 @@ MonoBehaviour:
   currentTrollHp: 0
   damage: 0
   trollHPSlider: {fileID: 1687960678128443533}
-  hitEffectPrefab: {fileID: 100006, guid: bc015426619ef584fbdac5a0359c7a98, type: 3}
+  hitEffectPrefab: {fileID: 100006, guid: a905d8e5159ffeb46baa8d2a7624717f, type: 3}
   mutekiFlag: 0
   m_mutekiTime: 1
   attackSound: {fileID: 8300000, guid: f57e186ea2a0b485f8cb9b15cf19d7b9, type: 3}

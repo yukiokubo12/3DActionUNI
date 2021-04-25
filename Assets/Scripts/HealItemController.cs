@@ -10,7 +10,7 @@ public class HealItemController : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             var characterStatus = GameObject.Find("Player");
-            characterStatus.GetComponent<CharacterStatus>().Heal(5);
+            characterStatus.GetComponent<CharacterStatus>().Heal(10);
             Destroy(this.gameObject);
         }
     }

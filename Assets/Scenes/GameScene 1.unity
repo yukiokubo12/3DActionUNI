@@ -3335,7 +3335,7 @@ RectTransform:
   m_GameObject: {fileID: 2137151884}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.22864, y: 1.22864, z: 1.22864}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children: []
   m_Father: {fileID: 36658425}
   m_RootOrder: 0
@@ -3424,35 +3424,10 @@ PrefabInstance:
       propertyPath: playerHPSlider
       value: 
       objectReference: {fileID: 124326169}
-    - target: {fileID: 1121955649271899954, guid: 91b8d864c03ac4734ac2dbbfcaed9cb5,
-        type: 3}
-      propertyPath: m_SlopeLimit
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1121955649271899954, guid: 91b8d864c03ac4734ac2dbbfcaed9cb5,
-        type: 3}
-      propertyPath: m_StepOffset
-      value: 0.001
-      objectReference: {fileID: 0}
     - target: {fileID: 1121955649271899958, guid: 91b8d864c03ac4734ac2dbbfcaed9cb5,
         type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 1121955649271899964, guid: 91b8d864c03ac4734ac2dbbfcaed9cb5,
-        type: 3}
-      propertyPath: m_Mass
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 1121955649271899964, guid: 91b8d864c03ac4734ac2dbbfcaed9cb5,
-        type: 3}
-      propertyPath: m_Constraints
-      value: 122
-      objectReference: {fileID: 0}
-    - target: {fileID: 1121955649271899965, guid: 91b8d864c03ac4734ac2dbbfcaed9cb5,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1121955649271899966, guid: 91b8d864c03ac4734ac2dbbfcaed9cb5,
         type: 3}
