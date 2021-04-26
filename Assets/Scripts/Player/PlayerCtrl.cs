@@ -22,11 +22,6 @@ public class PlayerCtrl : MonoBehaviour
     [SerializeField] float m_rotateSpeed = 10f;
     float m_verticalVelocity = 0f;
     private Vector3 moveDirection;
-    //走ってるかどうか
-    private bool runFlag = false;
-    //攻撃時間制限
-    private float elapsedTime;
-    [SerializeField] private float attackTime = 1f;
     //プレイヤー攻撃ポイント（コライダーつけているところ）
     public GameObject playerSword;
 
@@ -40,7 +35,6 @@ public class PlayerCtrl : MonoBehaviour
         animator = GetComponent<Animator>();
         inputManager = FindObjectOfType<InputManager>();
         velocity = Vector3.zero;
-        elapsedTime = 0;
     }
 
     void Update()
@@ -146,7 +140,6 @@ public class PlayerCtrl : MonoBehaviour
             Vector2 clickPos = inputManager.GetCursorPosition();
             // RayCastで対象物を調べる.
             Ray ray = Camera.main.ScreenPointToRay(clickPos);
-            // RaycastHit hitInfo;
         }
     }
 
@@ -167,14 +160,12 @@ public class PlayerCtrl : MonoBehaviour
         if(inputManager.RunButton())
         {
         state = MyState.Run;
-        runFlag = true;
         m_walkSpeed = 6.0f;
         animator.SetFloat("Speed", 6.0f);
         }
         //それ以外は歩くスピードで
         else
         {
-            runFlag = false;
             m_walkSpeed = 3.0f;
         }
     }
@@ -194,4 +185,3 @@ public class PlayerCtrl : MonoBehaviour
         }
     }
 }
-

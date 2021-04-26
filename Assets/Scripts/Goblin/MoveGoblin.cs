@@ -27,7 +27,7 @@ public class MoveGoblin : MonoBehaviour
     //移動方向
     private Vector3 direction;
     //到着フラグ
-    private bool arrived;
+    // private bool arrived;
     //setGoblinPositionスクリプト
     private SetGoblinPosition setGoblinPosition;
     //攻撃待ち時間
@@ -41,7 +41,7 @@ public class MoveGoblin : MonoBehaviour
     //止まる時間
     [SerializeField] private float freezeTime = 0.5f;
     //無敵状態オンオフ用フラグ
-    private float mutekiFlag = 0;
+    // private float mutekiFlag = 0;
     //攻撃時間制限
     [SerializeField] private float attackTime = 1f;
     //攻撃ポイント（コライダー付いてるところ）
@@ -57,7 +57,7 @@ public class MoveGoblin : MonoBehaviour
         setGoblinPosition = GetComponent<SetGoblinPosition>();
         setGoblinPosition.CreateRandomPosition();
         velocity = Vector3.zero;
-        arrived = false;
+        // arrived = false;
         elapsedTime = 0f;
         SetState(GoblinState.Walk);
     }
@@ -154,7 +154,7 @@ public class MoveGoblin : MonoBehaviour
         state = tempState;
         if (tempState == GoblinState.Walk) 
         {
-            arrived = false;
+            // arrived = false;
             elapsedTime = 0f;
             setGoblinPosition.CreateRandomPosition();
             animator.SetFloat("Speed", 1.0f);
@@ -162,7 +162,7 @@ public class MoveGoblin : MonoBehaviour
         else if (tempState == GoblinState.Chase) 
         {
             //待機状態から追いかける場合もあるため
-            arrived = false;
+            // arrived = false;
             //追いかける対象セット
             playerTransform = targetObj;
             animator.SetFloat("Speed", 3.0f);
@@ -171,7 +171,7 @@ public class MoveGoblin : MonoBehaviour
         else if (tempState == GoblinState.Wait) 
         {
             elapsedTime = 0f;
-            arrived = true;
+            // arrived = true;
             velocity = Vector3.zero;
             animator.SetFloat("Speed", 0f);
         } 

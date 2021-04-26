@@ -8,8 +8,6 @@ public class InputManager : MonoBehaviour
 	Vector2 delta = Vector2.zero;
 	bool moved = false;
 	Animator animator;
-	bool jump = true;
-	bool run = true;
 
 	void Start()
 	{

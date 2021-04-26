@@ -24,10 +24,6 @@ public class MoveTroll : MonoBehaviour
     private Vector3 velocity;
     //移動方向
     private Vector3 direction;
-    //到着フラグ
-    private bool arrived;
-    //setTrollPositionスクリプト
-    private SetTrollPosition setTrollPosition;
     //待ち時間
     [SerializeField] private float waitTime = 2f;
     //経過時間
@@ -38,13 +34,12 @@ public class MoveTroll : MonoBehaviour
     private Transform playerTransform;
     //止まる時間
     [SerializeField] private float freezeTime = 0.5f;
-    //無敵状態オンオフ用フラグ
-    private float mutekiFlag = 0;
     //攻撃時間制限
     [SerializeField] private float attackTime = 1f;
     //トロールアタックポイント（コライダーついてるところ）
     public GameObject trollHand;
 
+    private SetTrollPosition setTrollPosition;
     private Animator animator;
     private CharacterController trollController;
     TrollStatus TrollStatus;
@@ -56,7 +51,6 @@ public class MoveTroll : MonoBehaviour
         setTrollPosition = GetComponent<SetTrollPosition>();
         setTrollPosition.CreateRandomPosition();
         velocity = Vector3.zero;
-        arrived = false;
         elapsedTime = 0f;
         SetState(TrollState.Walk);
     }
@@ -150,15 +144,13 @@ public class MoveTroll : MonoBehaviour
         state = tempState;
         if (tempState == TrollState.Walk) 
         {
-            arrived = false;
+            // arrived = false;
             elapsedTime = 0f;
             setTrollPosition.CreateRandomPosition();
             animator.SetFloat("Speed", 1.0f);
         } 
         else if (tempState == TrollState.Chase) 
         {
-            //待機状態から追いかける場合もあるため
-            arrived = false;
             //追いかける対象セット
             playerTransform = targetObj;
             animator.SetFloat("Speed", 1.0f);
@@ -167,7 +159,6 @@ public class MoveTroll : MonoBehaviour
         else if (tempState == TrollState.Wait) 
         {
             elapsedTime = 0f;
-            arrived = true;
             velocity = Vector3.zero;
             animator.SetFloat("Speed", 0f);
         } 

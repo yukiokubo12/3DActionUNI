@@ -25,7 +25,7 @@ public class MoveWolf : MonoBehaviour
     //移動方向
     private Vector3 direction;
     //到着フラグ
-    private bool arrived;
+    // private bool arrived;
     //setWolfPositionスクリプト
     private SetWolfPosition setWolfPosition;
     //待ち時間
@@ -40,7 +40,7 @@ public class MoveWolf : MonoBehaviour
     //止まる時間
     [SerializeField] private float freezeTime = 0.5f;
     //無敵状態オンオフ用フラグ
-    private float mutekiFlag = 0;
+    // private float mutekiFlag = 0;
     //攻撃時間制限
     [SerializeField] private float attackTime = 1f;
     //ウルフアタックポイント（コライダー付いてるところ）
@@ -57,7 +57,7 @@ public class MoveWolf : MonoBehaviour
         setWolfPosition = GetComponent<SetWolfPosition>();
         setWolfPosition.CreateRandomPosition();
         velocity = Vector3.zero;
-        arrived = false;
+        // arrived = false;
         elapsedTime = 0f;
         SetState(WolfState.Walk);
     }
@@ -151,7 +151,7 @@ public class MoveWolf : MonoBehaviour
         state = tempState;
         if (tempState == WolfState.Walk) 
         {
-            arrived = false;
+            // arrived = false;
             elapsedTime = 0f;
             setWolfPosition.CreateRandomPosition();
             animator.SetFloat("Speed", 1.0f);
@@ -159,7 +159,7 @@ public class MoveWolf : MonoBehaviour
         else if (tempState == WolfState.Chase) 
         {
             //待機状態から追いかける場合もあるため
-            arrived = false;
+            // arrived = false;
             //追いかける対象セット
             playerTransform = targetObj;
             animator.SetFloat("Speed", 3.0f);
@@ -168,7 +168,7 @@ public class MoveWolf : MonoBehaviour
         else if (tempState == WolfState.Wait) 
         {
             elapsedTime = 0f;
-            arrived = true;
+            // arrived = true;
             velocity = Vector3.zero;
             animator.SetFloat("Speed", 0f);
         } 

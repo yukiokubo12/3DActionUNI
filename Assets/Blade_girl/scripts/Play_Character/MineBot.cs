@@ -106,8 +106,8 @@ public class MineBot: MonoBehaviour {
 					
 				}
 
-				else if(currentBaseState.nameHash == jumpState)
-				{
+				// else if(currentBaseState.nameHash == jumpState)
+				// {
 					//  ..and not still in transition..
 					if(!avatar.IsInTransition(0))
 					{
@@ -117,7 +117,7 @@ public class MineBot: MonoBehaviour {
 						
 						// reset the Jump bool so we can jump again, and so that the state does not loop 
 						avatar.SetBool("Jump", false);
-					}
+					// }
 					
 					// Raycast down from the center of the character.. 
 					Ray ray = new Ray(transform.position + Vector3.up, -Vector3.up);
@@ -146,17 +146,10 @@ public class MineBot: MonoBehaviour {
 					rigidbody.AddForce(Vector3.down * 700);
 				
 				}
-
-
-
-
-
-
             }
 
-
-			if (currentBaseState.nameHash == attack01State)
-			{
+			// if (currentBaseState.nameHash == attack01State)
+			// {
 				if(Input.GetButtonDown("Fire1"))
 				{
 					avatar.SetBool("Combo", true);
@@ -169,12 +162,11 @@ public class MineBot: MonoBehaviour {
 					avatar.SetBool("Combo", false);
 
 				}
-			}
+			// }
 		
+
+
+
 		}		
-	}
-
-
-
-	
+	}	
 }
